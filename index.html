@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rajesh Kumar | LIC Advisor - Securing Your Family's Future</title>
+    <meta name="description" content="Professional LIC Advisor helping you secure your family's future with life insurance, retirement planning, and more.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00843D;
+            --primary-light: #00A36C;
+            --secondary: #27AE60;
+            --accent: #FFD700;
+            --text-dark: #111827;
+            --text-light: #4B5563;
+            --bg-light: #F9FBF9;
+            --white: #FFFFFF;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--primary);
+        }
+
+        /* Header */
+        header {
+            padding: 20px 0;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo img {
+            height: 45px;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 40px;
+            padding-top: 60px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .hero-role {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .hero-tagline {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        .hero-trust {
+            display: inline-block;
+            background: #E8F5E9;
+            color: #2E7D32;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 35px;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 132, 61, 0.2);
+        }
+
+        .btn-whatsapp {
+            background-color: transparent;
+            color: #25D366;
+            border: 2px solid #25D366;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #25D366;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: left;
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.03);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            border-color: var(--primary-light);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: #F0F9F4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            color: var(--primary);
+        }
+
+        .service-card h3 {
+            margin-bottom: 12px;
+            font-size: 1.25rem;
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Plans Section */
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .plan-card {
+            background: var(--white);
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .plan-card:hover {
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .plan-header {
+            padding: 30px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: var(--white);
+        }
+
+        .plan-body {
+            padding: 30px;
+            flex-grow: 1;
+        }
+
+        .plan-benefit {
+            display: flex;
+            align-items: start;
+            gap: 10px;
+            padding: 10px 0;
+            color: var(--text-light);
+        }
+
+        /* Trust Section */
+        .trust-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            background: var(--white);
+            border-radius: 30px;
+            padding: 60px;
+            margin-top: 40px;
+        }
+
+        .why-list {
+            list-style: none;
+            margin-top: 30px;
+        }
+
+        .why-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .check-icon {
+            color: var(--primary);
+            background: #E8F5E9;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .agent-profile {
+            background: var(--bg-light);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--white);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .profile-info h3 { font-size: 1.5rem; margin-bottom: 5px; }
+        .profile-info p { color: var(--text-light); margin-bottom: 5px; }
+
+        /* Final CTA */
+        .final-cta {
+            background: linear-gradient(135deg, #004D23, #00843D);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+            border-radius: 40px;
+            margin: 40px 0;
+        }
+
+        .final-cta h2 { font-size: 3rem; margin-bottom: 40px; max-width: 800px; margin-inline: auto; }
+
+        /* Footer */
+        footer {
+            padding: 60px 0 20px;
+            background: #111827;
+            color: #9CA3AF;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-disclaimer {
+            font-size: 0.8rem;
+            border-top: 1px solid #374151;
+            padding-top: 20px;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero, .trust-section { grid-template-columns: 1fr; text-align: center; }
+            .hero-content h1 { font-size: 2.8rem; }
+            .cta-group { justify-content: center; }
+            .footer-content { grid-template-columns: 1fr; text-align: center; }
+            .trust-section { padding: 40px 20px; }
+            .final-cta h2 { font-size: 2.2rem; }
+        }
+
+        @media (max-width: 600px) {
+            .hero-content h1 { font-size: 2rem; }
+            section { padding: 60px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-content">
+            <div class="logo">
+                <!-- Using a high-quality LIC PNG if available, else a placeholder -->
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/c/c3/Life_Insurance_Corporation_logo.svg/1200px-Life_Insurance_Corporation_logo.svg.png" alt="LIC Logo">
+            </div>
+            <div class="cta-group">
+                <a href="tel:+91XXXXXXXXXX" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.9rem;">Call Agent</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="container hero">
+        <div class="hero-content reveal">
+            <div class="hero-trust">LIC Advisor | Agent ID: 0141271B</div>
+            <h1>RAJESH KUMAR</h1>
+            <p class="hero-role">LIC Advisor</p>
+            <p class="hero-tagline">Securing Your Family’s Future Through Trusted Financial Guidance.</p>
+            
+            <div class="cta-group">
+                <a href="tel:+91XXXXXXXXXX" class="btn btn-primary">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.15 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    Call Now
+                </a>
+                <a href="https://wa.me/91XXXXXXXXXX" class="btn btn-whatsapp">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 2c-5.517 0-9.997 4.48-9.997 9.997 0 1.763.459 3.479 1.332 4.99L2 22l5.145-1.35a9.96 9.96 0 004.886 1.277h.004c5.517 0 9.997-4.48 9.997-9.997 0-2.665-1.037-5.17-2.921-7.054A9.944 9.944 0 0012.031 2zM17.658 15.3c-.307-.154-1.817-.897-2.099-1.002-.281-.103-.486-.154-.69.154-.204.308-.791.996-.969 1.2-.178.205-.356.23-.663.077-.306-.155-1.294-.477-2.464-1.521-.91-.812-1.525-1.815-1.704-2.122-.178-.308-.019-.474.135-.626.139-.136.307-.359.461-.538.154-.18.204-.308.307-.513.102-.205.051-.385-.026-.538-.077-.154-.69-1.666-.945-2.28-.248-.598-.5-.517-.69-.527-.179-.009-.384-.01-.59-.01a1.137 1.137 0 00-.82.384c-.282.308-1.076 1.051-1.076 2.564 0 1.513 1.102 2.974 1.256 3.179.154.205 2.169 3.313 5.253 4.643.734.316 1.307.505 1.751.646.736.235 1.408.202 1.94.122.593-.088 1.817-.743 2.072-1.46.256-.718.256-1.334.18-1.46-.076-.128-.282-.205-.589-.36z"/></svg>
+                    WhatsApp
+                </a>
+                <a href="#plans" class="btn btn-outline">View Plans</a>
+            </div>
+        </div>
+        <div class="hero-image reveal">
+            <img src="assets/hero-agent.png" alt="Rajesh Kumar - LIC Advisor">
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="container" id="solutions">
+        <h2 class="section-title reveal">Solutions We Offer</h2>
+        <div class="services-grid">
+            <div class="service-card reveal">
+                <div class="service-icon">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                </div>
+                <h3>Life Insurance</h3>
+                <p>Ensure financial security for your loved ones in your absence with comprehensive coverage.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+                <h3>Retirement Planning</h3>
+                <p>Build a substantial corpus for a tension-free and socially dignified retired life.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                </div>
+                <h3>Child Future Plans</h3>
+                <p>Secure your child's education and marriage expenses with systematic long-term planning.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"/><path d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1M18 16h1a1 1 0 001-1v-5a1 1 0 00-1-1h-2l-4-4h-3"/></svg>
+                </div>
+                <h3>Vehicle Insurance</h3>
+                <p>Protect your mobility with comprehensive auto insurance coverage for peace of mind.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Plans Section -->
+    <section class="bg-light" style="background:#F3F6F3;" id="plans">
+        <div class="container text-center">
+            <h2 class="section-title reveal">Popular LIC Plans</h2>
+            <div class="plans-grid">
+                <div class="plan-card reveal">
+                    <div class="plan-header">
+                        <h3>Jeevan Utsav</h3>
+                    </div>
+                    <div class="plan-body">
+                        <div class="plan-benefit">
+                            <span style="color:var(--primary); font-weight:bold;">★</span>
+                            <p>Life-long guaranteed income after premium term.</p>
+                        </div>
+                        <div class="plan-benefit">
+                            <span style="color:var(--primary); font-weight:bold;">★</span>
+                            <p>Life cover throughout the policy term.</p>
+                        </div>
+                        <a href="https://wa.me/91XXXXXXXXXX?text=Tell me more about Jeevan Utsav" class="btn btn-outline" style="width:100%; margin-top:20px;">Know More</a>
+                    </div>
+                </div>
+                <div class="plan-card reveal">
+                    <div class="plan-header">
+                        <h3>New Jeevan Anand</h3>
+                    </div>
+                    <div class="plan-body">
+                        <div class="plan-benefit">
+                            <span style="color:var(--primary); font-weight:bold;">★</span>
+                            <p>Double benefits of Protection and Savings.</p>
+                        </div>
+                        <div class="plan-benefit">
+                            <span style="color:var(--primary); font-weight:bold;">★</span>
+                            <p>Lifetime life cover even after maturity.</p>
+                        </div>
+                        <a href="https://wa.me/91XXXXXXXXXX?text=Tell me more about New Jeevan Anand" class="btn btn-outline" style="width:100%; margin-top:20px;">Know More</a>
+                    </div>
+                </div>
+                <div class="plan-card reveal">
+                    <div class="plan-header">
+                        <h3>Bima Jyoti</h3>
+                    </div>
+                    <div class="plan-body">
+                        <div class="plan-benefit">
+                            <span style="color:var(--primary); font-weight:bold;">★</span>
+                            <p>Guaranteed additions at the rate of ₹50 per 1000.</p>
+                        </div>
+                        <div class="plan-benefit">
+                            <span style="color:var(--primary); font-weight:bold;">★</span>
+                            <p>Tax-free maturity and death benefits.</p>
+                        </div>
+                        <a href="https://wa.me/91XXXXXXXXXX?text=Tell me more about Bima Jyoti" class="btn btn-outline" style="width:100%; margin-top:20px;">Know More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Me Section -->
+    <section class="container">
+        <div class="trust-section reveal">
+            <div>
+                <h2 style="font-size: 2.5rem; color: var(--primary);">Why Choose Me</h2>
+                <div class="why-list">
+                    <div class="why-item">
+                        <div class="check-icon">✓</div>
+                        Personalized Financial Guidance
+                    </div>
+                    <div class="why-item">
+                        <div class="check-icon">✓</div>
+                        End-to-end Claim Assistance Support
+                    </div>
+                    <div class="why-item">
+                        <div class="check-icon">✓</div>
+                        Quick Response on WhatsApp (24/7)
+                    </div>
+                    <div class="why-item">
+                        <div class="check-icon">✓</div>
+                        Trusted LIC Advisor with Expert Knowledge
+                    </div>
+                </div>
+            </div>
+            <div class="agent-profile">
+                <img src="assets/hero-agent.png" alt="Rajesh Kumar" class="profile-img">
+                <div class="profile-info">
+                    <h3>Rajesh Kumar</h3>
+                    <p><strong>Role:</strong> LIC Advisor</p>
+                    <p><strong>Qualification:</strong> MBA (Finance) / LUTCF</p>
+                    <p><strong>Agent ID:</strong> 0141271B</p>
+                    <hr style="margin: 20px 0; border: 0; border-top: 1px solid #e5e7eb;">
+                    <p><strong>Phone:</strong> +91 XXXXX XXXXX</p>
+                    <p><strong>Email:</strong> advisor.rajesh@example.com</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="container">
+        <div class="final-cta reveal">
+            <h2>Get the Right Plan for Your Future Today</h2>
+            <div class="cta-group" style="justify-content: center;">
+                <a href="tel:+91XXXXXXXXXX" class="btn btn-primary" style="background: white; color: var(--primary);">Call Now</a>
+                <a href="https://wa.me/91XXXXXXXXXX" class="btn btn-whatsapp" style="border-color: white; color: white;">WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/c/c3/Life_Insurance_Corporation_logo.svg/1200px-Life_Insurance_Corporation_logo.svg.png" alt="LIC Logo" style="height: 40px; margin-bottom: 20px; filter: brightness(0) invert(1);">
+                    <p>Helping families secure their financial future with tailored insurance solutions.</p>
+                </div>
+                <div>
+                    <h4 style="color: white; margin-bottom: 20px;">Contact Info</h4>
+                    <p>+91 XXXXX XXXXX</p>
+                    <p>advisor.rajesh@example.com</p>
+                    <p>Bangalore, India</p>
+                </div>
+                <div>
+                    <h4 style="color: white; margin-bottom: 20px;">Follow Me</h4>
+                    <div style="display: flex; gap: 15px;">
+                        <!-- Placeholders for icons -->
+                        <span style="font-size: 1.2rem;">FB</span>
+                        <span style="font-size: 1.2rem;">TW</span>
+                        <span style="font-size: 1.2rem;">LI</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-disclaimer">
+                <p>&copy; 2026 Rajesh Kumar | LIC Advisor. All Rights Reserved.</p>
+                <p style="margin-top: 10px; opacity: 0.6;">Disclaimer: Insurance is the subject matter of solicitation. For more details on risk factors, terms and conditions, please read the sales brochure carefully before concluding a sale.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll Reveal Animation
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+
+        window.addEventListener("scroll", reveal);
+        // Initial call
+        reveal();
+    </script>
+</body>
+</html>
