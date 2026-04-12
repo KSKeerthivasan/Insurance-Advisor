@@ -202,27 +202,70 @@
             50% { transform: translateY(-15px); }
         }
 
-        /* Services Section */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 25px;
+        /* Services Section - Carousel Enhancements */
+        .solutions-section {
+            padding: 80px 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .carousel-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0 60px;
+        }
+
+        .carousel-view {
+            overflow: hidden;
+            padding: 20px 0;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            gap: 30px;
+            padding: 0 15px;
         }
 
         .service-card {
             background: var(--white);
             padding: 40px 30px;
-            border-radius: 20px;
+            border-radius: 24px;
             text-align: left;
-            transition: var(--transition);
-            border: 1px solid rgba(0,0,0,0.03);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+            flex: 0 0 calc(33.333% - 20px); /* 3 cards on desktop */
+            opacity: 0.6;
+            transform: scale(0.9);
+            filter: grayscale(0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .service-card.focused {
+            opacity: 1;
+            transform: scale(1.05);
+            filter: grayscale(0);
+            box-shadow: 0 20px 50px rgba(0, 132, 61, 0.15);
+            border-color: var(--primary-light);
+            z-index: 2;
         }
 
         .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
             border-color: var(--primary-light);
+        }
+
+        .provider-name {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .service-icon {
@@ -232,60 +275,278 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 15px;
+            border-radius: 18px;
             margin-bottom: 25px;
             color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .service-card.focused .service-icon {
+            background: var(--primary);
+            color: white;
         }
 
         .service-card h3 {
-            margin-bottom: 12px;
-            font-size: 1.25rem;
+            margin-bottom: 5px;
+            font-size: 1.4rem;
+            color: var(--text-dark);
         }
 
         .service-card p {
             color: var(--text-light);
-            font-size: 0.95rem;
+            font-size: 1rem;
+            margin-bottom: 25px;
+            line-height: 1.5;
         }
 
-        /* Plans Section */
-        .plans-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
+        /* Carousel Navigation */
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
         }
 
-        .plan-card {
-            background: var(--white);
-            border-radius: 24px;
+        .nav-btn {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            border: 2px solid #E5E7EB;
+            background: white;
+            color: var(--text-dark);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .nav-btn svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .service-card {
+                flex: 0 0 calc(50% - 15px); /* 2 cards on tablet */
+            }
+        }
+
+        @media (max-width: 640px) {
+            .service-card {
+                flex: 0 0 100%; /* 1 card on mobile */
+            }
+            .carousel-track {
+                gap: 20px;
+            }
+        }
+
+        /* Modal System */
+        body.modal-open {
             overflow: hidden;
-            border: 1px solid rgba(0,0,0,0.05);
-            transition: var(--transition);
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(6px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-poster {
+            background: var(--white);
+            width: 90%;
+            max-width: 1000px;
+            max-height: 85vh;
+            border-radius: 30px;
+            position: relative;
+            overflow: hidden;
             display: flex;
             flex-direction: column;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.1);
+            transform: scale(0.8) translateY(30px);
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        .plan-card:hover {
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        .modal-overlay.active .modal-poster {
+            transform: scale(1) translateY(0);
+            opacity: 1;
         }
 
-        .plan-header {
-            padding: 30px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            color: var(--white);
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: var(--transition);
         }
 
-        .plan-body {
-            padding: 30px;
+        .modal-close:hover {
+            transform: rotate(90deg);
+            background: white;
+            color: var(--primary);
+        }
+
+        .modal-header-section {
+            padding: 30px 40px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: white;
+        }
+
+        .modal-logo {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .modal-header-text h2 {
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin-bottom: 4px;
+        }
+
+        .modal-header-text p {
+            font-size: 0.9rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .modal-banner {
+            width: 100%;
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .modal-banner::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(transparent, rgba(255,255,255,0.05));
+        }
+
+        .modal-body-scroll {
+            padding: 40px;
+            overflow-y: auto;
             flex-grow: 1;
         }
 
-        .plan-benefit {
-            display: flex;
-            align-items: start;
-            gap: 10px;
-            padding: 10px 0;
-            color: var(--text-light);
+        .modal-tagline {
+            font-size: 1.25rem;
+            color: var(--text-dark);
+            font-weight: 600;
+            margin-bottom: 30px;
+            border-left: 4px solid var(--primary);
+            padding-left: 15px;
         }
+
+        .modal-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .info-card {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 16px;
+            border: 1px solid #f1f5f9;
+        }
+
+        .info-card h4 {
+            color: var(--primary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .info-card ul {
+            list-style: none;
+        }
+
+        .info-card ul li {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-card ul li::before {
+            content: '•';
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .modal-footer-cta {
+            padding: 30px 40px;
+            background: #f8fafc;
+            display: flex;
+            justify-content: flex-end;
+            border-top: 1px solid #f1f5f9;
+        }
+
+        @media (max-width: 768px) {
+            .modal-poster {
+                width: 95%;
+                max-height: 90vh;
+            }
+            .modal-header-section {
+                padding: 20px;
+            }
+            .modal-body-scroll {
+                padding: 20px;
+            }
+            .modal-banner {
+                height: 180px;
+            }
+        }
+
+        /* Plans Section */
+        /* Plans Section Updates - Sharing Carousel Styles */
 
         /* Trust Section */
         .trust-section {
@@ -433,93 +694,118 @@
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="container" id="solutions">
-        <h2 class="section-title reveal">Solutions We Offer</h2>
-        <div class="services-grid">
-            <div class="service-card reveal">
-                <div class="service-icon">
-                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+    <!-- Solutions Section -->
+    <section class="solutions-section" id="solutions">
+        <div class="container">
+            <h2 class="section-title reveal">Solutions We Offer</h2>
+            
+            <div class="carousel-container">
+                <div class="carousel-view">
+                    <div class="carousel-track" id="carouselTrack">
+                        <!-- Life & Wealth Protection -->
+                        <div class="service-card reveal">
+                            <div>
+                                <div class="service-icon">
+                                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                                </div>
+                                <span class="provider-name">Life Insurance Corporation of India (LIC)</span>
+                                <h3>Life & Wealth Protection</h3>
+                                <p>Term Insurance, Endowment Plans, Money Back, Child Plans, Retirement Solutions</p>
+                            </div>
+                            <button class="btn btn-outline explore-btn" data-service="life" style="padding: 10px 20px; font-size: 0.85rem; width: 100%;">Explore</button>
+                        </div>
+                        
+                        <!-- Health Insurance -->
+                        <div class="service-card reveal">
+                            <div>
+                                <div class="service-icon">
+                                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                                </div>
+                                <span class="provider-name">Star Health and Allied Insurance</span>
+                                <h3>Health Insurance</h3>
+                                <p>Individual Plans, Family Floater, Senior Citizen Plans, Critical Illness, Top-Up Covers</p>
+                            </div>
+                            <button class="btn btn-outline explore-btn" data-service="health" style="padding: 10px 20px; font-size: 0.85rem; width: 100%;">Explore</button>
+                        </div>
+                        
+                        <!-- General Insurance -->
+                        <div class="service-card reveal">
+                            <div>
+                                <div class="service-icon">
+                                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                                </div>
+                                <span class="provider-name">United India Insurance Company</span>
+                                <h3>General Insurance</h3>
+                                <p>Motor, Travel, Property, Personal Accident, Cyber Insurance</p>
+                            </div>
+                            <button class="btn btn-outline explore-btn" data-service="general" style="padding: 10px 20px; font-size: 0.85rem; width: 100%;">Explore</button>
+                        </div>
+                        
+                        <!-- Loans & Finance -->
+                        <div class="service-card reveal">
+                            <div>
+                                <div class="service-icon">
+                                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                                </div>
+                                <span class="provider-name">LIC Housing Finance Ltd</span>
+                                <h3>Loans & Finance</h3>
+                                <p>Home Loans, Loan Against Property, Renovation Loans, Balance Transfer</p>
+                            </div>
+                            <button class="btn btn-outline explore-btn" data-service="loans" style="padding: 10px 20px; font-size: 0.85rem; width: 100%;">Explore</button>
+                        </div>
+                    </div>
                 </div>
-                <h3>Life Insurance</h3>
-                <p>Ensure financial security for your loved ones in your absence with comprehensive coverage.</p>
-            </div>
-            <div class="service-card reveal">
-                <div class="service-icon">
-                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+
+                <!-- Navigation Arrows -->
+                <div class="carousel-nav">
+                    <button class="nav-btn" id="prevBtn" aria-label="Previous slide">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                    </button>
+                    <button class="nav-btn" id="nextBtn" aria-label="Next slide">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    </button>
                 </div>
-                <h3>Retirement Planning</h3>
-                <p>Build a substantial corpus for a tension-free and socially dignified retired life.</p>
-            </div>
-            <div class="service-card reveal">
-                <div class="service-icon">
-                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-                </div>
-                <h3>Child Future Plans</h3>
-                <p>Secure your child's education and marriage expenses with systematic long-term planning.</p>
-            </div>
-            <div class="service-card reveal">
-                <div class="service-icon">
-                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"/><path d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1M18 16h1a1 1 0 001-1v-5a1 1 0 00-1-1h-2l-4-4h-3"/></svg>
-                </div>
-                <h3>Vehicle Insurance</h3>
-                <p>Protect your mobility with comprehensive auto insurance coverage for peace of mind.</p>
             </div>
         </div>
     </section>
 
     <!-- Popular Plans Section -->
-    <section class="bg-light" style="background:#F3F6F3;" id="plans">
-        <div class="container text-center">
+    <!-- Popular Plans Section -->
+    <section class="bg-light solutions-section" style="background:#F3F6F3;" id="plans">
+        <div class="container">
             <h2 class="section-title reveal">Popular LIC Plans</h2>
-            <div class="plans-grid">
-                <div class="plan-card reveal">
-                    <div class="plan-header">
-                        <h3>Jeevan Utsav</h3>
-                    </div>
-                    <div class="plan-body">
-                        <div class="plan-benefit">
-                            <span style="color:var(--primary); font-weight:bold;">★</span>
-                            <p>Life-long guaranteed income after premium term.</p>
+            
+            <div class="carousel-container">
+                <div class="carousel-view">
+                    <div class="carousel-track" id="plansTrack">
+                        <!-- Future-Ready Child Plan -->
+                        <div class="service-card reveal">
+                            <div>
+                                <div class="service-icon" style="background: #E8F5E9; color: var(--primary);">
+                                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                                </div>
+                                <span class="provider-name">LIC Jeevan Tarun</span>
+                                <h3>Future-Ready Child Plan</h3>
+                                <p>Secure your child’s future with guaranteed savings and protection</p>
+                                <ul style="list-style: none; margin-bottom: 20px;">
+                                    <li style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 5px;">✔ Education payouts (20–24)</li>
+                                    <li style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 5px;">✔ Maturity at 25</li>
+                                    <li style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 5px;">✔ Life cover + bonus</li>
+                                </ul>
+                            </div>
+                            <button class="btn btn-outline explore-btn" data-service="tarun" style="padding: 10px 20px; font-size: 0.85rem; width: 100%;">Explore</button>
                         </div>
-                        <div class="plan-benefit">
-                            <span style="color:var(--primary); font-weight:bold;">★</span>
-                            <p>Life cover throughout the policy term.</p>
-                        </div>
-                        <a href="https://wa.me/91XXXXXXXXXX?text=Tell me more about Jeevan Utsav" class="btn btn-outline" style="width:100%; margin-top:20px;">Know More</a>
-                    </div>
-                </div>
-                <div class="plan-card reveal">
-                    <div class="plan-header">
-                        <h3>New Jeevan Anand</h3>
-                    </div>
-                    <div class="plan-body">
-                        <div class="plan-benefit">
-                            <span style="color:var(--primary); font-weight:bold;">★</span>
-                            <p>Double benefits of Protection and Savings.</p>
-                        </div>
-                        <div class="plan-benefit">
-                            <span style="color:var(--primary); font-weight:bold;">★</span>
-                            <p>Lifetime life cover even after maturity.</p>
-                        </div>
-                        <a href="https://wa.me/91XXXXXXXXXX?text=Tell me more about New Jeevan Anand" class="btn btn-outline" style="width:100%; margin-top:20px;">Know More</a>
                     </div>
                 </div>
-                <div class="plan-card reveal">
-                    <div class="plan-header">
-                        <h3>Bima Jyoti</h3>
-                    </div>
-                    <div class="plan-body">
-                        <div class="plan-benefit">
-                            <span style="color:var(--primary); font-weight:bold;">★</span>
-                            <p>Guaranteed additions at the rate of ₹50 per 1000.</p>
-                        </div>
-                        <div class="plan-benefit">
-                            <span style="color:var(--primary); font-weight:bold;">★</span>
-                            <p>Tax-free maturity and death benefits.</p>
-                        </div>
-                        <a href="https://wa.me/91XXXXXXXXXX?text=Tell me more about Bima Jyoti" class="btn btn-outline" style="width:100%; margin-top:20px;">Know More</a>
-                    </div>
+
+                <!-- Navigation Arrows -->
+                <div class="carousel-nav">
+                    <button class="nav-btn" id="plansPrevBtn" aria-label="Previous slide">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                    </button>
+                    <button class="nav-btn" id="plansNextBtn" aria-label="Next slide">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    </button>
                 </div>
             </div>
         </div>
@@ -606,6 +892,52 @@
         </div>
     </footer>
 
+    <!-- Solutions Modal System -->
+    <div class="modal-overlay" id="serviceModalOverlay">
+        <div class="modal-poster" id="serviceModal">
+            <button class="modal-close" id="closeModal">&times;</button>
+            
+            <div class="modal-header-section">
+                <img src="" alt="Provider Logo" class="modal-logo" id="modalLogo">
+                <div class="modal-header-text">
+                    <h2 id="modalTitle">Category Title</h2>
+                    <p id="modalProvider">Provider Name</p>
+                </div>
+            </div>
+
+            <div class="modal-banner" id="modalBanner"></div>
+
+            <div class="modal-body-scroll">
+                <p class="modal-tagline" id="modalTagline">Tagline goes here...</p>
+                
+                <div class="modal-info-grid">
+                    <div class="info-card">
+                        <h4>Plan Types</h4>
+                        <ul id="modalPlanTypes">
+                            <!-- Populated by JS -->
+                        </ul>
+                    </div>
+                    <div class="info-card">
+                        <h4>Who Is This For</h4>
+                        <ul id="modalWhoFor">
+                            <!-- Populated by JS -->
+                        </ul>
+                    </div>
+                    <div class="info-card">
+                        <h4>Key Benefits</h4>
+                        <ul id="modalBenefits">
+                            <!-- Populated by JS -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer-cta">
+                <a href="tel:+91XXXXXXXXXX" class="btn btn-primary">Contact Advisor</a>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Scroll Reveal Animation
         function reveal() {
@@ -623,6 +955,319 @@
         window.addEventListener("scroll", reveal);
         // Initial call
         reveal();
+
+        // Carousel Logic
+        const track = document.getElementById('carouselTrack');
+        const cards = Array.from(track.children);
+        const nextBtn = document.getElementById('nextBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        
+        // Clone cards for infinite loop
+        const firstClones = cards.map(card => card.cloneNode(true));
+        const lastClones = cards.map(card => card.cloneNode(true));
+        
+        lastClones.forEach(clone => track.insertBefore(clone, cards[0]));
+        firstClones.forEach(clone => track.appendChild(clone));
+        
+        let currentIndex = cards.length; // Start at the first original card
+        let isTransitioning = false;
+
+        function updateCarousel(instant = false) {
+            if (instant) track.style.transition = 'none';
+            else track.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+            
+            const cardWidth = track.children[0].offsetWidth;
+            const gap = 30; // Matches CSS gap
+            const offset = currentIndex * (cardWidth + gap);
+            
+            // Adjust offset to center the active card
+            const containerWidth = track.parentElement.offsetWidth;
+            const centerPadding = (containerWidth - cardWidth) / 2;
+            
+            track.style.transform = `translateX(${-offset + centerPadding}px)`;
+            
+            // Update active state for scaling
+            Array.from(track.children).forEach((card, index) => {
+                if (index === currentIndex) {
+                    card.classList.add('focused');
+                    card.classList.add('active'); // Keep scroll reveal active
+                } else {
+                    card.classList.remove('focused');
+                }
+            });
+
+            if (instant) {
+                // Force reflow
+                track.offsetHeight;
+                track.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+            }
+        }
+
+        function moveNext() {
+            if (isTransitioning) return;
+            isTransitioning = true;
+            currentIndex++;
+            updateCarousel();
+        }
+
+        function movePrev() {
+            if (isTransitioning) return;
+            isTransitioning = true;
+            currentIndex--;
+            updateCarousel();
+        }
+
+        track.addEventListener('transitionend', () => {
+            isTransitioning = false;
+            // Infinite loop jump
+            if (currentIndex >= cards.length * 2) {
+                currentIndex = cards.length;
+                updateCarousel(true);
+            } else if (currentIndex < cards.length) {
+                currentIndex = cards.length * 2 - 1;
+                updateCarousel(true);
+            }
+        });
+
+        nextBtn.addEventListener('click', moveNext);
+        prevBtn.addEventListener('click', movePrev);
+
+        // Keyboard Navigation
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') moveNext();
+            if (e.key === 'ArrowLeft') movePrev();
+        });
+
+        // Handle Resize
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                updateCarousel(true);
+            }, 100);
+        });
+
+        // Initialize position
+        window.addEventListener('load', () => {
+            // Re-trigger reveal for elements
+            reveal();
+        });
+
+        // Modal Logic
+        const modalData = {
+            life: {
+                title: "Life & Wealth Protection",
+                provider: "Life Insurance Corporation of India (LIC)",
+                logo: "https://upload.wikimedia.org/wikipedia/en/thumb/c/c3/Life_Insurance_Corporation_logo.svg/1200px-Life_Insurance_Corporation_logo.svg.png",
+                banner: "assets/life-banner.png",
+                tagline: "Secure your family's future with trusted LIC plans.",
+                plans: ["Term Insurance", "Endowment Plans", "Money Back", "Child Plans", "Pension Solutions"],
+                whoFor: ["Young earners starting a career", "Families with dependents", "Parents planning for children", "Individuals nearing retirement"],
+                benefits: ["Guaranteed financial security", "Combination of savings & returns", "Significant tax benefits under Sec 80C"]
+            },
+            health: {
+                title: "Health Insurance",
+                provider: "Star Health and Allied Insurance",
+                logo: "https://companieslogo.com/img/orig/STARHEALTH.NS-27357e6a.png?t=1652156683",
+                banner: "assets/health-banner.png",
+                tagline: "Comprehensive health coverage for you and your family.",
+                plans: ["Individual Health Plans", "Family Floater Plans", "Senior Citizen Red Carpet", "Critical Illness Cover", "Super Top-Up Covers"],
+                whoFor: ["Individuals looking for medical safety", "Families with children", "Senior citizens", "Individuals with high health risks"],
+                benefits: ["Extensive hospital expense coverage", "Cashless treatment in network hospitals", "Emergency medical protection"]
+            },
+            general: {
+                title: "General Insurance",
+                provider: "United India Insurance Company",
+                logo: "https://upload.wikimedia.org/wikipedia/commons/d/d3/United_India_Insurance_logo.png",
+                banner: "assets/general-banner.png",
+                tagline: "Protect your assets, travel, and risks effectively.",
+                plans: ["Motor Insurance (2W/4W)", "Travel Insurance", "Property/Home Insurance", "Personal Accident Cover", "Cyber Insurance"],
+                whoFor: ["Vehicle owners", "Frequent international travelers", "Home and property owners", "Business professionals"],
+                benefits: ["Comprehensive asset protection", "Wide range of risk coverage", "Immediate financial safety net"]
+            },
+            loans: {
+                title: "Loans & Finance",
+                provider: "LIC Housing Finance Ltd",
+                logo: "https://upload.wikimedia.org/wikipedia/en/thumb/c/c3/Life_Insurance_Corporation_logo.svg/1200px-Life_Insurance_Corporation_logo.svg.png",
+                banner: "assets/loans-banner.png",
+                tagline: "Flexible financing solutions for your home and property.",
+                plans: ["Home Loans", "Loan Against Property", "Renovation Loans", "Balance Transfer", "Top-Up Loans"],
+                whoFor: ["First-time home buyers", "Existing property owners", "Home renovators", "Individuals looking for better rates"],
+                benefits: ["Affordable interest rates", "Flexible repayment tenures", "Quick and hassle-free processing"]
+            },
+            tarun: {
+                title: "LIC Jeevan Tarun",
+                provider: "Life Insurance Corporation of India (LIC)",
+                logo: "https://upload.wikimedia.org/wikipedia/en/thumb/c/c3/Life_Insurance_Corporation_logo.svg/1200px-Life_Insurance_Corporation_logo.svg.png",
+                banner: "assets/tarun-banner.png",
+                tagline: "Secure your child’s future with guaranteed savings and protection",
+                plans: [
+                    "Annual payouts (Age 20–24)",
+                    "Lump sum maturity at 25",
+                    "Life cover with guaranteed bonus"
+                ],
+                whoFor: [
+                    "Parents planning for education (Age 20-25)",
+                    "Families seeking savings + insurance",
+                    "Those wanting flexible payout options"
+                ],
+                benefits: [
+                    "<b>Maturity:</b> Lump sum + bonuses (25%–100%)",
+                    "<b>Life Protection:</b> 7× premium or 125% SA + bonus",
+                    "<b>Bonus Growth:</b> Reversionary + Final Bonus",
+                    "<b>Flexibility:</b> Premium waiver & Loan facility"
+                ]
+            }
+        };
+
+        const modalOverlay = document.getElementById('serviceModalOverlay');
+        const closeModalBtn = document.getElementById('closeModal');
+
+        function openModal(serviceKey) {
+            const data = modalData[serviceKey];
+            if (!data) return;
+
+            // Populate content
+            document.getElementById('modalLogo').src = data.logo;
+            document.getElementById('modalTitle').textContent = data.title;
+            document.getElementById('modalProvider').textContent = data.provider;
+            document.getElementById('modalBanner').style.backgroundImage = `url('${data.banner}')`;
+            document.getElementById('modalTagline').textContent = data.tagline;
+
+            const populateList = (id, items) => {
+                const el = document.getElementById(id);
+                el.innerHTML = items.map(item => `<li>${item}</li>`).join('');
+            };
+
+            populateList('modalPlanTypes', data.plans);
+            populateList('modalWhoFor', data.whoFor);
+            populateList('modalBenefits', data.benefits);
+
+            // Show modal
+            document.body.classList.add('modal-open');
+            modalOverlay.classList.add('active');
+        }
+
+        function closeModal() {
+            document.body.classList.remove('modal-open');
+            modalOverlay.classList.remove('active');
+        }
+
+        // Global Event Delegation for Explore Buttons
+        document.addEventListener('click', (e) => {
+            const btn = e.target.closest('.explore-btn');
+            if (btn) {
+                const service = btn.getAttribute('data-service');
+                openModal(service);
+            }
+        });
+
+        closeModalBtn.addEventListener('click', closeModal);
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) closeModal();
+        });
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // Modular Carousel Logic
+        function initCarousel(trackId, nextId, prevId) {
+            const track = document.getElementById(trackId);
+            if (!track) return;
+            const originalCards = Array.from(track.children);
+            const nextBtn = document.getElementById(nextId);
+            const prevBtn = document.getElementById(prevId);
+            
+            // Clone cards for infinite loop
+            const firstClones = originalCards.map(card => card.cloneNode(true));
+            const lastClones = originalCards.map(card => card.cloneNode(true));
+            
+            lastClones.forEach(clone => track.insertBefore(clone, track.firstChild));
+            firstClones.forEach(clone => track.appendChild(clone));
+            
+            let currentIndex = originalCards.length;
+            let isTransitioning = false;
+
+            function updateCarousel(instant = false) {
+                if (instant) track.style.transition = 'none';
+                else track.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+                
+                const cardWidth = track.children[0].offsetWidth;
+                const gap = 30;
+                const offset = currentIndex * (cardWidth + gap);
+                
+                const containerWidth = track.parentElement.offsetWidth;
+                const centerPadding = (containerWidth - cardWidth) / 2;
+                
+                track.style.transform = `translateX(${-offset + centerPadding}px)`;
+                
+                Array.from(track.children).forEach((card, index) => {
+                    if (index === currentIndex) {
+                        card.classList.add('focused');
+                        card.classList.add('active');
+                    } else {
+                        card.classList.remove('focused');
+                    }
+                });
+
+                if (instant) {
+                    track.offsetHeight;
+                    track.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+                }
+            }
+
+            function moveNext() {
+                if (isTransitioning) return;
+                isTransitioning = true;
+                currentIndex++;
+                updateCarousel();
+            }
+
+            function movePrev() {
+                if (isTransitioning) return;
+                isTransitioning = true;
+                currentIndex--;
+                updateCarousel();
+            }
+
+            track.addEventListener('transitionend', () => {
+                isTransitioning = false;
+                if (currentIndex >= originalCards.length * 2) {
+                    currentIndex = originalCards.length;
+                    updateCarousel(true);
+                } else if (currentIndex < originalCards.length) {
+                    currentIndex = originalCards.length * 2 - 1;
+                    updateCarousel(true);
+                }
+            });
+
+            if (nextBtn) nextBtn.addEventListener('click', moveNext);
+            if (prevBtn) prevBtn.addEventListener('click', movePrev);
+
+            window.addEventListener('resize', () => updateCarousel(true));
+            
+            // Initial positioning
+            setTimeout(() => updateCarousel(true), 10);
+
+            return { moveNext, movePrev };
+        }
+
+        // Initialize Carousels
+        const solutionsCarousel = initCarousel('carouselTrack', 'nextBtn', 'prevBtn');
+        const plansCarousel = initCarousel('plansTrack', 'plansNextBtn', 'plansPrevBtn');
+
+        // Keyboard Navigation
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') {
+                solutionsCarousel.moveNext();
+                plansCarousel.moveNext();
+            }
+            if (e.key === 'ArrowLeft') {
+                solutionsCarousel.movePrev();
+                plansCarousel.movePrev();
+            }
+        });
     </script>
 </body>
 </html>
