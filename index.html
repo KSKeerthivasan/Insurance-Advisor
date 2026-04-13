@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rajesh Kumar | LIC Advisor - Securing Your Family's Future</title>
-    <meta name="description" content="Professional LIC Advisor helping you secure your family's future with life insurance, retirement planning, and more.">
+    <title>Rajesh Kumar | Insurance Advisor - Securing Your Family's Future</title>
+    <meta name="description" content="Professional Insurance Advisor helping you secure your family's future with life insurance, retirement planning, and more.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -427,6 +427,7 @@
             align-items: center;
             gap: 20px;
             background: white;
+            border-bottom: 1px solid #f1f5f9;
         }
 
         .modal-logo {
@@ -435,16 +436,24 @@
             object-fit: contain;
         }
 
-        .modal-header-text h2 {
-            font-size: 1.5rem;
-            color: var(--text-dark);
-            margin-bottom: 4px;
+        .modal-header-text {
+            display: flex;
+            flex-direction: column;
         }
 
-        .modal-header-text p {
+        .modal-subtitle {
             font-size: 0.9rem;
             color: var(--primary);
-            font-weight: 600;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 2px;
+        }
+
+        .modal-main-title {
+            font-size: 1.75rem;
+            color: var(--text-dark);
+            font-weight: 800;
         }
 
         .modal-banner {
@@ -469,56 +478,122 @@
             padding: 40px;
             overflow-y: auto;
             flex-grow: 1;
+            background: white;
+        }
+
+        .modal-detail-content {
+            max-width: 720px;
+            margin: 0 auto;
         }
 
         .modal-tagline {
-            font-size: 1.25rem;
+            font-size: 1.4rem;
             color: var(--text-dark);
-            font-weight: 600;
-            margin-bottom: 30px;
-            border-left: 4px solid var(--primary);
-            padding-left: 15px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            line-height: 1.3;
         }
 
-        .modal-info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin-bottom: 30px;
-        }
-
-        .info-card {
-            background: #f8fafc;
-            padding: 20px;
-            border-radius: 16px;
-            border: 1px solid #f1f5f9;
-        }
-
-        .info-card h4 {
-            color: var(--primary);
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 12px;
-        }
-
-        .info-card ul {
-            list-style: none;
-        }
-
-        .info-card ul li {
-            font-size: 0.95rem;
+        .modal-intro {
             color: var(--text-light);
-            margin-bottom: 6px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            line-height: 1.6;
         }
 
-        .info-card ul li::before {
+        .modal-section {
+            margin-bottom: 40px;
+            padding-left: 20px;
+            border-left: 3px solid var(--primary);
+        }
+
+        .modal-section h4 {
+            color: var(--primary);
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-transform: none;
+            letter-spacing: 0;
+        }
+
+        .modal-section p {
+            font-size: 1.05rem;
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .modal-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .modal-section ul li {
+            font-size: 1.05rem;
+            color: var(--text-light);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            line-height: 1.5;
+        }
+
+        .modal-section ul li::before {
             content: '•';
             color: var(--primary);
             font-weight: bold;
+            font-size: 1.2rem;
+            margin-top: -2px;
+        }
+
+        /* Stacked Detail List Styles */
+        .stacked-list li {
+            display: block !important;
+            margin-bottom: 30px !important;
+            padding-left: 0 !important;
+        }
+
+        .stacked-list li::before {
+            display: none !important;
+        }
+
+        .stacked-title {
+            display: block;
+            font-weight: 700;
+            color: var(--text-dark);
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .stacked-content {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .stacked-content li {
+            display: flex !important;
+            margin-bottom: 8px !important;
+            font-size: 1rem !important;
+            line-height: 1.5 !important;
+        }
+
+        .stacked-content li::before {
+            display: block !important;
+            content: '•';
+            color: var(--primary);
+            margin-right: 10px;
+        }
+
+        .modal-closing {
+            color: var(--text-dark);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 40px;
+            text-align: left;
+            padding-top: 30px;
+            border-top: 1px solid #f1f5f9;
+            line-height: 1.5;
+            font-style: italic;
         }
 
         .modal-footer-cta {
@@ -548,16 +623,16 @@
         /* Plans Section */
         /* Plans Section Updates - Sharing Carousel Styles */
 
-        /* Trust Section */
         .trust-section {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1.2fr 1fr;
             gap: 60px;
             align-items: center;
             background: var(--white);
-            border-radius: 30px;
-            padding: 60px;
-            margin-top: 40px;
+            padding: 80px 40px;
+            border-radius: 40px;
+            margin: 60px 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
         }
 
         .why-list {
@@ -587,24 +662,84 @@
         }
 
         .agent-profile {
-            background: var(--bg-light);
+            background: var(--white);
             padding: 40px;
-            border-radius: 20px;
+            border-radius: 30px;
             text-align: center;
+            border: 1px solid #f1f5f1;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .agent-profile:hover {
+            transform: translateY(-5px);
         }
 
         .profile-img {
-            width: 150px;
-            height: 150px;
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
             object-fit: cover;
-            border: 5px solid var(--white);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            border: 4px solid #E8F5E9;
+            padding: 4px;
+            margin-bottom: 25px;
+        }
+
+        .profile-info h3 { 
+            font-size: 1.75rem; 
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 8px; 
+        }
+        
+        .profile-info .agent-role { 
+            color: var(--primary); 
+            font-weight: 500;
+            font-size: 1.1rem;
+            margin-bottom: 5px; 
+            letter-spacing: 0.5px;
+        }
+
+        .profile-info .agent-id {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            background: #f8faf8;
+            padding: 4px 12px;
+            border-radius: 100px;
+            display: inline-block;
             margin-bottom: 20px;
         }
 
-        .profile-info h3 { font-size: 1.5rem; margin-bottom: 5px; }
-        .profile-info p { color: var(--text-light); margin-bottom: 5px; }
+        .agent-meta {
+            text-align: left;
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px solid #f1f5f1;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+        }
+
+        .meta-icon {
+            width: 18px;
+            height: 18px;
+            color: var(--primary);
+            opacity: 0.8;
+        }
+
+        .agent-tagline {
+            margin-top: 25px;
+            font-style: italic;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
 
         /* Final CTA */
         .final-cta {
@@ -639,13 +774,90 @@
             text-align: center;
         }
 
+        /* Brand Logo Styles Refined */
+        .logo-container {
+            background: #ffffff;
+            padding: 10px 16px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.02);
+        }
+
+        .logo-container:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .card-badge-container {
+            background: #ffffff;
+            padding: 8px 12px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+            display: inline-flex;
+            margin-bottom: 20px;
+        }
+
+        .card-badge {
+            height: 32px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo-strip {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .logo-strip .logo-container img {
+            height: 38px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .footer-label {
+            color: white;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 15px;
+            opacity: 0.8;
+            font-weight: 600;
+        }
+
+        .footer-logo-strip {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .footer-logo-strip .logo-container {
+            padding: 6px 10px;
+            background: #ffffff;
+            border-radius: 6px;
+        }
+
+        .footer-logo-strip .logo-container img {
+            height: 26px;
+            width: auto;
+            object-fit: contain;
+        }
+
         /* Responsive */
         @media (max-width: 992px) {
             .hero, .trust-section { grid-template-columns: 1fr; text-align: center; }
             .hero-content h1 { font-size: 2.8rem; }
             .cta-group { justify-content: center; }
             .footer-content { grid-template-columns: 1fr; text-align: center; }
-            .trust-section { padding: 40px 20px; }
+            .trust-section { padding: 40px 20px; gap: 40px; }
+            .agent-profile { order: -1; }
             .final-cta h2 { font-size: 2.2rem; }
         }
 
@@ -660,11 +872,10 @@
     <header>
         <div class="container nav-content">
             <div class="logo">
-                <!-- Using a high-quality LIC PNG if available, else a placeholder -->
-                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/c/c3/Life_Insurance_Corporation_logo.svg/1200px-Life_Insurance_Corporation_logo.svg.png" alt="LIC Logo">
+                <img src="assets/logos/lic-color.svg" alt="LIC Logo">
             </div>
             <div class="cta-group">
-                <a href="tel:+91XXXXXXXXXX" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.9rem;">Call Agent</a>
+                <a href="tel:8248013879" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.9rem;">Call Agent</a>
             </div>
         </div>
     </header>
@@ -672,17 +883,17 @@
     <!-- Hero Section -->
     <section class="container hero">
         <div class="hero-content reveal">
-            <div class="hero-trust">LIC Advisor | Agent ID: 0141271B</div>
-            <h1>RAJESH KUMAR</h1>
-            <p class="hero-role">LIC Advisor</p>
-            <p class="hero-tagline">Securing Your Family’s Future Through Trusted Financial Guidance.</p>
+            <div class="hero-trust">Insurance Advisor | Agent ID: 0141271B</div>
+            <h1>R KALPANA, M.A</h1>
+            <p class="hero-role">Insurance Advisor</p>
+            <p class="hero-tagline">Helping families make financially secure decisions through trusted guidance.</p>
             
             <div class="cta-group">
-                <a href="tel:+91XXXXXXXXXX" class="btn btn-primary">
+                <a href="tel:8248013879" class="btn btn-primary">
                     <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.15 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
                     Call Now
                 </a>
-                <a href="https://wa.me/91XXXXXXXXXX" class="btn btn-whatsapp">
+                <a href="https://wa.me/918248013879" class="btn btn-whatsapp">
                     <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 2c-5.517 0-9.997 4.48-9.997 9.997 0 1.763.459 3.479 1.332 4.99L2 22l5.145-1.35a9.96 9.96 0 004.886 1.277h.004c5.517 0 9.997-4.48 9.997-9.997 0-2.665-1.037-5.17-2.921-7.054A9.944 9.944 0 0012.031 2zM17.658 15.3c-.307-.154-1.817-.897-2.099-1.002-.281-.103-.486-.154-.69.154-.204.308-.791.996-.969 1.2-.178.205-.356.23-.663.077-.306-.155-1.294-.477-2.464-1.521-.91-.812-1.525-1.815-1.704-2.122-.178-.308-.019-.474.135-.626.139-.136.307-.359.461-.538.154-.18.204-.308.307-.513.102-.205.051-.385-.026-.538-.077-.154-.69-1.666-.945-2.28-.248-.598-.5-.517-.69-.527-.179-.009-.384-.01-.59-.01a1.137 1.137 0 00-.82.384c-.282.308-1.076 1.051-1.076 2.564 0 1.513 1.102 2.974 1.256 3.179.154.205 2.169 3.313 5.253 4.643.734.316 1.307.505 1.751.646.736.235 1.408.202 1.94.122.593-.088 1.817-.743 2.072-1.46.256-.718.256-1.334.18-1.46-.076-.128-.282-.205-.589-.36z"/></svg>
                     WhatsApp
                 </a>
@@ -690,7 +901,7 @@
             </div>
         </div>
         <div class="hero-image reveal">
-            <img src="assets/hero-agent.png" alt="Rajesh Kumar - LIC Advisor">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800" alt="R Kalpana, M.A - Insurance Advisor">
         </div>
     </section>
 
@@ -705,8 +916,8 @@
                         <!-- Life & Wealth Protection -->
                         <div class="service-card reveal">
                             <div>
-                                <div class="service-icon">
-                                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                                <div class="card-badge-container">
+                                    <img src="assets/logos/lic-color.svg" alt="LIC" class="card-badge">
                                 </div>
                                 <span class="provider-name">Life Insurance Corporation of India (LIC)</span>
                                 <h3>Life & Wealth Protection</h3>
@@ -718,8 +929,8 @@
                         <!-- Health Insurance -->
                         <div class="service-card reveal">
                             <div>
-                                <div class="service-icon">
-                                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                                <div class="card-badge-container">
+                                    <img src="assets/logos/star-health-color.svg" alt="Star Health" class="card-badge">
                                 </div>
                                 <span class="provider-name">Star Health and Allied Insurance</span>
                                 <h3>Health Insurance</h3>
@@ -731,8 +942,8 @@
                         <!-- General Insurance -->
                         <div class="service-card reveal">
                             <div>
-                                <div class="service-icon">
-                                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                                <div class="card-badge-container">
+                                    <img src="assets/logos/united-color.svg" alt="United India" class="card-badge">
                                 </div>
                                 <span class="provider-name">United India Insurance Company</span>
                                 <h3>General Insurance</h3>
@@ -744,8 +955,8 @@
                         <!-- Loans & Finance -->
                         <div class="service-card reveal">
                             <div>
-                                <div class="service-icon">
-                                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                                <div class="card-badge-container">
+                                    <img src="assets/logos/lic-housing-color.svg" alt="LIC Housing Finance" class="card-badge">
                                 </div>
                                 <span class="provider-name">LIC Housing Finance Ltd</span>
                                 <h3>Loans & Finance</h3>
@@ -770,7 +981,6 @@
     </section>
 
     <!-- Popular Plans Section -->
-    <!-- Popular Plans Section -->
     <section class="bg-light solutions-section" style="background:#F3F6F3;" id="plans">
         <div class="container">
             <h2 class="section-title reveal">Popular LIC Plans</h2>
@@ -781,9 +991,7 @@
                         <!-- Future-Ready Child Plan -->
                         <div class="service-card reveal">
                             <div>
-                                <div class="service-icon" style="background: #E8F5E9; color: var(--primary);">
-                                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-                                </div>
+                                <img src="assets/logos/lic-color.svg" alt="LIC" class="card-badge">
                                 <span class="provider-name">LIC Jeevan Tarun</span>
                                 <h3>Future-Ready Child Plan</h3>
                                 <p>Secure your child’s future with guaranteed savings and protection</p>
@@ -794,6 +1002,114 @@
                                 </ul>
                             </div>
                             <button class="btn btn-outline explore-btn" data-service="tarun" style="padding: 10px 20px; font-size: 0.85rem; width: 100%;">Explore</button>
+                        </div>
+
+                        <!-- Guaranteed Savings Plan -->
+                        <div class="service-card reveal">
+                            <div>
+                                <div class="card-badge-container">
+                                    <img src="assets/logos/lic-color.svg" alt="LIC" class="card-badge">
+                                </div>
+                                <span class="provider-name">LIC Jeevan Labh</span>
+                                <h3>Guaranteed Savings Plan</h3>
+                                <p>Pay for a limited time. Enjoy long-term benefits</p>
+                                <ul style="list-style: none; margin-bottom: 20px;">
+                                    <li style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 5px;">✔ Limited premium term</li>
+                                    <li style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 5px;">✔ Guaranteed maturity + bonus</li>
+                                    <li style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 5px;">✔ Life cover throughout</li>
+                                </ul>
+                            </div>
+                            <button class="btn btn-outline explore-btn" data-service="labh" style="padding: 10px 20px; font-size: 0.85rem; width: 100%;">Explore</button>
+                        </div>
+
+                        <!-- Lifetime Income Plan -->
+                        <div class="service-card reveal">
+                            <div>
+                                <div class="card-badge-container">
+                                    <img src="assets/logos/lic-color.svg" alt="LIC" class="card-badge">
+                                </div>
+                                <span class="provider-name">LIC Jeevan Utsav</span>
+                                <h3>Lifetime Income Plan</h3>
+                                <p>Turn your savings into a guaranteed lifelong income</p>
+                                <ul style="list-style: none; margin-bottom: 20px;">
+                                    <li style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 5px;">✔ Guaranteed yearly income</li>
+                                    <li style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 5px;">✔ Whole life coverage</li>
+                                    <li style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 5px;">✔ Flexible income options</li>
+                                </ul>
+                            </div>
+                            <button class="btn btn-outline explore-btn" data-service="utsav" style="padding: 10px 20px; font-size: 0.85rem; width: 100%;">Explore</button>
+                        </div>
+
+                        <!-- Money Back Savings Plan -->
+                        <div class="service-card reveal">
+                            <div>
+                                <div class="card-badge-container">
+                                    <img src="assets/logos/lic-color.svg" alt="LIC" class="card-badge">
+                                </div>
+                                <span class="provider-name">LIC Money Back Plan – 25 Years</span>
+                                <h3>Money Back Savings Plan</h3>
+                                <p>Get regular payouts while staying fully protected</p>
+                                <ul style="list-style: none; margin-bottom: 20px;">
+                                    <li style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 5px;">✔ Periodic payouts (every 5 years)</li>
+                                    <li style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 5px;">✔ Life cover + bonus</li>
+                                    <li style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 5px;">✔ Final maturity benefit</li>
+                                </ul>
+                            </div>
+                            <button class="btn btn-outline explore-btn" data-service="moneyBack" style="padding: 10px 20px; font-size: 0.85rem; width: 100%;">Explore</button>
+                        </div>
+
+                        <!-- Guaranteed Income Plan -->
+                        <div class="service-card reveal">
+                            <div>
+                                <div class="card-badge-container">
+                                    <img src="assets/logos/lic-color.svg" alt="LIC" class="card-badge">
+                                </div>
+                                <span class="provider-name">LIC Jeevan Shanti</span>
+                                <h3>Guaranteed Income Plan</h3>
+                                <p>Turn a one-time investment into lifelong income</p>
+                                <ul style="list-style: none; margin-bottom: 20px;">
+                                    <li style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 5px;">✔ Lifetime guaranteed annuity</li>
+                                    <li style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 5px;">✔ Single premium (no recurring payments)</li>
+                                    <li style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 5px;">✔ Flexible payout options</li>
+                                </ul>
+                            </div>
+                            <button class="btn btn-outline explore-btn" data-service="shanti" style="padding: 10px 20px; font-size: 0.85rem; width: 100%;">Explore</button>
+                        </div>
+
+                        <!-- Instant Income Plan -->
+                        <div class="service-card reveal">
+                            <div>
+                                <div class="card-badge-container">
+                                    <img src="assets/logos/lic-color.svg" alt="LIC" class="card-badge">
+                                </div>
+                                <span class="provider-name">LIC Jeevan Akshay VII</span>
+                                <h3>Instant Income Plan</h3>
+                                <p>Start receiving guaranteed income immediately</p>
+                                <ul style="list-style: none; margin-bottom: 20px;">
+                                    <li style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 5px;">✔ Immediate annuity (no waiting)</li>
+                                    <li style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 5px;">✔ Lifetime guaranteed income</li>
+                                    <li style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 5px;">✔ Multiple payout options</li>
+                                </ul>
+                            </div>
+                            <button class="btn btn-outline explore-btn" data-service="akshay" style="padding: 10px 20px; font-size: 0.85rem; width: 100%;">Explore</button>
+                        </div>
+
+                        <!-- Pure Protection Plan -->
+                        <div class="service-card reveal">
+                            <div>
+                                <div class="card-badge-container">
+                                    <img src="assets/logos/lic-color.svg" alt="LIC" class="card-badge">
+                                </div>
+                                <span class="provider-name">LIC Jeevan Amar</span>
+                                <h3>Pure Protection Plan</h3>
+                                <p>Maximum life cover at minimal cost</p>
+                                <ul style="list-style: none; margin-bottom: 20px;">
+                                    <li style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 5px;">✔ High coverage at low premium</li>
+                                    <li style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 5px;">✔ Pure protection (no investment)</li>
+                                    <li style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 5px;">✔ Flexible policy options</li>
+                                </ul>
+                            </div>
+                            <button class="btn btn-outline explore-btn" data-service="amar" style="padding: 10px 20px; font-size: 0.85rem; width: 100%;">Explore</button>
                         </div>
                     </div>
                 </div>
@@ -819,32 +1135,63 @@
                 <div class="why-list">
                     <div class="why-item">
                         <div class="check-icon">✓</div>
-                        Personalized Financial Guidance
+                        Personalized financial guidance based on your goals
                     </div>
                     <div class="why-item">
                         <div class="check-icon">✓</div>
-                        End-to-end Claim Assistance Support
+                        Assistance in policy selection and claims
                     </div>
                     <div class="why-item">
                         <div class="check-icon">✓</div>
-                        Quick Response on WhatsApp (24/7)
+                        Quick response via call and WhatsApp
                     </div>
                     <div class="why-item">
                         <div class="check-icon">✓</div>
-                        Trusted LIC Advisor with Expert Knowledge
+                        Trusted Insurance Advisor support
+                    </div>
+                </div>
+                <div class="logo-strip">
+                    <div class="logo-container">
+                        <img src="assets/logos/lic-color.svg" alt="LIC">
+                    </div>
+                    <div class="logo-container">
+                        <img src="assets/logos/star-health-color.svg" alt="Star Health">
+                    </div>
+                    <div class="logo-container">
+                        <img src="assets/logos/united-color.svg" alt="United India">
+                    </div>
+                    <div class="logo-container">
+                        <img src="assets/logos/lic-housing-color.svg" alt="LIC Housing Finance">
                     </div>
                 </div>
             </div>
             <div class="agent-profile">
-                <img src="assets/hero-agent.png" alt="Rajesh Kumar" class="profile-img">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800" alt="R Kalpana, M.A" class="profile-img">
                 <div class="profile-info">
-                    <h3>Rajesh Kumar</h3>
-                    <p><strong>Role:</strong> LIC Advisor</p>
-                    <p><strong>Qualification:</strong> MBA (Finance) / LUTCF</p>
-                    <p><strong>Agent ID:</strong> 0141271B</p>
-                    <hr style="margin: 20px 0; border: 0; border-top: 1px solid #e5e7eb;">
-                    <p><strong>Phone:</strong> +91 XXXXX XXXXX</p>
-                    <p><strong>Email:</strong> advisor.rajesh@example.com</p>
+                    <h3>R KALPANA, M.A</h3>
+                    <p class="agent-role">Insurance Advisor</p>
+                    <span class="agent-id">Agent ID: 0141271B</span>
+                    
+                    <div class="agent-meta">
+                        <div class="meta-item">
+                            <svg class="meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                            82480 13879
+                        </div>
+                        <div class="meta-item">
+                            <svg class="meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+                            8778747430
+                        </div>
+                        <div class="meta-item">
+                            <svg class="meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 01-2 2v10a2 2 0 012 2z"/></svg>
+                            advisor.kalpana@example.com
+                        </div>
+                        <div class="meta-item">
+                            <svg class="meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                            Chennai
+                        </div>
+                    </div>
+                    
+                    <p class="agent-tagline">"Helping families make financially secure decisions"</p>
                 </div>
             </div>
         </div>
@@ -855,8 +1202,8 @@
         <div class="final-cta reveal">
             <h2>Get the Right Plan for Your Future Today</h2>
             <div class="cta-group" style="justify-content: center;">
-                <a href="tel:+91XXXXXXXXXX" class="btn btn-primary" style="background: white; color: var(--primary);">Call Now</a>
-                <a href="https://wa.me/91XXXXXXXXXX" class="btn btn-whatsapp" style="border-color: white; color: white;">WhatsApp</a>
+                <a href="tel:8248013879" class="btn btn-primary" style="background: white; color: var(--primary);">Call Now</a>
+                <a href="https://wa.me/918248013879" class="btn btn-whatsapp" style="border-color: white; color: white;">WhatsApp</a>
             </div>
         </div>
     </section>
@@ -866,7 +1213,21 @@
         <div class="container">
             <div class="footer-content">
                 <div>
-                    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/c/c3/Life_Insurance_Corporation_logo.svg/1200px-Life_Insurance_Corporation_logo.svg.png" alt="LIC Logo" style="height: 40px; margin-bottom: 20px; filter: brightness(0) invert(1);">
+                    <div class="footer-label">Associated With</div>
+                    <div class="footer-logo-strip" style="margin-bottom: 25px;">
+                        <div class="logo-container">
+                            <img src="assets/logos/lic-color.svg" alt="LIC">
+                        </div>
+                        <div class="logo-container">
+                            <img src="assets/logos/star-health-color.svg" alt="Star Health">
+                        </div>
+                        <div class="logo-container">
+                            <img src="assets/logos/united-color.svg" alt="United India">
+                        </div>
+                        <div class="logo-container">
+                            <img src="assets/logos/lic-housing-color.svg" alt="LIC Housing Finance">
+                        </div>
+                    </div>
                     <p>Helping families secure their financial future with tailored insurance solutions.</p>
                 </div>
                 <div>
@@ -886,7 +1247,7 @@
                 </div>
             </div>
             <div class="footer-disclaimer">
-                <p>&copy; 2026 Rajesh Kumar | LIC Advisor. All Rights Reserved.</p>
+                <p>&copy; 2026 Rajesh Kumar | Insurance Advisor. All Rights Reserved.</p>
                 <p style="margin-top: 10px; opacity: 0.6;">Disclaimer: Insurance is the subject matter of solicitation. For more details on risk factors, terms and conditions, please read the sales brochure carefully before concluding a sale.</p>
             </div>
         </div>
@@ -898,42 +1259,44 @@
             <button class="modal-close" id="closeModal">&times;</button>
             
             <div class="modal-header-section">
-                <img src="" alt="Provider Logo" class="modal-logo" id="modalLogo">
+                <div class="logo-container" style="padding: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.08);">
+                    <img src="" alt="Provider Logo" class="modal-logo" id="modalLogo" style="height: 48px; width: auto; object-fit: contain;">
+                </div>
                 <div class="modal-header-text">
-                    <h2 id="modalTitle">Category Title</h2>
-                    <p id="modalProvider">Provider Name</p>
+                    <p id="modalProvider" class="modal-subtitle">Category Title</p>
+                    <h2 id="modalTitle" class="modal-main-title">Plan Name</h2>
                 </div>
             </div>
 
             <div class="modal-banner" id="modalBanner"></div>
 
             <div class="modal-body-scroll">
-                <p class="modal-tagline" id="modalTagline">Tagline goes here...</p>
-                
-                <div class="modal-info-grid">
-                    <div class="info-card">
-                        <h4>Plan Types</h4>
-                        <ul id="modalPlanTypes">
-                            <!-- Populated by JS -->
-                        </ul>
+                <div class="modal-detail-content">
+                    <p class="modal-tagline" id="modalTagline">Tagline goes here...</p>
+                    <p class="modal-intro" id="modalIntro"></p>
+                    
+                    <div class="modal-section" id="sectionHighlights">
+                        <h4 id="labelHighlights">Plan Highlights</h4>
+                        <ul id="modalPlanTypes"></ul>
                     </div>
-                    <div class="info-card">
-                        <h4>Who Is This For</h4>
-                        <ul id="modalWhoFor">
-                            <!-- Populated by JS -->
-                        </ul>
+
+                    <div class="modal-section" id="sectionReason">
+                        <h4 id="labelReason">Why choose this plan?</h4>
+                        <p id="modalReasonDesc" style="margin-bottom: 15px; display: none;"></p>
+                        <ul id="modalWhoFor"></ul>
                     </div>
-                    <div class="info-card">
-                        <h4>Key Benefits</h4>
-                        <ul id="modalBenefits">
-                            <!-- Populated by JS -->
-                        </ul>
+
+                    <div class="modal-section" id="sectionBenefits">
+                        <h4 id="labelBenefits">Key Benefits</h4>
+                        <ul id="modalBenefits"></ul>
                     </div>
+
+                    <p class="modal-closing" id="modalClosing"></p>
                 </div>
             </div>
 
             <div class="modal-footer-cta">
-                <a href="tel:+91XXXXXXXXXX" class="btn btn-primary">Contact Advisor</a>
+                <a href="tel:8248013879" class="btn btn-primary">Contact Advisor</a>
             </div>
         </div>
     </div>
@@ -956,109 +1319,12 @@
         // Initial call
         reveal();
 
-        // Carousel Logic
-        const track = document.getElementById('carouselTrack');
-        const cards = Array.from(track.children);
-        const nextBtn = document.getElementById('nextBtn');
-        const prevBtn = document.getElementById('prevBtn');
-        
-        // Clone cards for infinite loop
-        const firstClones = cards.map(card => card.cloneNode(true));
-        const lastClones = cards.map(card => card.cloneNode(true));
-        
-        lastClones.forEach(clone => track.insertBefore(clone, cards[0]));
-        firstClones.forEach(clone => track.appendChild(clone));
-        
-        let currentIndex = cards.length; // Start at the first original card
-        let isTransitioning = false;
-
-        function updateCarousel(instant = false) {
-            if (instant) track.style.transition = 'none';
-            else track.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
-            
-            const cardWidth = track.children[0].offsetWidth;
-            const gap = 30; // Matches CSS gap
-            const offset = currentIndex * (cardWidth + gap);
-            
-            // Adjust offset to center the active card
-            const containerWidth = track.parentElement.offsetWidth;
-            const centerPadding = (containerWidth - cardWidth) / 2;
-            
-            track.style.transform = `translateX(${-offset + centerPadding}px)`;
-            
-            // Update active state for scaling
-            Array.from(track.children).forEach((card, index) => {
-                if (index === currentIndex) {
-                    card.classList.add('focused');
-                    card.classList.add('active'); // Keep scroll reveal active
-                } else {
-                    card.classList.remove('focused');
-                }
-            });
-
-            if (instant) {
-                // Force reflow
-                track.offsetHeight;
-                track.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
-            }
-        }
-
-        function moveNext() {
-            if (isTransitioning) return;
-            isTransitioning = true;
-            currentIndex++;
-            updateCarousel();
-        }
-
-        function movePrev() {
-            if (isTransitioning) return;
-            isTransitioning = true;
-            currentIndex--;
-            updateCarousel();
-        }
-
-        track.addEventListener('transitionend', () => {
-            isTransitioning = false;
-            // Infinite loop jump
-            if (currentIndex >= cards.length * 2) {
-                currentIndex = cards.length;
-                updateCarousel(true);
-            } else if (currentIndex < cards.length) {
-                currentIndex = cards.length * 2 - 1;
-                updateCarousel(true);
-            }
-        });
-
-        nextBtn.addEventListener('click', moveNext);
-        prevBtn.addEventListener('click', movePrev);
-
-        // Keyboard Navigation
-        window.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight') moveNext();
-            if (e.key === 'ArrowLeft') movePrev();
-        });
-
-        // Handle Resize
-        let resizeTimer;
-        window.addEventListener('resize', () => {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(() => {
-                updateCarousel(true);
-            }, 100);
-        });
-
-        // Initialize position
-        window.addEventListener('load', () => {
-            // Re-trigger reveal for elements
-            reveal();
-        });
-
         // Modal Logic
         const modalData = {
             life: {
                 title: "Life & Wealth Protection",
                 provider: "Life Insurance Corporation of India (LIC)",
-                logo: "https://upload.wikimedia.org/wikipedia/en/thumb/c/c3/Life_Insurance_Corporation_logo.svg/1200px-Life_Insurance_Corporation_logo.svg.png",
+                logo: "assets/logos/lic-color.svg",
                 banner: "assets/life-banner.png",
                 tagline: "Secure your family's future with trusted LIC plans.",
                 plans: ["Term Insurance", "Endowment Plans", "Money Back", "Child Plans", "Pension Solutions"],
@@ -1068,7 +1334,7 @@
             health: {
                 title: "Health Insurance",
                 provider: "Star Health and Allied Insurance",
-                logo: "https://companieslogo.com/img/orig/STARHEALTH.NS-27357e6a.png?t=1652156683",
+                logo: "assets/logos/star-health-color.svg",
                 banner: "assets/health-banner.png",
                 tagline: "Comprehensive health coverage for you and your family.",
                 plans: ["Individual Health Plans", "Family Floater Plans", "Senior Citizen Red Carpet", "Critical Illness Cover", "Super Top-Up Covers"],
@@ -1078,7 +1344,7 @@
             general: {
                 title: "General Insurance",
                 provider: "United India Insurance Company",
-                logo: "https://upload.wikimedia.org/wikipedia/commons/d/d3/United_India_Insurance_logo.png",
+                logo: "assets/logos/united-color.svg",
                 banner: "assets/general-banner.png",
                 tagline: "Protect your assets, travel, and risks effectively.",
                 plans: ["Motor Insurance (2W/4W)", "Travel Insurance", "Property/Home Insurance", "Personal Accident Cover", "Cyber Insurance"],
@@ -1088,7 +1354,7 @@
             loans: {
                 title: "Loans & Finance",
                 provider: "LIC Housing Finance Ltd",
-                logo: "https://upload.wikimedia.org/wikipedia/en/thumb/c/c3/Life_Insurance_Corporation_logo.svg/1200px-Life_Insurance_Corporation_logo.svg.png",
+                logo: "assets/logos/lic-color.svg",
                 banner: "assets/loans-banner.png",
                 tagline: "Flexible financing solutions for your home and property.",
                 plans: ["Home Loans", "Loan Against Property", "Renovation Loans", "Balance Transfer", "Top-Up Loans"],
@@ -1097,26 +1363,228 @@
             },
             tarun: {
                 title: "LIC Jeevan Tarun",
-                provider: "Life Insurance Corporation of India (LIC)",
-                logo: "https://upload.wikimedia.org/wikipedia/en/thumb/c/c3/Life_Insurance_Corporation_logo.svg/1200px-Life_Insurance_Corporation_logo.svg.png",
+                provider: "Future-Ready Child Plan",
+                logo: "assets/logos/lic-color.svg",
                 banner: "assets/tarun-banner.png",
                 tagline: "Secure your child’s future with guaranteed savings and protection",
+                intro: "Build a strong financial foundation for your child’s education and life goals",
+                labelHighlights: "Key Highlights",
                 plans: [
-                    "Annual payouts (Age 20–24)",
-                    "Lump sum maturity at 25",
-                    "Life cover with guaranteed bonus"
+                    "Annual payouts from age 20 to 24",
+                    "Lump sum maturity at age 25",
+                    "Life cover with bonus benefits"
                 ],
+                labelReason: "Why Parents Choose This Plan",
+                reasonDesc: "A child-focused savings plan designed to support education and future financial needs while ensuring life protection",
                 whoFor: [
-                    "Parents planning for education (Age 20-25)",
-                    "Families seeking savings + insurance",
-                    "Those wanting flexible payout options"
+                    "Structured payouts during key education years",
+                    "Combines savings with insurance protection",
+                    "Flexible options based on your financial goals"
                 ],
+                labelBenefits: "What Your Child Gets",
+                isStacked: true,
                 benefits: [
-                    "<b>Maturity:</b> Lump sum + bonuses (25%–100%)",
-                    "<b>Life Protection:</b> 7× premium or 125% SA + bonus",
-                    "<b>Bonus Growth:</b> Reversionary + Final Bonus",
-                    "<b>Flexibility:</b> Premium waiver & Loan facility"
-                ]
+                    "<span class='stacked-title'>Maturity Benefit</span><ul class='stacked-content'><li>Receive a lump sum at age 25 along with bonuses</li><li>Payout range: 25% to 100% of Sum Assured (based on chosen option)</li></ul>",
+                    "<span class='stacked-title'>Life Protection</span><ul class='stacked-content'><li>Sum Assured: Higher of 7× annual premium or 125% of Sum Assured plus bonuses</li><li>Guaranteed minimum: 105% of total premiums paid</li></ul>",
+                    "<span class='stacked-title'>Bonus Growth Benefits</span><ul class='stacked-content'><li>Participates in LIC’s valuation profits</li><li>Earns Simple Reversionary Bonus annually</li><li>Eligible for Final Additional Bonus at maturity</li></ul>",
+                    "<span class='stacked-title'>Flexibility</span><ul class='stacked-content'><li>Survival Benefit: Choose annual payout option (0% to 15% from age 20 to 24)</li><li>Settlement Option: Receive maturity/death benefits in installments</li><li>Liquidity: Loan facility available after 2 full years of premiums</li><li>Rider Support: Premium Waiver Benefit available for payor protection</li></ul>",
+                    "<span class='stacked-title'>Plan At a Glance</span><ul class='stacked-content'><li>Plan Type: Non-linked, Participating, Child Savings Plan</li><li>Premiums: Payable for (20 – entry age) years</li><li>Policy Term: Fixed at (25 – entry age) years</li><li>Eligibility: Children aged 90 days to 12 years</li><li>Investment: Minimum Sum Assured of ₹75,000 (No upper limit)</li></ul>"
+                ],
+                closing: "A disciplined savings plan that funds your child’s future milestones while protecting them financially at every stage",
+                hideCta: true
+            },
+            labh: {
+                title: "LIC Jeevan Labh",
+                provider: "Guaranteed Savings Plan",
+                logo: "assets/logos/lic-color.svg",
+                banner: "assets/life_protection_banner.png",
+                tagline: "Pay for a limited time. Enjoy benefits for the long term",
+                intro: "Premiums stop early. Benefits continue till maturity",
+                labelHighlights: "Key Highlights",
+                plans: [
+                    "Limited premium payment term",
+                    "Guaranteed maturity with bonuses",
+                    "Strong life cover throughout policy term"
+                ],
+                labelReason: "Why People Choose This Plan",
+                reasonDesc: "A savings + protection plan designed to build wealth while reducing long-term premium burden",
+                whoFor: [
+                    "Pay premiums for a shorter duration",
+                    "Stay covered even after premiums stop",
+                    "Ideal for long-term financial goals"
+                ],
+                labelBenefits: "What You Get",
+                isStacked: true,
+                benefits: [
+                    "<span class='stacked-title'>Maturity Benefit</span><ul class='stacked-content'><li>Get full Sum Assured along with bonuses</li><li>Paid as a lump sum at the end of the policy term</li></ul>",
+                    "<span class='stacked-title'>Life Protection</span><ul class='stacked-content'><li>Sum Assured: Higher of 7× annual premium or basic Sum Assured plus bonuses</li><li>Guaranteed minimum: 105% of total premiums paid</li></ul>",
+                    "<span class='stacked-title'>Bonus Growth Benefits</span><ul class='stacked-content'><li>Participates in LIC’s valuation profits</li><li>Earns Simple Reversionary Bonus annually</li><li>Eligible for Final Additional Bonus at maturity</li></ul>",
+                    "<span class='stacked-title'>Flexibility</span><ul class='stacked-content'><li>Policy Choice: Choose from terms of 16, 21, or 25 years</li><li>Limited Pay: Multiple premium term options (10, 15, or 16 years)</li><li>Settlement Option: Receive benefits in installments</li><li>Liquidity: Loan facility available after 2 years</li><li>Customization: Optional riders for enhanced protection</li></ul>",
+                    "<span class='stacked-title'>Plan At a Glance</span><ul class='stacked-content'><li>Plan Type: Non-linked, Participating Endowment Plan</li><li>Eligibility: Entry age between 8 to 59 years</li><li>Maturity: Maximum maturity age of 75 years</li><li>Investment: Minimum Sum Assured of ₹2,00,000</li></ul>"
+                ],
+                closing: "A disciplined plan where you pay for a few years but secure long-term wealth creation and protection",
+                hideCta: true
+            },
+            utsav: {
+                title: "LIC Jeevan Utsav",
+                provider: "Lifetime Income Plan",
+                logo: "assets/logos/lic-color.svg",
+                banner: "assets/health_insurance_banner.png",
+                tagline: "Get guaranteed income for life with complete financial security",
+                intro: "Turn your savings into a lifelong income stream for you and your family",
+                labelHighlights: "Key Highlights",
+                plans: [
+                    "Guaranteed yearly income after premium term",
+                    "Whole life coverage with fixed benefits",
+                    "Flexible income options with accumulation feature"
+                ],
+                labelReason: "Why People Choose This Plan",
+                reasonDesc: "A long-term wealth + income plan designed to provide lifetime financial stability",
+                whoFor: [
+                    "Converts savings into regular income stream",
+                    "Guarantees fixed returns (no market risk)",
+                    "Ideal for retirement planning and passive income"
+                ],
+                labelBenefits: "What You Get",
+                isStacked: true,
+                benefits: [
+                    "<span class='stacked-title'>Income Benefit</span><ul class='stacked-content'><li>Receive 10% of Sum Assured every year as income</li><li>Option to choose between Regular or Flexi income</li></ul>",
+                    "<span class='stacked-title'>Life Protection</span><ul class='stacked-content'><li>Sum Assured: Higher of Basic Sum Assured or 7× annual premium</li><li>Includes guaranteed additions annually</li><li>Guaranteed minimum: 105% of total premiums paid assured</li></ul>",
+                    "<span class='stacked-title'>Bonus & Growth Benefits</span><ul class='stacked-content'><li>Guaranteed Additions added every year</li><li>Fixed returns (non market-linked)</li><li>Predictable and stable income stream</li></ul>",
+                    "<span class='stacked-title'>Flexibility</span><ul class='stacked-content'><li>Premium term: 5 to 16 years duration</li><li>Regular or Flexi income options with accumulation</li><li>Loan facility available for liquidity needs</li><li>Installment death benefit payment option</li></ul>",
+                    "<span class='stacked-title'>Plan At a Glance</span><ul class='stacked-content'><li>Plan Type: Non-linked, Non-participating, Whole Life Plan</li><li>Coverage: Lifelong coverage up to 100 years of age</li><li>Eligibility: Children aged 30 days to 65 years</li><li>Investment: Minimum Sum Assured of ₹5,00,000</li></ul>"
+                ],
+                closing: "A powerful plan that turns short-term payments into lifetime income while ensuring financial security",
+                hideCta: true
+            },
+            moneyBack: {
+                title: "LIC Money Back Plan – 25 Years",
+                provider: "Money Back Savings Plan",
+                logo: "assets/logos/lic-color.svg",
+                banner: "assets/general_insurance_banner.png",
+                tagline: "Get regular payouts during the policy term while staying fully protected",
+                intro: "A perfect blend of savings, protection, and liquidity at every stage",
+                labelHighlights: "Key Highlights",
+                plans: [
+                    "Money back at regular intervals",
+                    "Life cover throughout policy term",
+                    "Final lump sum at maturity"
+                ],
+                labelReason: "Why People Choose This Plan",
+                reasonDesc: "Designed for people who want returns during the policy, not just at the end",
+                whoFor: [
+                    "Regular cash flow every few years",
+                    "Participates in bonuses",
+                    "Ideal for planned expenses"
+                ],
+                labelBenefits: "What You Get",
+                isStacked: true,
+                benefits: [
+                    "<span class='stacked-title'>Survival Benefits</span><ul class='stacked-content'><li>Receive 15% of Sum Assured every 5 years</li><li>Payouts at end of 5th, 10th, 15th, and 20th year</li></ul>",
+                    "<span class='stacked-title'>Maturity Benefit</span><ul class='stacked-content'><li>Receive final 40% of Sum Assured at the end of 25 years</li><li>Includes all accrued bonuses and final additional bonus</li></ul>",
+                    "<span class='stacked-title'>Life Protection</span><ul class='stacked-content'><li>Sum Assured on Death: Higher of 125% of Basic Sum Assured or 7× annual premium</li><li>Includes all accrued bonuses up to the date of death</li><li>Guaranteed minimum: 105% of total premiums paid assured</li></ul>",
+                    "<span class='stacked-title'>Bonus & Liquidity</span><ul class='stacked-content'><li>Participates in LIC’s profits with Simple Reversionary Bonuses</li><li>Eligible for Final Additional Bonus at maturity</li><li>Loan facility available after 2 years of premiums</li></ul>",
+                    "<span class='stacked-title'>Flexibility & Riders</span><ul class='stacked-content'><li>Option to receive death benefit in installments</li><li>Access to various optional riders for extra protection</li><li>Loan facility available for emergency liquidity</li></ul>",
+                    "<span class='stacked-title'>Plan At a Glance</span><ul class='stacked-content'><li>Plan Type: Participating Non-linked Savings Plan</li><li>Term Duration: Fixed at 25 years</li><li>Premium Term: Limited to 20 years</li><li>Eligibility: Individuals aged 13 to 45 years</li><li>Investment: Minimum Sum Assured of ₹2,00,000</li></ul>"
+                ],
+                closing: "A practical plan that gives you regular returns while keeping you financially protected",
+                hideCta: true
+            },
+            shanti: {
+                title: "LIC Jeevan Shanti",
+                provider: "Guaranteed Income Plan",
+                logo: "assets/logos/lic-color.svg",
+                banner: "assets/loans_finance_banner.png",
+                tagline: "Turn a one-time investment into guaranteed lifelong income",
+                intro: "Secure a fixed income stream that lasts as long as you live",
+                labelHighlights: "Key Highlights",
+                plans: [
+                    "Guaranteed annuity for lifetime",
+                    "Flexible deferment (1 to 5 years)",
+                    "Single premium plan"
+                ],
+                labelReason: "Why People Choose This Plan",
+                reasonDesc: "Built for those who want predictable, risk-free income after a certain period",
+                whoFor: [
+                    "Ideal for retirement planning",
+                    "No market risk (fully guaranteed returns)",
+                    "Single life or joint life options"
+                ],
+                labelBenefits: "What You Get",
+                isStacked: true,
+                benefits: [
+                    "<span class='stacked-title'>Income Benefit (Annuity)</span><ul class='stacked-content'><li>Receive guaranteed income after your chosen deferment period (1–5 years)</li><li>Flexible Payouts: Monthly, Quarterly, Half-yearly, or Yearly options</li></ul>",
+                    "<span class='stacked-title'>Life Protection</span><ul class='stacked-content'><li>Death Benefit: Higher of (Purchase Price + accrued benefits − annuity paid) OR 105% of Purchase Price</li><li>Ensures your capital is protected and passed to nominees</li></ul>",
+                    "<span class='stacked-title'>Guaranteed Benefits</span><ul class='stacked-content'><li>Fixed annuity rates are locked in from the start</li><li>Fully predictable income stream for life</li><li>Zero market dependency or investment risk</li></ul>",
+                    "<span class='stacked-title'>Flexibility & Customization</span><ul class='stacked-content'><li>Diverse Options: Choose between Single Life or Joint Life annuity</li><li>Liquidity: Loan facility available for unexpected financial needs</li><li>Annuity Choice: Multiple deferment and payout frequency combinations</li></ul>",
+                    "<span class='stacked-title'>Plan At a Glance</span><ul class='stacked-content'><li>Plan Type: Non-linked, Non-participating Deferred Annuity Plan</li><li>Investment: Single Premium (Lump sum) only</li><li>Eligibility: Entry age between 30 to 79 years</li><li>Investment: Minimum purchase price of ₹1,50,000</li></ul>"
+                ],
+                closing: "A reliable plan for guaranteed lifetime income with zero market uncertainty",
+                hideCta: true
+            },
+            akshay: {
+                title: "LIC Jeevan Akshay VII",
+                provider: "Instant Lifetime Income Plan",
+                logo: "assets/logos/lic-color.svg",
+                banner: "assets/life_protection_banner.png",
+                tagline: "Start receiving guaranteed income immediately after a one-time investment",
+                intro: "Convert your savings into instant, lifelong income with zero delay",
+                labelHighlights: "Key Highlights",
+                plans: [
+                    "Immediate annuity starts right away",
+                    "Guaranteed income for lifetime",
+                    "Multiple annuity options"
+                ],
+                labelReason: "Why People Choose This Plan",
+                reasonDesc: "Designed for those who want income now, not later",
+                whoFor: [
+                    "No waiting period",
+                    "Ideal for retirees or immediate cash flow needs",
+                    "Fixed returns with zero market risk"
+                ],
+                labelBenefits: "What You Get",
+                isStacked: true,
+                benefits: [
+                    "<span class='stacked-title'>Immediate Income (Annuity)</span><ul class='stacked-content'><li>Receive guaranteed income starting immediately after purchase</li><li>Flexible Payouts: Monthly, Quarterly, Half-yearly, or Yearly options to suit your needs</li></ul>",
+                    "<span class='stacked-title'>Life Protection & Nominee Benefits</span><ul class='stacked-content'><li>Option for return of purchase price to nominees upon policyholder's death</li><li>Lifetime income continues for the duration of the chosen life/joint lives</li><li>Guarantees that your family's financial future remains secure</li></ul>",
+                    "<span class='stacked-title'>Guaranteed Benefits</span><ul class='stacked-content'><li>Annuity rates are fixed and guaranteed at the time of purchase</li><li>Reliable income regardless of future market fluctuations or interest rate drops</li><li>Zero market risk or investment uncertainty</li></ul>",
+                    "<span class='stacked-title'>Flexibility & Annuity Options</span><ul class='stacked-content'><li>Choice of 10 distinct annuity options to customize your cash flow</li><li>Guaranteed Period: Option to lock in income for 5, 10, 15, or 20 years</li><li>Growth: Increasing annuity option (3% per year) to counter inflation</li><li>Joint Life: Options to include spouse or other family members for shared security</li></ul>",
+                    "<span class='stacked-title'>Plan At a Glance</span><ul class='stacked-content'><li>Plan Type: Non-linked, Non-participating Immediate Annuity Plan</li><li>Investment: Single Premium (Lump sum) one-time payment</li><li>Eligibility: Broad age range from 25 to 85 years</li><li>Investment: Minimum purchase price starting from ₹1,00,000</li><li>Payout Modes: Seamless electronic transfers in your preferred frequency</li></ul>"
+                ],
+                closing: "A plan that gives you guaranteed income from day one with zero uncertainty",
+                hideCta: true
+            },
+            amar: {
+                title: "LIC Jeevan Amar",
+                provider: "Pure Protection Life Cover Plan",
+                logo: "assets/logos/lic-color.svg",
+                banner: "assets/life_protection_banner.png",
+                tagline: "Maximum life cover at minimal cost to secure your family’s future",
+                intro: "Pay less. Protect more. Ensure your family is financially safe",
+                labelHighlights: "Key Highlights",
+                plans: [
+                    "High life cover at affordable premiums",
+                    "Flexible sum assured options",
+                    "Strong financial protection"
+                ],
+                labelReason: "Why People Choose This Plan",
+                reasonDesc: "Built for pure protection — no distractions, just security",
+                whoFor: [
+                    "Designed for family protection",
+                    "Lower premium than traditional plans",
+                    "Ideal for earning individuals"
+                ],
+                labelBenefits: "What Your Family Gets",
+                isStacked: true,
+                benefits: [
+                    "<span class='stacked-title'>Death Benefit</span><ul class='stacked-content'><li>Full Sum Assured paid to family in case of unfortunate death of the life assured</li><li>Sum Assured on Death is the highest of: 7× annual premium, 105% of total premiums paid, or the Absolute Sum Assured</li></ul>",
+                    "<span class='stacked-title'>Pure Protection (No Maturity Benefit)</span><ul class='stacked-content'><li>This is a pure term assurance plan focused on providing maximum risk cover</li><li>No survival or maturity benefits are payable if the life assured survives the policy term</li></ul>",
+                    "<span class='stacked-title'>Protection Strength & Growth</span><ul class='stacked-content'><li>Flexible Payouts: Option to choose between Level Sum Assured or Increasing Sum Assured</li><li>Increasing Option: Basic Sum Assured grows by 10% annually from 6th year until it doubles</li><li>Reliable long-term risk coverage for peace of mind</li></ul>",
+                    "<span class='stacked-title'>Flexibility & Riders</span><ul class='stacked-content'><li>Diverse Premiums: Choose from Single, Regular, or Limited premium payment options</li><li>Customized Terms: Policy duration can span from 10 to 40 years</li><li>Payout Choice: Benefit can be paid as a lump sum or in installments</li><li>Enhanced Safety: Accident Benefit Rider available for added protection</li></ul>",
+                    "<span class='stacked-title'>Plan At a Glance</span><ul class='stacked-content'><li>Plan Type: Non-linked, Non-participating Term Life Insurance Plan</li><li>Eligibility: Entry age range of 18 to 65 years</li><li>Maximum Age: Coverage available up to 80 years of age</li><li>Investment: Minimum Sum Assured of ₹25,00,000 with no upper limit</li></ul>"
+                ],
+                closing: "A plan focused purely on protecting your family with maximum coverage at minimum cost",
+                hideCta: true
             }
         };
 
@@ -1127,21 +1595,52 @@
             const data = modalData[serviceKey];
             if (!data) return;
 
-            // Populate content
+            // Populate header & banner
             document.getElementById('modalLogo').src = data.logo;
             document.getElementById('modalTitle').textContent = data.title;
             document.getElementById('modalProvider').textContent = data.provider;
             document.getElementById('modalBanner').style.backgroundImage = `url('${data.banner}')`;
+            
+            // Populate tagline and intro
             document.getElementById('modalTagline').textContent = data.tagline;
+            document.getElementById('modalIntro').textContent = data.intro || '';
+            document.getElementById('modalClosing').textContent = data.closing || '';
+
+            // Populate labels
+            document.getElementById('labelHighlights').textContent = data.labelHighlights || 'Plan Highlights';
+            document.getElementById('labelReason').textContent = data.labelReason || 'Who is this for?';
+            document.getElementById('labelBenefits').textContent = data.labelBenefits || 'Key Benefits';
+
+            // Populate Reason Description
+            const reasonDesc = document.getElementById('modalReasonDesc');
+            if (data.reasonDesc) {
+                reasonDesc.innerHTML = data.reasonDesc;
+                reasonDesc.style.display = 'block';
+            } else {
+                reasonDesc.style.display = 'none';
+            }
 
             const populateList = (id, items) => {
                 const el = document.getElementById(id);
-                el.innerHTML = items.map(item => `<li>${item}</li>`).join('');
+                if (data.isStacked && id === 'modalBenefits') {
+                    el.classList.add('stacked-list');
+                } else {
+                    el.classList.remove('stacked-list');
+                }
+                el.innerHTML = items ? items.map(item => `<li>${item}</li>`).join('') : '';
             };
 
             populateList('modalPlanTypes', data.plans);
             populateList('modalWhoFor', data.whoFor);
             populateList('modalBenefits', data.benefits);
+
+            // Handle CTA Visibility
+            const footer = document.querySelector('.modal-footer-cta');
+            if (data.hideCta) {
+                footer.style.display = 'none';
+            } else {
+                footer.style.display = 'flex';
+            }
 
             // Show modal
             document.body.classList.add('modal-open');
@@ -1180,10 +1679,19 @@
             const prevBtn = document.getElementById(prevId);
             
             // Clone cards for infinite loop
-            const firstClones = originalCards.map(card => card.cloneNode(true));
-            const lastClones = originalCards.map(card => card.cloneNode(true));
+            const firstClones = originalCards.map(card => {
+                const clone = card.cloneNode(true);
+                clone.classList.add('is-clone');
+                return clone;
+            });
+            const lastClones = originalCards.map(card => {
+                const clone = card.cloneNode(true);
+                clone.classList.add('is-clone');
+                return clone;
+            });
             
-            lastClones.forEach(clone => track.insertBefore(clone, track.firstChild));
+            // Insert lastClones at start (reverse to maintain order: T,L,U... becomes [T,L,U][Originals])
+            [...lastClones].reverse().forEach(clone => track.insertBefore(clone, track.firstChild));
             firstClones.forEach(clone => track.appendChild(clone));
             
             let currentIndex = originalCards.length;
