@@ -10,14 +10,26 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #00843D;
-            --primary-light: #00A36C;
-            --secondary: #27AE60;
-            --accent: #FFD700;
-            --text-dark: #111827;
-            --text-light: #4B5563;
-            --bg-light: #F9FBF9;
-            --white: #FFFFFF;
+            --color-hero-bg: #1B4332;
+            --color-hero-heading: #FFFFFF;
+            --color-hero-text: #F4F1DE;
+
+            --color-solutions-bg: #F2EFE9;
+            --color-solutions-heading: #1B4332;
+            --color-solutions-text: #2F3E33;
+
+            --color-plans-bg: #DCE2D5;
+            --color-plans-heading: #1B4332;
+            --color-plans-text: #0B2E1F;
+
+            --color-agent-bg: #E9E5D9;
+            --color-agent-heading: #1B4332;
+            --color-agent-text: #344E41;
+
+            --color-primary: #1B4332;
+            --color-accent: #007A33;
+            --color-white: #FFFFFF;
+
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -29,8 +41,8 @@
         }
 
         body {
-            background-color: var(--bg-light);
-            color: var(--text-dark);
+            background-color: var(--color-white);
+            color: var(--color-solutions-text);
             line-height: 1.6;
             overflow-x: hidden;
         }
@@ -68,7 +80,7 @@
             text-align: center;
             font-size: 2.5rem;
             margin-bottom: 50px;
-            color: var(--primary);
+            color: var(--text-primary);
         }
 
         /* Header */
@@ -99,37 +111,50 @@
         }
 
         /* Hero Section */
+        .hero-section {
+            background-color: var(--color-hero-bg);
+            color: var(--color-hero-text);
+        }
+
         .hero {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1.2fr 1fr;
             align-items: center;
-            gap: 40px;
-            padding-top: 60px;
+            gap: 60px;
+            padding: 40px 0;
+            min-height: 85vh;
+        }
+        
+        .hero-content {
+            max-width: 520px;
         }
 
         .hero-content h1 {
             font-size: 3.5rem;
-            color: var(--text-dark);
+            color: var(--color-hero-heading);
             margin-bottom: 10px;
         }
 
         .hero-role {
             font-size: 1.5rem;
             font-weight: 500;
-            color: var(--primary);
+            color: var(--color-hero-text);
+            opacity: 0.9;
             margin-bottom: 20px;
         }
 
         .hero-tagline {
             font-size: 1.25rem;
-            color: var(--text-light);
+            color: var(--color-hero-text);
+            opacity: 0.8;
             margin-bottom: 20px;
         }
 
         .hero-trust {
             display: inline-block;
-            background: #E8F5E9;
-            color: #2E7D32;
+            background: rgba(255,255,255,0.1);
+            color: var(--color-hero-text);
+            border: 1px solid rgba(255,255,255,0.25);
             padding: 8px 16px;
             border-radius: 50px;
             font-size: 0.9rem;
@@ -157,41 +182,70 @@
         }
 
         .btn-primary {
-            background-color: var(--primary);
-            color: var(--white);
+            background-color: var(--color-accent);
+            color: var(--color-white);
             border: none;
+            box-shadow: 0 4px 12px rgba(0, 122, 51, 0.2);
         }
 
         .btn-primary:hover {
-            background-color: var(--primary-light);
+            background-color: #006629;
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0, 132, 61, 0.2);
+            box-shadow: 0 8px 20px rgba(0, 122, 51, 0.3);
         }
 
         .btn-whatsapp {
             background-color: transparent;
-            color: #25D366;
-            border: 2px solid #25D366;
+            color: var(--color-accent);
+            border: 2px solid var(--color-accent);
         }
 
         .btn-whatsapp:hover {
-            background-color: #25D366;
-            color: white;
+            background-color: var(--color-accent);
+            color: var(--color-white);
             transform: translateY(-2px);
         }
 
+        /* Hero specific CTA overrides for dark background */
+        .hero .btn-whatsapp {
+            color: #25D366;
+            border-color: #25D366;
+        }
+
+        .hero .btn-whatsapp:hover {
+            background-color: #25D366;
+            color: var(--color-hero-bg);
+            border-color: #25D366;
+        }
+
         .btn-outline {
-            border: 2px solid var(--primary);
-            color: var(--primary);
+            border: 2px solid var(--color-accent);
+            color: var(--color-accent);
         }
 
         .btn-outline:hover {
-            background-color: var(--primary);
-            color: white;
+            background-color: var(--color-accent);
+            color: var(--color-white);
+            border-color: var(--color-accent);
+        }
+
+        /* Hero specific CTA overrides for dark background */
+        .hero .btn-outline {
+            border-color: var(--color-hero-text);
+            color: var(--color-hero-text);
+        }
+        
+        .hero .btn-outline:hover {
+            background-color: var(--color-hero-text);
+            color: var(--color-hero-bg);
+            border-color: var(--color-hero-text);
         }
 
         .hero-image img {
             width: 100%;
+            max-height: 420px;
+            object-fit: contain;
+            background-color: #F9F9F7;
             border-radius: 24px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             animation: float 6s ease-in-out infinite;
@@ -207,124 +261,278 @@
             padding: 80px 0;
             overflow: hidden;
             position: relative;
+            background: #F0EAD6;
+            color: var(--color-solutions-text);
         }
 
         .carousel-container {
             position: relative;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px 0 60px;
+            padding: 20px 40px 60px;
         }
 
         .carousel-view {
-            overflow: hidden;
-            padding: 20px 0;
+            overflow-x: auto;
+            scroll-snap-type: x proximity;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding: 20px 24px;
+            scroll-behavior: smooth;
+        }
+
+        .carousel-view::-webkit-scrollbar {
+            display: none;
         }
 
         .carousel-track {
             display: flex;
-            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            gap: 30px;
-            padding: 0 15px;
+            gap: 24px;
+            width: max-content;
         }
 
         .service-card {
-            background: var(--white);
-            padding: 40px 30px;
-            border-radius: 24px;
+            background: #fff;
+            padding: 0;
+            border-radius: 20px;
             text-align: left;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
             border: 1px solid rgba(0,0,0,0.05);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
-            flex: 0 0 calc(33.333% - 20px); /* 3 cards on desktop */
-            opacity: 0.6;
-            transform: scale(0.9);
-            filter: grayscale(0.2);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            flex: 0 0 31%;
+            min-width: 320px;
+            aspect-ratio: 16 / 9;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .service-card.focused {
-            opacity: 1;
-            transform: scale(1.05);
-            filter: grayscale(0);
-            box-shadow: 0 20px 50px rgba(0, 132, 61, 0.15);
-            border-color: var(--primary-light);
-            z-index: 2;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            scroll-snap-align: start;
         }
 
         .service-card:hover {
-            border-color: var(--primary-light);
+            opacity: 1;
+            transform: scale(1.03);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
         }
 
-        .provider-name {
-            display: block;
-            font-size: 0.85rem;
-            color: var(--primary);
-            font-weight: 600;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+        .service-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: var(--card-img);
+            background-size: cover;
+            background-position: center;
+            transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 1;
         }
 
-        .service-icon {
-            width: 60px;
-            height: 60px;
-            background: #F0F9F4;
+        .service-card:hover::before {
+            transform: scale(1.1);
+        }
+
+        /* Subtle Bottom Gradient for Legibility */
+        .service-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.35) 0%, transparent 40%);
+            z-index: 2;
+        }
+
+        /* Top-Right Branding Element */
+        .card-brand-marker {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            z-index: 10;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 18px;
-            margin-bottom: 25px;
-            color: var(--primary);
-            transition: var(--transition);
+            transition: transform 0.3s ease;
         }
 
-        .service-card.focused .service-icon {
-            background: var(--primary);
+        .card-brand-marker img {
+            height: 32px;
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
+        }
+
+        .card-trust-badge {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 6px 14px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255,255,255,0.4);
+            white-space: nowrap;
+        }
+
+        /* Bottom Content Area */
+        .card-bottom-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 30px;
+            z-index: 10;
             color: white;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            transition: transform 0.4s ease;
+        }
+
+        .service-card:hover .card-bottom-content {
+            transform: translateY(-5px);
         }
 
         .service-card h3 {
-            margin-bottom: 5px;
-            font-size: 1.4rem;
-            color: var(--text-dark);
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin: 0;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
         }
 
-        .service-card p {
-            color: var(--text-light);
-            font-size: 1rem;
-            margin-bottom: 25px;
-            line-height: 1.5;
+        .service-card .subtitle {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            font-weight: 600;
+            margin-bottom: 5px;
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .service-card .explore-btn {
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--color-primary);
+            border: none;
+            padding: 10px 22px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 10px;
+            width: fit-content;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .service-card .explore-btn:hover {
+            background: var(--color-accent);
+            color: var(--color-primary);
+            transform: scale(1.05);
+        }
+
+        /* Card Typography & Elements */
+        .service-card h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin: 0;
+            line-height: 1.2;
+            color: white;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover h3 {
+            transform: translateY(-2px);
+        }
+
+        .service-card .subtitle {
+            font-size: 0.85rem;
+            opacity: 0.85;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 4px;
+        }
+
+        .service-card .explore-btn {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 10px 24px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: auto;
+            align-self: flex-start;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .service-card .explore-btn:hover {
+            background: var(--color-accent);
+            border-color: var(--color-accent);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .service-card .card-bottom-content {
+            position: absolute;
+            inset: 0;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            z-index: 10;
         }
 
         /* Carousel Navigation */
         .carousel-nav {
+            /* Handled via absolute positioning, but keeping flex for fallback */
             display: flex;
             justify-content: center;
-            gap: 20px;
-            margin-top: 40px;
+            pointer-events: none; /* Let clicks pass through if it overlaps cards */
         }
 
         .nav-btn {
-            width: 54px;
-            height: 54px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
-            border: 2px solid #E5E7EB;
-            background: white;
-            color: var(--text-dark);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+            color: #344E41;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 20;
+            pointer-events: auto; /* re-enable clicks */
         }
 
         .nav-btn:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.4);
+            transform: translateY(-50%) scale(1.08);
+        }
+
+        .carousel-nav .nav-btn:first-child,
+        .nav-btn[id$="prevBtn"],
+        .nav-btn[id="prevBtn"] {
+            left: -24px;
+        }
+
+        .carousel-nav .nav-btn:last-child,
+        .nav-btn[id$="nextBtn"],
+        .nav-btn[id="nextBtn"] {
+            right: -24px;
         }
 
         .nav-btn svg {
@@ -335,16 +543,119 @@
         /* Responsive */
         @media (max-width: 1024px) {
             .service-card {
-                flex: 0 0 calc(50% - 15px); /* 2 cards on tablet */
+                flex: 0 0 46%; /* ~2.1 cards visible */
+                min-width: 280px;
             }
         }
 
         @media (max-width: 640px) {
+            .carousel-view {
+                padding: 20px 16px;
+            }
             .service-card {
-                flex: 0 0 100%; /* 1 card on mobile */
+                flex: 0 0 85%; /* ~1.1 cards visible */
+                min-width: 240px;
             }
             .carousel-track {
-                gap: 20px;
+                gap: 16px;
+            }
+        }
+
+        /* Solutions Specific Refinement: Stacked Layout */
+        #solutions .service-card {
+            aspect-ratio: auto; /* Remove global ratio to allow vertical extension */
+            display: flex;
+            flex-direction: column;
+            background: #FFFFFF;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+        }
+
+        #solutions .service-card::before {
+            position: relative;
+            inset: auto;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            display: block;
+            z-index: 1;
+        }
+
+        #solutions .service-card::after {
+            display: none; /* Remove bottom-up gradient for clean stacked look */
+        }
+
+        #solutions .card-bottom-content {
+            position: relative;
+            inset: auto;
+            padding: 24px 24px 30px;
+            background: #FFFFFF;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            transform: none !important; /* Prevent hover lift conflicts */
+        }
+
+        #solutions .service-card h3 {
+            color: var(--color-solutions-heading);
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        #solutions .service-card .subtitle {
+            color: var(--color-solutions-text);
+            font-size: 0.9rem;
+            opacity: 0.7;
+            font-weight: 500;
+            margin-bottom: 8px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: block;
+        }
+
+        #solutions .service-card .explore-btn {
+            background: rgba(27, 67, 50, 0.04);
+            color: var(--color-primary);
+            border: 1.5px solid var(--color-primary);
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            margin-top: 10px;
+            box-shadow: none;
+            width: fit-content;
+        }
+
+        #solutions .service-card .explore-btn:hover {
+            background: var(--color-primary);
+            color: #FFFFFF;
+            transform: translateY(-2px);
+        }
+
+        #solutions .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(27, 67, 50, 0.12);
+        }
+
+        @media (max-width: 640px) {
+            .nav-btn {
+                width: 36px;
+                height: 36px;
+            }
+            .nav-btn svg {
+                width: 20px;
+                height: 20px;
+            }
+            .carousel-nav .nav-btn:first-child,
+            .nav-btn[id$="prevBtn"],
+            .nav-btn[id="prevBtn"] {
+                left: -10px;
+            }
+            .carousel-nav .nav-btn:last-child,
+            .nav-btn[id$="nextBtn"],
+            .nav-btn[id="nextBtn"] {
+                right: -10px;
             }
         }
 
@@ -376,58 +687,173 @@
         }
 
         .modal-poster {
-            background: var(--white);
-            width: 90%;
-            max-width: 1000px;
-            max-height: 85vh;
-            border-radius: 30px;
+            background: #001a0a;
+            width: 95%;
+            max-width: 1200px;
+            height: 600px;
+            border-radius: 24px;
             position: relative;
             overflow: hidden;
             display: flex;
-            flex-direction: column;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.1);
-            transform: scale(0.8) translateY(30px);
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.4);
+            transform: scale(0.8);
             opacity: 0;
             transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         .modal-overlay.active .modal-poster {
-            transform: scale(1) translateY(0);
+            transform: scale(1);
             opacity: 1;
+        }
+
+        /* Modal Split Layout */
+        .modal-left-pane {
+            width: 55%;
+            padding: 50px 60px;
+            background: linear-gradient(145deg, #001f0f 0%, #00331a 100%);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow-y: auto;
+            color: white;
+        }
+
+        .modal-right-pane {
+            width: 45%;
+            background-color: #f9f9f7;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .modal-banner-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background-color: #f9f9f7;
+        }
+
+        .modal-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 20px;
+            align-self: flex-start;
+        }
+
+        .modal-logo {
+            height: 55px;
+            width: auto;
+            margin-bottom: 25px;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
+        }
+
+        .modal-main-title {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+
+        .modal-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 35px;
+            max-width: 90%;
+        }
+
+        .modal-info-grid {
+            margin-bottom: 20px;
+        }
+
+        .modal-info-section {
+            margin-bottom: 30px;
+        }
+
+        .modal-info-label {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: block;
+            color: white;
+        }
+
+        .modal-vertical-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .modal-vertical-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.4;
+        }
+
+        .modal-vertical-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--color-accent);
+            font-weight: bold;
         }
 
         .modal-close {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.9);
-            border: none;
+            top: 25px;
+            right: 25px;
+            width: 44px;
+            height: 44px;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 50%;
-            font-size: 1.5rem;
+            color: white;
+            font-size: 1.8rem;
             cursor: pointer;
-            z-index: 10;
+            z-index: 100;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            transition: var(--transition);
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: white;
+            color: #001a0a;
+            transform: rotate(90deg);
         }
 
         .modal-close:hover {
             transform: rotate(90deg);
             background: white;
-            color: var(--primary);
+            color: var(--cta);
         }
 
         .modal-header-section {
-            padding: 30px 40px;
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            width: fit-content;
+            padding: 18px 28px;
             display: flex;
             align-items: center;
-            gap: 20px;
-            background: white;
-            border-bottom: 1px solid #f1f5f9;
+            gap: 15px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 20px;
+            z-index: 10;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255, 255, 255, 0.4);
         }
 
         .modal-logo {
@@ -443,7 +869,7 @@
 
         .modal-subtitle {
             font-size: 0.9rem;
-            color: var(--primary);
+            color: var(--cta);
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -452,16 +878,33 @@
 
         .modal-main-title {
             font-size: 1.75rem;
-            color: var(--text-dark);
+            color: var(--text-primary);
             font-weight: 800;
         }
 
         .modal-banner {
             width: 100%;
-            height: 250px;
-            background-size: cover;
+            height: 400px;
+            background-image: var(--banner-url);
+            background-size: contain;
+            background-repeat: no-repeat;
             background-position: center;
             position: relative;
+            overflow: hidden;
+            background-color: #0B0B0B;
+            z-index: 1;
+        }
+
+        .modal-banner::before {
+            content: '';
+            position: absolute;
+            top: -20px; left: -20px; right: -20px; bottom: -20px;
+            background-image: var(--banner-url);
+            background-size: cover;
+            background-position: center;
+            filter: blur(20px) brightness(0.6);
+            opacity: 0.5;
+            z-index: -1;
         }
 
         .modal-banner::after {
@@ -475,7 +918,7 @@
         }
 
         .modal-body-scroll {
-            padding: 40px;
+            padding: 20px 40px 40px;
             overflow-y: auto;
             flex-grow: 1;
             background: white;
@@ -488,7 +931,7 @@
 
         .modal-tagline {
             font-size: 1.4rem;
-            color: var(--text-dark);
+            color: var(--text-primary);
             font-weight: 700;
             margin-bottom: 15px;
             line-height: 1.3;
@@ -502,13 +945,13 @@
         }
 
         .modal-section {
-            margin-bottom: 40px;
+            margin-bottom: 25px;
             padding-left: 20px;
-            border-left: 3px solid var(--primary);
+            border-left: 3px solid var(--cta);
         }
 
         .modal-section h4 {
-            color: var(--primary);
+            color: var(--text-primary);
             font-size: 1.2rem;
             font-weight: 700;
             margin-bottom: 15px;
@@ -540,7 +983,7 @@
 
         .modal-section ul li::before {
             content: '•';
-            color: var(--primary);
+            color: var(--cta);
             font-weight: bold;
             font-size: 1.2rem;
             margin-top: -2px;
@@ -560,7 +1003,7 @@
         .stacked-title {
             display: block;
             font-weight: 700;
-            color: var(--text-dark);
+            color: var(--text-primary);
             font-size: 1.1rem;
             margin-bottom: 10px;
         }
@@ -580,29 +1023,23 @@
         .stacked-content li::before {
             display: block !important;
             content: '•';
-            color: var(--primary);
+            color: var(--cta);
             margin-right: 10px;
         }
 
         .modal-closing {
-            color: var(--text-dark);
+            color: var(--text-primary);
             font-size: 1.1rem;
             font-weight: 600;
             margin-top: 40px;
             text-align: left;
             padding-top: 30px;
-            border-top: 1px solid #f1f5f9;
+            border-top: 1px solid var(--bg-section);
             line-height: 1.5;
             font-style: italic;
         }
 
-        .modal-footer-cta {
-            padding: 30px 40px;
-            background: #f8fafc;
-            display: flex;
-            justify-content: flex-end;
-            border-top: 1px solid #f1f5f9;
-        }
+
 
         @media (max-width: 768px) {
             .modal-poster {
@@ -621,6 +1058,27 @@
         }
 
         /* Plans Section */
+        #plans {
+            background: #A3B18A;
+            color: var(--color-plans-text);
+        }
+        
+        #plans .section-title {
+            color: var(--color-plans-heading);
+        }
+
+        #plans .nav-btn {
+            background: #A3B18A;
+            border-color: #A3B18A;
+            color: var(--color-plans-heading);
+        }
+
+        #plans .nav-btn:hover {
+            background: var(--color-white);
+            color: var(--color-accent);
+            border-color: var(--color-accent);
+        }
+        
         /* Plans Section Updates - Sharing Carousel Styles */
 
         .trust-section {
@@ -628,11 +1086,13 @@
             grid-template-columns: 1.2fr 1fr;
             gap: 60px;
             align-items: center;
-            background: var(--white);
+            background: var(--color-agent-bg);
+            color: var(--color-agent-text);
             padding: 80px 40px;
             border-radius: 40px;
             margin: 60px 0;
             box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,0,0,0.05);
         }
 
         .why-list {
@@ -650,8 +1110,8 @@
         }
 
         .check-icon {
-            color: var(--primary);
-            background: #E8F5E9;
+            color: var(--color-white);
+            background: var(--color-primary);
             width: 28px;
             height: 28px;
             display: flex;
@@ -662,13 +1122,14 @@
         }
 
         .agent-profile {
-            background: var(--white);
+            background: var(--color-white);
             padding: 40px;
             border-radius: 30px;
             text-align: center;
-            border: 1px solid #f1f5f1;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            border: 1px solid var(--color-agent-bg);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             transition: transform 0.3s ease;
+            color: var(--color-agent-text);
         }
 
         .agent-profile:hover {
@@ -679,8 +1140,9 @@
             width: 140px;
             height: 140px;
             border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid #E8F5E9;
+            object-fit: contain;
+            background-color: #F9F9F7;
+            border: 4px solid var(--color-agent-bg);
             padding: 4px;
             margin-bottom: 25px;
         }
@@ -688,12 +1150,12 @@
         .profile-info h3 { 
             font-size: 1.75rem; 
             font-weight: 700;
-            color: var(--text-dark);
+            color: var(--color-agent-heading);
             margin-bottom: 8px; 
         }
         
         .profile-info .agent-role { 
-            color: var(--primary); 
+            color: var(--color-accent); 
             font-weight: 500;
             font-size: 1.1rem;
             margin-bottom: 5px; 
@@ -702,8 +1164,9 @@
 
         .profile-info .agent-id {
             font-size: 0.9rem;
-            color: var(--text-light);
-            background: #f8faf8;
+            color: var(--color-agent-bg);
+            background: var(--color-agent-text);
+            border: none;
             padding: 4px 12px;
             border-radius: 100px;
             display: inline-block;
@@ -714,7 +1177,7 @@
             text-align: left;
             margin-top: 25px;
             padding-top: 25px;
-            border-top: 1px solid #f1f5f1;
+            border-top: 1px solid rgba(0,0,0,0.05);
         }
 
         .meta-item {
@@ -723,32 +1186,34 @@
             gap: 12px;
             margin-bottom: 12px;
             font-size: 0.95rem;
-            color: var(--text-dark);
+            color: var(--color-agent-text);
         }
 
         .meta-icon {
             width: 18px;
             height: 18px;
-            color: var(--primary);
+            color: var(--color-accent);
             opacity: 0.8;
         }
 
         .agent-tagline {
             margin-top: 25px;
             font-style: italic;
-            color: var(--text-light);
+            color: var(--color-agent-text);
+            opacity: 0.8;
             font-size: 0.95rem;
             line-height: 1.5;
         }
 
         /* Final CTA */
         .final-cta {
-            background: linear-gradient(135deg, #004D23, #00843D);
-            color: white;
+            background: var(--color-primary);
+            color: var(--color-white);
             padding: 100px 20px;
             text-align: center;
             border-radius: 40px;
             margin: 40px 0;
+            box-shadow: 0 10px 40px rgba(0, 77, 0, 0.15);
         }
 
         .final-cta h2 { font-size: 3rem; margin-bottom: 40px; max-width: 800px; margin-inline: auto; }
@@ -756,8 +1221,8 @@
         /* Footer */
         footer {
             padding: 60px 0 20px;
-            background: #111827;
-            color: #9CA3AF;
+            background: #0B0B0B;
+            color: #F4F1DE;
         }
 
         .footer-content {
@@ -767,11 +1232,62 @@
             margin-bottom: 40px;
         }
 
+        .footer-label {
+            color: #FFFFFF;
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .footer-logo-strip {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .footer-content p {
+            color: #A8B3AC;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .footer-content h4 {
+            color: #DCE2D5;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #007A33;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #00994D;
+        }
+
         .footer-disclaimer {
             font-size: 0.8rem;
-            border-top: 1px solid #374151;
             padding-top: 20px;
             text-align: center;
+            color: #A8B3AC;
+        }
+
+        .footer-disclaimer p:first-child {
+            color: #F4F1DE;
+            margin-bottom: 10px;
         }
 
         /* Brand Logo Styles Refined */
@@ -793,11 +1309,13 @@
         }
 
         .card-badge-container {
-            background: #ffffff;
+            background: #F9F9F7;
             padding: 8px 12px;
             border-radius: 8px;
             box-shadow: 0 2px 6px rgba(0,0,0,0.04);
             display: inline-flex;
+            align-items: center;
+            justify-content: center;
             margin-bottom: 20px;
         }
 
@@ -805,6 +1323,9 @@
             height: 32px;
             width: auto;
             object-fit: contain;
+            background-color: #F9F9F7;
+            padding: 4px;
+            border-radius: 6px;
         }
 
         .logo-strip {
@@ -855,7 +1376,8 @@
             .hero, .trust-section { grid-template-columns: 1fr; text-align: center; }
             .hero-content h1 { font-size: 2.8rem; }
             .cta-group { justify-content: center; }
-            .footer-content { grid-template-columns: 1fr; text-align: center; }
+            .footer-content { grid-template-columns: 1fr; text-align: center; gap: 30px; }
+            .footer-logo-strip { justify-content: center; }
             .trust-section { padding: 40px 20px; gap: 40px; }
             .agent-profile { order: -1; }
             .final-cta h2 { font-size: 2.2rem; }
@@ -864,6 +1386,9 @@
         @media (max-width: 600px) {
             .hero-content h1 { font-size: 2rem; }
             section { padding: 60px 0; }
+            .footer-content { gap: 25px; }
+            .footer-logo-strip { gap: 10px; }
+            .footer-links li { margin-bottom: 8px; }
         }
     </style>
 </head>
@@ -881,7 +1406,8 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="container hero">
+    <section class="hero-section">
+        <div class="container hero">
         <div class="hero-content reveal">
             <div class="hero-trust">Insurance Advisor | Agent ID: 0141271B</div>
             <h1>R KALPANA, M.A</h1>
@@ -911,58 +1437,54 @@
             <h2 class="section-title reveal">Solutions We Offer</h2>
             
             <div class="carousel-container">
-                <div class="carousel-view">
-                    <div class="carousel-track" id="carouselTrack">
+                <div class="carousel-view" id="solutionsCarouselView">
+                    <div class="carousel-track">
                         <!-- Life & Wealth Protection -->
-                        <div class="service-card reveal">
-                            <div>
-                                <div class="card-badge-container">
-                                    <img src="assets/logos/lic-color.svg" alt="LIC" class="card-badge">
-                                </div>
-                                <span class="provider-name">Life Insurance Corporation of India (LIC)</span>
-                                <h3>Life & Wealth Protection</h3>
-                                <p>Term Insurance, Endowment Plans, Money Back, Child Plans, Retirement Solutions</p>
+                        <div class="service-card reveal" style="--card-img: url('assets/life-banner.png')">
+                            <div class="card-brand-marker">
+                                <img src="assets/logos/lic-color.svg" alt="LIC">
                             </div>
-                            <button class="btn btn-outline explore-btn" data-service="life" style="padding: 10px 20px; font-size: 0.85rem; width: 100%;">Explore</button>
+                            <div class="card-bottom-content">
+                                <h3>Life & Wealth</h3>
+                                <span class="subtitle">LIC (Life Insurance Corporation of India)</span>
+                                <button class="explore-btn" data-service="life">Explore More</button>
+                            </div>
                         </div>
                         
                         <!-- Health Insurance -->
-                        <div class="service-card reveal">
-                            <div>
-                                <div class="card-badge-container">
-                                    <img src="assets/logos/star-health-color.svg" alt="Star Health" class="card-badge">
-                                </div>
-                                <span class="provider-name">Star Health and Allied Insurance</span>
-                                <h3>Health Insurance</h3>
-                                <p>Individual Plans, Family Floater, Senior Citizen Plans, Critical Illness, Top-Up Covers</p>
+                        <div class="service-card reveal" style="--card-img: url('assets/health-banner.png')">
+                            <div class="card-brand-marker">
+                                <img src="assets/logos/star-health-color.svg" alt="Star Health">
                             </div>
-                            <button class="btn btn-outline explore-btn" data-service="health" style="padding: 10px 20px; font-size: 0.85rem; width: 100%;">Explore</button>
+                            <div class="card-bottom-content">
+                                <h3>Health Insurance</h3>
+                                <span class="subtitle">Star Health & Allied Insurance</span>
+                                <button class="explore-btn" data-service="health">Explore More</button>
+                            </div>
                         </div>
                         
                         <!-- General Insurance -->
-                        <div class="service-card reveal">
-                            <div>
-                                <div class="card-badge-container">
-                                    <img src="assets/logos/united-color.svg" alt="United India" class="card-badge">
-                                </div>
-                                <span class="provider-name">United India Insurance Company</span>
-                                <h3>General Insurance</h3>
-                                <p>Motor, Travel, Property, Personal Accident, Cyber Insurance</p>
+                        <div class="service-card reveal" style="--card-img: url('assets/general-banner.png')">
+                            <div class="card-brand-marker">
+                                <img src="assets/logos/united-color.svg" alt="United India">
                             </div>
-                            <button class="btn btn-outline explore-btn" data-service="general" style="padding: 10px 20px; font-size: 0.85rem; width: 100%;">Explore</button>
+                            <div class="card-bottom-content">
+                                <h3>General Insurance</h3>
+                                <span class="subtitle">United India Insurance Company</span>
+                                <button class="explore-btn" data-service="general">Explore More</button>
+                            </div>
                         </div>
                         
                         <!-- Loans & Finance -->
-                        <div class="service-card reveal">
-                            <div>
-                                <div class="card-badge-container">
-                                    <img src="assets/logos/lic-housing-color.svg" alt="LIC Housing Finance" class="card-badge">
-                                </div>
-                                <span class="provider-name">LIC Housing Finance Ltd</span>
-                                <h3>Loans & Finance</h3>
-                                <p>Home Loans, Loan Against Property, Renovation Loans, Balance Transfer</p>
+                        <div class="service-card reveal" style="--card-img: url('assets/loans-banner.png')">
+                            <div class="card-brand-marker">
+                                <img src="assets/logos/lic-housing-color.svg" alt="LIC Housing Finance">
                             </div>
-                            <button class="btn btn-outline explore-btn" data-service="loans" style="padding: 10px 20px; font-size: 0.85rem; width: 100%;">Explore</button>
+                            <div class="card-bottom-content">
+                                <h3>Loans & Finance</h3>
+                                <span class="subtitle">LIC Housing Finance Ltd</span>
+                                <button class="explore-btn" data-service="loans">Explore More</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -981,135 +1503,95 @@
     </section>
 
     <!-- Popular Plans Section -->
-    <section class="bg-light solutions-section" style="background:#F3F6F3;" id="plans">
+    <section id="plans">
         <div class="container">
             <h2 class="section-title reveal">Popular LIC Plans</h2>
             
             <div class="carousel-container">
-                <div class="carousel-view">
-                    <div class="carousel-track" id="plansTrack">
+                <div class="carousel-view" id="plansCarouselView">
+                    <div class="carousel-track">
                         <!-- Future-Ready Child Plan -->
-                        <div class="service-card reveal">
-                            <div>
-                                <img src="assets/logos/lic-color.svg" alt="LIC" class="card-badge">
-                                <span class="provider-name">LIC Jeevan Tarun</span>
-                                <h3>Future-Ready Child Plan</h3>
-                                <p>Secure your child’s future with guaranteed savings and protection</p>
-                                <ul style="list-style: none; margin-bottom: 20px;">
-                                    <li style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 5px;">✔ Education payouts (20–24)</li>
-                                    <li style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 5px;">✔ Maturity at 25</li>
-                                    <li style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 5px;">✔ Life cover + bonus</li>
-                                </ul>
+                        <div class="service-card reveal" style="--card-img: url('assets/tarun-banner.png')">
+                            <div class="card-brand-marker">
+                                <div class="card-trust-badge">Trusted Plan</div>
                             </div>
-                            <button class="btn btn-outline explore-btn" data-service="tarun" style="padding: 10px 20px; font-size: 0.85rem; width: 100%;">Explore</button>
+                            <div class="card-bottom-content">
+                                <h3>Child Savings</h3>
+                                <span class="subtitle">Secure Your Child’s Future Today</span>
+                                <button class="explore-btn" data-service="tarun">Explore More</button>
+                            </div>
                         </div>
 
                         <!-- Guaranteed Savings Plan -->
-                        <div class="service-card reveal">
-                            <div>
-                                <div class="card-badge-container">
-                                    <img src="assets/logos/lic-color.svg" alt="LIC" class="card-badge">
-                                </div>
-                                <span class="provider-name">LIC Jeevan Labh</span>
-                                <h3>Guaranteed Savings Plan</h3>
-                                <p>Pay for a limited time. Enjoy long-term benefits</p>
-                                <ul style="list-style: none; margin-bottom: 20px;">
-                                    <li style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 5px;">✔ Limited premium term</li>
-                                    <li style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 5px;">✔ Guaranteed maturity + bonus</li>
-                                    <li style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 5px;">✔ Life cover throughout</li>
-                                </ul>
+                        <div class="service-card reveal" style="--card-img: url('assets/life-banner.png')">
+                            <div class="card-brand-marker">
+                                <div class="card-trust-badge">Best Seller</div>
                             </div>
-                            <button class="btn btn-outline explore-btn" data-service="labh" style="padding: 10px 20px; font-size: 0.85rem; width: 100%;">Explore</button>
+                            <div class="card-bottom-content">
+                                <h3>Guaranteed Savings</h3>
+                                <span class="subtitle">Limited Term, Lifelong Benefit</span>
+                                <button class="explore-btn" data-service="labh">Explore More</button>
+                            </div>
                         </div>
 
                         <!-- Lifetime Income Plan -->
-                        <div class="service-card reveal">
-                            <div>
-                                <div class="card-badge-container">
-                                    <img src="assets/logos/lic-color.svg" alt="LIC" class="card-badge">
-                                </div>
-                                <span class="provider-name">LIC Jeevan Utsav</span>
-                                <h3>Lifetime Income Plan</h3>
-                                <p>Turn your savings into a guaranteed lifelong income</p>
-                                <ul style="list-style: none; margin-bottom: 20px;">
-                                    <li style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 5px;">✔ Guaranteed yearly income</li>
-                                    <li style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 5px;">✔ Whole life coverage</li>
-                                    <li style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 5px;">✔ Flexible income options</li>
-                                </ul>
+                        <div class="service-card reveal" style="--card-img: url('assets/life-banner.png')">
+                            <div class="card-brand-marker">
+                                <div class="card-trust-badge">Popular</div>
                             </div>
-                            <button class="btn btn-outline explore-btn" data-service="utsav" style="padding: 10px 20px; font-size: 0.85rem; width: 100%;">Explore</button>
+                            <div class="card-bottom-content">
+                                <h3>Lifetime Income</h3>
+                                <span class="subtitle">Guaranteed Yearly Payouts for Life</span>
+                                <button class="explore-btn" data-service="utsav">Explore More</button>
+                            </div>
                         </div>
 
                         <!-- Money Back Savings Plan -->
-                        <div class="service-card reveal">
-                            <div>
-                                <div class="card-badge-container">
-                                    <img src="assets/logos/lic-color.svg" alt="LIC" class="card-badge">
-                                </div>
-                                <span class="provider-name">LIC Money Back Plan – 25 Years</span>
-                                <h3>Money Back Savings Plan</h3>
-                                <p>Get regular payouts while staying fully protected</p>
-                                <ul style="list-style: none; margin-bottom: 20px;">
-                                    <li style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 5px;">✔ Periodic payouts (every 5 years)</li>
-                                    <li style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 5px;">✔ Life cover + bonus</li>
-                                    <li style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 5px;">✔ Final maturity benefit</li>
-                                </ul>
+                        <div class="service-card reveal" style="--card-img: url('assets/life-banner.png')">
+                            <div class="card-brand-marker">
+                                <img src="assets/logos/lic-color.svg" alt="LIC">
                             </div>
-                            <button class="btn btn-outline explore-btn" data-service="moneyBack" style="padding: 10px 20px; font-size: 0.85rem; width: 100%;">Explore</button>
+                            <div class="card-bottom-content">
+                                <h3>Money Back</h3>
+                                <span class="subtitle">Regular Payouts & Full Protection</span>
+                                <button class="explore-btn" data-service="moneyBack">Explore More</button>
+                            </div>
                         </div>
 
                         <!-- Guaranteed Income Plan -->
-                        <div class="service-card reveal">
-                            <div>
-                                <div class="card-badge-container">
-                                    <img src="assets/logos/lic-color.svg" alt="LIC" class="card-badge">
-                                </div>
-                                <span class="provider-name">LIC Jeevan Shanti</span>
-                                <h3>Guaranteed Income Plan</h3>
-                                <p>Turn a one-time investment into lifelong income</p>
-                                <ul style="list-style: none; margin-bottom: 20px;">
-                                    <li style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 5px;">✔ Lifetime guaranteed annuity</li>
-                                    <li style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 5px;">✔ Single premium (no recurring payments)</li>
-                                    <li style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 5px;">✔ Flexible payout options</li>
-                                </ul>
+                        <div class="service-card reveal" style="--card-img: url('assets/life-banner.png')">
+                            <div class="card-brand-marker">
+                                <div class="card-trust-badge">Guaranteed</div>
                             </div>
-                            <button class="btn btn-outline explore-btn" data-service="shanti" style="padding: 10px 20px; font-size: 0.85rem; width: 100%;">Explore</button>
+                            <div class="card-bottom-content">
+                                <h3>Guaranteed Income</h3>
+                                <span class="subtitle">One-Time Investment, Lifelong Income</span>
+                                <button class="explore-btn" data-service="shanti">Explore More</button>
+                            </div>
                         </div>
 
                         <!-- Instant Income Plan -->
-                        <div class="service-card reveal">
-                            <div>
-                                <div class="card-badge-container">
-                                    <img src="assets/logos/lic-color.svg" alt="LIC" class="card-badge">
-                                </div>
-                                <span class="provider-name">LIC Jeevan Akshay VII</span>
-                                <h3>Instant Income Plan</h3>
-                                <p>Start receiving guaranteed income immediately</p>
-                                <ul style="list-style: none; margin-bottom: 20px;">
-                                    <li style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 5px;">✔ Immediate annuity (no waiting)</li>
-                                    <li style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 5px;">✔ Lifetime guaranteed income</li>
-                                    <li style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 5px;">✔ Multiple payout options</li>
-                                </ul>
+                        <div class="service-card reveal" style="--card-img: url('assets/life-banner.png')">
+                            <div class="card-brand-marker">
+                                <div class="card-trust-badge">Instant</div>
                             </div>
-                            <button class="btn btn-outline explore-btn" data-service="akshay" style="padding: 10px 20px; font-size: 0.85rem; width: 100%;">Explore</button>
+                            <div class="card-bottom-content">
+                                <h3>Instant Income</h3>
+                                <span class="subtitle">Immediate Guaranteed Lifetime Cash Flow</span>
+                                <button class="explore-btn" data-service="akshay">Explore More</button>
+                            </div>
                         </div>
 
                         <!-- Pure Protection Plan -->
-                        <div class="service-card reveal">
-                            <div>
-                                <div class="card-badge-container">
-                                    <img src="assets/logos/lic-color.svg" alt="LIC" class="card-badge">
-                                </div>
-                                <span class="provider-name">LIC Jeevan Amar</span>
-                                <h3>Pure Protection Plan</h3>
-                                <p>Maximum life cover at minimal cost</p>
-                                <ul style="list-style: none; margin-bottom: 20px;">
-                                    <li style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 5px;">✔ High coverage at low premium</li>
-                                    <li style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 5px;">✔ Pure protection (no investment)</li>
-                                    <li style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 5px;">✔ Flexible policy options</li>
-                                </ul>
+                        <div class="service-card reveal" style="--card-img: url('assets/life-banner.png')">
+                            <div class="card-brand-marker">
+                                <div class="card-trust-badge">Pure Protection</div>
                             </div>
-                            <button class="btn btn-outline explore-btn" data-service="amar" style="padding: 10px 20px; font-size: 0.85rem; width: 100%;">Explore</button>
+                            <div class="card-bottom-content">
+                                <h3>Pure Protection</h3>
+                                <span class="subtitle">Maximum Life Cover at Minimal Cost</span>
+                                <button class="explore-btn" data-service="amar">Explore More</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1175,19 +1657,19 @@
                     <div class="agent-meta">
                         <div class="meta-item">
                             <svg class="meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                            82480 13879
+                            Call : +91 82480 13879
                         </div>
                         <div class="meta-item">
                             <svg class="meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
-                            8778747430
+                            Alternate : +91 87787 47430
                         </div>
                         <div class="meta-item">
                             <svg class="meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 01-2 2v10a2 2 0 012 2z"/></svg>
-                            advisor.kalpana@example.com
+                            advisor.kalpana@gmail.com
                         </div>
                         <div class="meta-item">
                             <svg class="meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                            Chennai
+                            Porur, Chennai
                         </div>
                     </div>
                     
@@ -1202,7 +1684,7 @@
         <div class="final-cta reveal">
             <h2>Get the Right Plan for Your Future Today</h2>
             <div class="cta-group" style="justify-content: center;">
-                <a href="tel:8248013879" class="btn btn-primary" style="background: white; color: var(--primary);">Call Now</a>
+                <a href="tel:8248013879" class="btn btn-primary" style="background: var(--color-white); color: var(--color-primary);">Call Now</a>
                 <a href="https://wa.me/918248013879" class="btn btn-whatsapp" style="border-color: white; color: white;">WhatsApp</a>
             </div>
         </div>
@@ -1213,8 +1695,8 @@
         <div class="container">
             <div class="footer-content">
                 <div>
-                    <div class="footer-label">Associated With</div>
-                    <div class="footer-logo-strip" style="margin-bottom: 25px;">
+                    <h4>About R KALPANA, M.A</h4>
+                    <div class="footer-logo-strip">
                         <div class="logo-container">
                             <img src="assets/logos/lic-color.svg" alt="LIC">
                         </div>
@@ -1228,27 +1710,31 @@
                             <img src="assets/logos/lic-housing-color.svg" alt="LIC Housing Finance">
                         </div>
                     </div>
-                    <p>Helping families secure their financial future with tailored insurance solutions.</p>
+                    <p>Professional Insurance Advisor helping families secure their financial future with tailored LIC and health insurance solutions.</p>
+                    <p class="agent-tagline" style="color: #A8B3AC; font-style: italic; margin-top: 15px;">"Helping families make financially secure decisions"</p>
                 </div>
                 <div>
-                    <h4 style="color: white; margin-bottom: 20px;">Contact Info</h4>
-                    <p>+91 XXXXX XXXXX</p>
-                    <p>advisor.rajesh@example.com</p>
-                    <p>Bangalore, India</p>
+                    <h4>Insurance Plans</h4>
+                    <ul class="footer-links">
+                        <li><a href="#solutions">Life Insurance Solutions</a></li>
+                        <li><a href="#plans">Popular LIC Plans</a></li>
+                        <li><a href="#plans">Savings & Investment Plans</a></li>
+                        <li><a href="#plans">Retirement Plans</a></li>
+                        <li><a href="#plans">Health Insurance</a></li>
+                    </ul>
                 </div>
                 <div>
-                    <h4 style="color: white; margin-bottom: 20px;">Follow Me</h4>
-                    <div style="display: flex; gap: 15px;">
-                        <!-- Placeholders for icons -->
-                        <span style="font-size: 1.2rem;">FB</span>
-                        <span style="font-size: 1.2rem;">TW</span>
-                        <span style="font-size: 1.2rem;">LI</span>
-                    </div>
+                    <h4>Contact Details</h4>
+                    <p><strong>Phone:</strong> +91 82480 13879</p>
+                    <p><strong>Alternate:</strong> +91 87787 47430</p>
+                    <p><strong>Email:</strong> advisor.kalpana@gmail.com</p>
+                    <p><strong>Location:</strong> Porur, Chennai</p>
+                    <p><strong>Agent ID:</strong> 0141271B</p>
                 </div>
             </div>
             <div class="footer-disclaimer">
-                <p>&copy; 2026 Rajesh Kumar | Insurance Advisor. All Rights Reserved.</p>
-                <p style="margin-top: 10px; opacity: 0.6;">Disclaimer: Insurance is the subject matter of solicitation. For more details on risk factors, terms and conditions, please read the sales brochure carefully before concluding a sale.</p>
+                <p>&copy; 2026 R KALPANA, M.A | Insurance Advisor. All Rights Reserved.</p>
+                <p>Disclaimer: Insurance is the subject matter of solicitation. For more details on risk factors, terms and conditions, please read the sales brochure carefully before concluding a sale.</p>
             </div>
         </div>
     </footer>
@@ -1256,47 +1742,29 @@
     <!-- Solutions Modal System -->
     <div class="modal-overlay" id="serviceModalOverlay">
         <div class="modal-poster" id="serviceModal">
-            <button class="modal-close" id="closeModal">&times;</button>
+            <button class="modal-close" id="closeModal" aria-label="Close modal">&times;</button>
             
-            <div class="modal-header-section">
-                <div class="logo-container" style="padding: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.08);">
-                    <img src="" alt="Provider Logo" class="modal-logo" id="modalLogo" style="height: 48px; width: auto; object-fit: contain;">
-                </div>
-                <div class="modal-header-text">
-                    <p id="modalProvider" class="modal-subtitle">Category Title</p>
-                    <h2 id="modalTitle" class="modal-main-title">Plan Name</h2>
-                </div>
-            </div>
-
-            <div class="modal-banner" id="modalBanner"></div>
-
-            <div class="modal-body-scroll">
-                <div class="modal-detail-content">
-                    <p class="modal-tagline" id="modalTagline">Tagline goes here...</p>
-                    <p class="modal-intro" id="modalIntro"></p>
+            <div class="modal-left-pane">
+                <span class="modal-badge">Trusted Insurance</span>
+                <img src="" alt="Provider Logo" class="modal-logo" id="modalLogo">
+                <h2 class="modal-main-title" id="modalTitle">Life & Wealth Protection</h2>
+                <p class="modal-description" id="modalDescription">Secure your family's future with trusted LIC plans. These plans are designed to safeguard your wealth and ensure the financial well-being of your loved ones.</p>
+                
+                <div class="modal-info-grid">
+                    <div class="modal-info-section">
+                        <span class="modal-info-label">Plan Highlights</span>
+                        <ul class="modal-vertical-list" id="modalHighlights"></ul>
+                    </div>
                     
-                    <div class="modal-section" id="sectionHighlights">
-                        <h4 id="labelHighlights">Plan Highlights</h4>
-                        <ul id="modalPlanTypes"></ul>
+                    <div class="modal-info-section">
+                        <span class="modal-info-label">Who is this for?</span>
+                        <ul class="modal-vertical-list" id="modalWhoFor"></ul>
                     </div>
-
-                    <div class="modal-section" id="sectionReason">
-                        <h4 id="labelReason">Why choose this plan?</h4>
-                        <p id="modalReasonDesc" style="margin-bottom: 15px; display: none;"></p>
-                        <ul id="modalWhoFor"></ul>
-                    </div>
-
-                    <div class="modal-section" id="sectionBenefits">
-                        <h4 id="labelBenefits">Key Benefits</h4>
-                        <ul id="modalBenefits"></ul>
-                    </div>
-
-                    <p class="modal-closing" id="modalClosing"></p>
                 </div>
             </div>
 
-            <div class="modal-footer-cta">
-                <a href="tel:8248013879" class="btn btn-primary">Contact Advisor</a>
+            <div class="modal-right-pane">
+                <img src="" alt="Banner" class="modal-banner-img" id="modalBanner">
             </div>
         </div>
     </div>
@@ -1309,14 +1777,13 @@
                 var windowHeight = window.innerHeight;
                 var elementTop = reveals[i].getBoundingClientRect().top;
                 var elementVisible = 100;
-                if (elementTop < windowHeight - elementVisible) {
+                if (elementTop < windowHeight - windowHeight / 4) {
                     reveals[i].classList.add("active");
                 }
             }
         }
 
         window.addEventListener("scroll", reveal);
-        // Initial call
         reveal();
 
         // Modal Logic
@@ -1595,52 +2062,27 @@
             const data = modalData[serviceKey];
             if (!data) return;
 
-            // Populate header & banner
-            document.getElementById('modalLogo').src = data.logo;
+            // Populate Text & Assets
             document.getElementById('modalTitle').textContent = data.title;
-            document.getElementById('modalProvider').textContent = data.provider;
-            document.getElementById('modalBanner').style.backgroundImage = `url('${data.banner}')`;
-            
-            // Populate tagline and intro
-            document.getElementById('modalTagline').textContent = data.tagline;
-            document.getElementById('modalIntro').textContent = data.intro || '';
-            document.getElementById('modalClosing').textContent = data.closing || '';
+            document.getElementById('modalDescription').textContent = data.tagline;
+            document.getElementById('modalLogo').src = data.logo;
+            document.getElementById('modalBanner').src = data.banner;
 
-            // Populate labels
-            document.getElementById('labelHighlights').textContent = data.labelHighlights || 'Plan Highlights';
-            document.getElementById('labelReason').textContent = data.labelReason || 'Who is this for?';
-            document.getElementById('labelBenefits').textContent = data.labelBenefits || 'Key Benefits';
-
-            // Populate Reason Description
-            const reasonDesc = document.getElementById('modalReasonDesc');
-            if (data.reasonDesc) {
-                reasonDesc.innerHTML = data.reasonDesc;
-                reasonDesc.style.display = 'block';
-            } else {
-                reasonDesc.style.display = 'none';
-            }
-
+            // Populate Lists
             const populateList = (id, items) => {
-                const el = document.getElementById(id);
-                if (data.isStacked && id === 'modalBenefits') {
-                    el.classList.add('stacked-list');
-                } else {
-                    el.classList.remove('stacked-list');
+                const list = document.getElementById(id);
+                list.innerHTML = '';
+                if (items && items.length > 0) {
+                    items.forEach(text => {
+                        const li = document.createElement('li');
+                        li.textContent = text.replace(/<\/?[^>]+(>|$)/g, ""); // Clean incidental HTML
+                        list.appendChild(li);
+                    });
                 }
-                el.innerHTML = items ? items.map(item => `<li>${item}</li>`).join('') : '';
             };
 
-            populateList('modalPlanTypes', data.plans);
+            populateList('modalHighlights', data.plans);
             populateList('modalWhoFor', data.whoFor);
-            populateList('modalBenefits', data.benefits);
-
-            // Handle CTA Visibility
-            const footer = document.querySelector('.modal-footer-cta');
-            if (data.hideCta) {
-                footer.style.display = 'none';
-            } else {
-                footer.style.display = 'flex';
-            }
 
             // Show modal
             document.body.classList.add('modal-open');
@@ -1670,100 +2112,88 @@
             if (e.key === 'Escape') closeModal();
         });
 
-        // Modular Carousel Logic
-        function initCarousel(trackId, nextId, prevId) {
-            const track = document.getElementById(trackId);
-            if (!track) return;
-            const originalCards = Array.from(track.children);
+        // Modern Scroll-Based Carousel Logic
+        function initCarousel(viewId, nextId, prevId) {
+            const view = document.getElementById(viewId);
             const nextBtn = document.getElementById(nextId);
             const prevBtn = document.getElementById(prevId);
-            
-            // Clone cards for infinite loop
-            const firstClones = originalCards.map(card => {
-                const clone = card.cloneNode(true);
-                clone.classList.add('is-clone');
-                return clone;
-            });
-            const lastClones = originalCards.map(card => {
-                const clone = card.cloneNode(true);
-                clone.classList.add('is-clone');
-                return clone;
-            });
-            
-            // Insert lastClones at start (reverse to maintain order: T,L,U... becomes [T,L,U][Originals])
-            [...lastClones].reverse().forEach(clone => track.insertBefore(clone, track.firstChild));
-            firstClones.forEach(clone => track.appendChild(clone));
-            
-            let currentIndex = originalCards.length;
-            let isTransitioning = false;
+            if (!view) return;
 
-            function updateCarousel(instant = false) {
-                if (instant) track.style.transition = 'none';
-                else track.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
-                
-                const cardWidth = track.children[0].offsetWidth;
-                const gap = 30;
-                const offset = currentIndex * (cardWidth + gap);
-                
-                const containerWidth = track.parentElement.offsetWidth;
-                const centerPadding = (containerWidth - cardWidth) / 2;
-                
-                track.style.transform = `translateX(${-offset + centerPadding}px)`;
-                
-                Array.from(track.children).forEach((card, index) => {
-                    if (index === currentIndex) {
-                        card.classList.add('focused');
-                        card.classList.add('active');
-                    } else {
-                        card.classList.remove('focused');
-                    }
+            const track = view.querySelector('.carousel-track');
+            
+            // Navigation Buttons
+            const scrollAmount = () => view.offsetWidth * 0.8;
+
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    view.scrollBy({ left: scrollAmount(), behavior: 'smooth' });
                 });
-
-                if (instant) {
-                    track.offsetHeight;
-                    track.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
-                }
             }
 
-            function moveNext() {
-                if (isTransitioning) return;
-                isTransitioning = true;
-                currentIndex++;
-                updateCarousel();
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    view.scrollBy({ left: -scrollAmount(), behavior: 'smooth' });
+                });
             }
 
-            function movePrev() {
-                if (isTransitioning) return;
-                isTransitioning = true;
-                currentIndex--;
-                updateCarousel();
-            }
+            // Drag-to-Scroll Enhancement (Desktop only)
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+            let isDragging = false;
 
-            track.addEventListener('transitionend', () => {
-                isTransitioning = false;
-                if (currentIndex >= originalCards.length * 2) {
-                    currentIndex = originalCards.length;
-                    updateCarousel(true);
-                } else if (currentIndex < originalCards.length) {
-                    currentIndex = originalCards.length * 2 - 1;
-                    updateCarousel(true);
+            view.addEventListener('mousedown', (e) => {
+                isDown = true;
+                view.classList.add('grabbing');
+                startX = e.pageX - view.offsetLeft;
+                scrollLeft = view.scrollLeft;
+                isDragging = false;
+                
+                // Dynamic performance optimization
+                track.style.willChange = 'transform';
+            });
+
+            view.addEventListener('mouseleave', () => {
+                isDown = false;
+                view.classList.remove('grabbing');
+                track.style.willChange = 'auto';
+            });
+
+            view.addEventListener('mouseup', () => {
+                isDown = false;
+                view.classList.remove('grabbing');
+                track.style.willChange = 'auto';
+            });
+
+            view.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - view.offsetLeft;
+                const walk = (x - startX) * 2; // Scroll multiplier
+                view.scrollLeft = scrollLeft - walk;
+                
+                if (Math.abs(walk) > 5) {
+                    isDragging = true;
                 }
             });
 
-            if (nextBtn) nextBtn.addEventListener('click', moveNext);
-            if (prevBtn) prevBtn.addEventListener('click', movePrev);
+            // Prevent link clicks during drag
+            view.addEventListener('click', (e) => {
+                if (isDragging) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+            }, true);
 
-            window.addEventListener('resize', () => updateCarousel(true));
-            
-            // Initial positioning
-            setTimeout(() => updateCarousel(true), 10);
-
-            return { moveNext, movePrev };
+            return {
+                moveNext: () => view.scrollBy({ left: scrollAmount(), behavior: 'smooth' }),
+                movePrev: () => view.scrollBy({ left: -scrollAmount(), behavior: 'smooth' })
+            };
         }
 
-        // Initialize Carousels
-        const solutionsCarousel = initCarousel('carouselTrack', 'nextBtn', 'prevBtn');
-        const plansCarousel = initCarousel('plansTrack', 'plansNextBtn', 'plansPrevBtn');
+        // Initialize Native Carousels
+        const solutionsCarousel = initCarousel('solutionsCarouselView', 'nextBtn', 'prevBtn');
+        const plansCarousel = initCarousel('plansCarouselView', 'plansNextBtn', 'plansPrevBtn');
 
         // Keyboard Navigation
         window.addEventListener('keydown', (e) => {
