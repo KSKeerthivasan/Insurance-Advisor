@@ -244,7 +244,8 @@
         .hero-image img {
             width: 100%;
             max-height: 420px;
-            object-fit: cover;
+            object-fit: contain;
+            background-color: #F9F9F7;
             border-radius: 24px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             animation: float 6s ease-in-out infinite;
@@ -272,97 +273,219 @@
         }
 
         .carousel-view {
-            overflow: hidden;
-            padding: 20px 0;
+            overflow-x: auto;
+            scroll-snap-type: x proximity;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding: 20px 24px;
+            scroll-behavior: smooth;
+        }
+
+        .carousel-view::-webkit-scrollbar {
+            display: none;
         }
 
         .carousel-track {
             display: flex;
-            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            gap: 30px;
-            padding: 0 15px;
+            gap: 24px;
+            width: max-content;
         }
 
         .service-card {
-            background: var(--color-white);
-            padding: 40px 30px;
-            border-radius: 24px;
+            background: #fff;
+            padding: 0;
+            border-radius: 20px;
             text-align: left;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            border: none;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            flex: 0 0 calc(33.333% - 20px); /* 3 cards on desktop */
-            opacity: 0.6;
-            transform: scale(0.9);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            flex: 0 0 31%;
+            min-width: 320px;
+            aspect-ratio: 16 / 9;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .service-card.focused {
-            opacity: 1;
-            transform: scale(1.05);
-            box-shadow: 0 15px 40px rgba(0, 77, 0, 0.08);
-            border: 2px solid var(--color-solutions-bg);
-            z-index: 2;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            scroll-snap-align: start;
         }
 
         .service-card:hover {
-            border-color: var(--color-accent);
+            opacity: 1;
+            transform: scale(1.03);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
         }
 
-        .provider-name {
-            display: block;
-            font-size: 0.85rem;
-            color: var(--color-accent);
-            font-weight: 600;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .service-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: var(--card-img);
+            background-size: cover;
+            background-position: center;
+            transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 1;
         }
 
-        .service-icon {
-            width: 60px;
-            height: 60px;
-            background: #F0F9F4;
+        .service-card:hover::before {
+            transform: scale(1.1);
+        }
+
+        /* Subtle Bottom Gradient for Legibility */
+        .service-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.35) 0%, transparent 40%);
+            z-index: 2;
+        }
+
+        /* Top-Right Branding Element */
+        .card-brand-marker {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            z-index: 10;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 18px;
-            margin-bottom: 25px;
-            color: var(--color-primary);
-            transition: var(--transition);
+            transition: transform 0.3s ease;
         }
 
-        .service-card.focused .service-icon {
-            background: var(--color-primary);
-            color: var(--color-white);
+        .card-brand-marker img {
+            height: 32px;
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
+        }
+
+        .card-trust-badge {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 6px 14px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255,255,255,0.4);
+            white-space: nowrap;
+        }
+
+        /* Bottom Content Area */
+        .card-bottom-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 30px;
+            z-index: 10;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            transition: transform 0.4s ease;
+        }
+
+        .service-card:hover .card-bottom-content {
+            transform: translateY(-5px);
         }
 
         .service-card h3 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin: 0;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        .service-card .subtitle {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            font-weight: 600;
             margin-bottom: 5px;
-            font-size: 1.4rem;
-            color: var(--color-solutions-heading);
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
-        .service-card p {
-            color: #1B4332;
-            font-size: 1rem;
-            margin-bottom: 25px;
-            line-height: 1.5;
+        .service-card .explore-btn {
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--color-primary);
+            border: none;
+            padding: 10px 22px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 10px;
+            width: fit-content;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
-        #plans .service-card {
-            background: #F1F3ED;
+        .service-card .explore-btn:hover {
+            background: var(--color-accent);
+            color: var(--color-primary);
+            transform: scale(1.05);
         }
 
-        #plans .service-card h3 {
-            color: #000000;
+        /* Card Typography & Elements */
+        .service-card h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin: 0;
+            line-height: 1.2;
+            color: white;
+            transition: transform 0.3s ease;
         }
 
-        #plans .service-card p, 
-        #plans .service-card li {
-            color: #000000 !important;
+        .service-card:hover h3 {
+            transform: translateY(-2px);
+        }
+
+        .service-card .subtitle {
+            font-size: 0.85rem;
+            opacity: 0.85;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 4px;
+        }
+
+        .service-card .explore-btn {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 10px 24px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: auto;
+            align-self: flex-start;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .service-card .explore-btn:hover {
+            background: var(--color-accent);
+            border-color: var(--color-accent);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .service-card .card-bottom-content {
+            position: absolute;
+            inset: 0;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            z-index: 10;
         }
 
         /* Carousel Navigation */
@@ -420,20 +543,102 @@
         /* Responsive */
         @media (max-width: 1024px) {
             .service-card {
-                flex: 0 0 calc(50% - 15px); /* 2 cards on tablet */
+                flex: 0 0 46%; /* ~2.1 cards visible */
+                min-width: 280px;
             }
         }
 
         @media (max-width: 640px) {
-            .carousel-container {
-                padding: 20px 20px 60px;
+            .carousel-view {
+                padding: 20px 16px;
             }
             .service-card {
-                flex: 0 0 100%; /* 1 card on mobile */
+                flex: 0 0 85%; /* ~1.1 cards visible */
+                min-width: 240px;
             }
             .carousel-track {
-                gap: 20px;
+                gap: 16px;
             }
+        }
+
+        /* Solutions Specific Refinement: Stacked Layout */
+        #solutions .service-card {
+            aspect-ratio: auto; /* Remove global ratio to allow vertical extension */
+            display: flex;
+            flex-direction: column;
+            background: #FFFFFF;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+        }
+
+        #solutions .service-card::before {
+            position: relative;
+            inset: auto;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            display: block;
+            z-index: 1;
+        }
+
+        #solutions .service-card::after {
+            display: none; /* Remove bottom-up gradient for clean stacked look */
+        }
+
+        #solutions .card-bottom-content {
+            position: relative;
+            inset: auto;
+            padding: 24px 24px 30px;
+            background: #FFFFFF;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            transform: none !important; /* Prevent hover lift conflicts */
+        }
+
+        #solutions .service-card h3 {
+            color: var(--color-solutions-heading);
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        #solutions .service-card .subtitle {
+            color: var(--color-solutions-text);
+            font-size: 0.9rem;
+            opacity: 0.7;
+            font-weight: 500;
+            margin-bottom: 8px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: block;
+        }
+
+        #solutions .service-card .explore-btn {
+            background: rgba(27, 67, 50, 0.04);
+            color: var(--color-primary);
+            border: 1.5px solid var(--color-primary);
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            margin-top: 10px;
+            box-shadow: none;
+            width: fit-content;
+        }
+
+        #solutions .service-card .explore-btn:hover {
+            background: var(--color-primary);
+            color: #FFFFFF;
+            transform: translateY(-2px);
+        }
+
+        #solutions .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(27, 67, 50, 0.12);
+        }
+
+        @media (max-width: 640px) {
             .nav-btn {
                 width: 36px;
                 height: 36px;
@@ -482,43 +687,166 @@
         }
 
         .modal-poster {
-            background: var(--white);
-            width: 90%;
-            max-width: 1000px;
-            max-height: 85vh;
-            border-radius: 30px;
+            background: #001a0a;
+            width: 95%;
+            max-width: 1200px;
+            height: 600px;
+            border-radius: 24px;
             position: relative;
             overflow: hidden;
             display: flex;
-            flex-direction: column;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.1);
-            transform: scale(0.8) translateY(30px);
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.4);
+            transform: scale(0.8);
             opacity: 0;
             transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         .modal-overlay.active .modal-poster {
-            transform: scale(1) translateY(0);
+            transform: scale(1);
             opacity: 1;
+        }
+
+        /* Modal Split Layout */
+        .modal-left-pane {
+            width: 55%;
+            padding: 50px 60px;
+            background: linear-gradient(145deg, #001f0f 0%, #00331a 100%);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow-y: auto;
+            color: white;
+        }
+
+        .modal-right-pane {
+            width: 45%;
+            background-color: #f9f9f7;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .modal-banner-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background-color: #f9f9f7;
+        }
+
+        .modal-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 20px;
+            align-self: flex-start;
+            opacity: 0.7; /* Subtly integrated badge */
+        }
+
+        .modal-logo-pill {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(245, 250, 247, 0.9));
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            padding: 8px 18px;
+            border-radius: 999px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            align-self: flex-start;
+            width: fit-content;
+            max-width: 320px;
+            transition: all 0.3s ease;
+        }
+
+        .modal-logo {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+            filter: none !important;
+        }
+
+        .modal-main-title {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+
+        .modal-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 35px;
+            max-width: 90%;
+        }
+
+        .modal-info-grid {
+            margin-bottom: 20px;
+        }
+
+        .modal-info-section {
+            margin-bottom: 30px;
+        }
+
+        .modal-info-label {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: block;
+            color: white;
+        }
+
+        .modal-vertical-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .modal-vertical-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.4;
+        }
+
+        .modal-vertical-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--color-accent);
+            font-weight: bold;
         }
 
         .modal-close {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.9);
-            border: none;
+            top: 25px;
+            right: 25px;
+            width: 44px;
+            height: 44px;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 50%;
-            font-size: 1.5rem;
+            color: white;
+            font-size: 1.8rem;
             cursor: pointer;
-            z-index: 10;
+            z-index: 100;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            transition: var(--transition);
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: white;
+            color: #001a0a;
+            transform: rotate(90deg);
         }
 
         .modal-close:hover {
@@ -527,20 +855,7 @@
             color: var(--cta);
         }
 
-        .modal-header-section {
-            padding: 30px 40px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            background: white;
-            border-bottom: 1px solid var(--bg-section);
-        }
-
-        .modal-logo {
-            height: 50px;
-            width: auto;
-            object-fit: contain;
-        }
+        /* Removed redundant modal-header-section and modal-logo overrides */
 
         .modal-header-text {
             display: flex;
@@ -564,10 +879,27 @@
 
         .modal-banner {
             width: 100%;
-            height: 250px;
-            background-size: cover;
+            height: 400px;
+            background-image: var(--banner-url);
+            background-size: contain;
+            background-repeat: no-repeat;
             background-position: center;
             position: relative;
+            overflow: hidden;
+            background-color: #0B0B0B;
+            z-index: 1;
+        }
+
+        .modal-banner::before {
+            content: '';
+            position: absolute;
+            top: -20px; left: -20px; right: -20px; bottom: -20px;
+            background-image: var(--banner-url);
+            background-size: cover;
+            background-position: center;
+            filter: blur(20px) brightness(0.6);
+            opacity: 0.5;
+            z-index: -1;
         }
 
         .modal-banner::after {
@@ -581,7 +913,7 @@
         }
 
         .modal-body-scroll {
-            padding: 40px;
+            padding: 20px 40px 40px;
             overflow-y: auto;
             flex-grow: 1;
             background: white;
@@ -608,7 +940,7 @@
         }
 
         .modal-section {
-            margin-bottom: 40px;
+            margin-bottom: 25px;
             padding-left: 20px;
             border-left: 3px solid var(--cta);
         }
@@ -702,13 +1034,7 @@
             font-style: italic;
         }
 
-        .modal-footer-cta {
-            padding: 30px 40px;
-            background: var(--bg-main);
-            display: flex;
-            justify-content: flex-end;
-            border-top: 1px solid var(--bg-section);
-        }
+
 
         @media (max-width: 768px) {
             .modal-poster {
@@ -809,7 +1135,8 @@
             width: 140px;
             height: 140px;
             border-radius: 50%;
-            object-fit: cover;
+            object-fit: contain;
+            background-color: #F9F9F7;
             border: 4px solid var(--color-agent-bg);
             padding: 4px;
             margin-bottom: 25px;
@@ -977,11 +1304,13 @@
         }
 
         .card-badge-container {
-            background: #ffffff;
+            background: #F9F9F7;
             padding: 8px 12px;
             border-radius: 8px;
             box-shadow: 0 2px 6px rgba(0,0,0,0.04);
             display: inline-flex;
+            align-items: center;
+            justify-content: center;
             margin-bottom: 20px;
         }
 
@@ -989,6 +1318,9 @@
             height: 32px;
             width: auto;
             object-fit: contain;
+            background-color: #F9F9F7;
+            padding: 4px;
+            border-radius: 6px;
         }
 
         .logo-strip {
@@ -1100,58 +1432,54 @@
             <h2 class="section-title reveal">Solutions We Offer</h2>
             
             <div class="carousel-container">
-                <div class="carousel-view">
-                    <div class="carousel-track" id="carouselTrack">
+                <div class="carousel-view" id="solutionsCarouselView">
+                    <div class="carousel-track">
                         <!-- Life & Wealth Protection -->
-                        <div class="service-card reveal">
-                            <div>
-                                <div class="card-badge-container">
-                                    <img src="assets/logos/lic-color.svg" alt="LIC" class="card-badge">
-                                </div>
-                                <span class="provider-name">Life Insurance Corporation of India (LIC)</span>
-                                <h3>Life & Wealth Protection</h3>
-                                <p>Term Insurance, Endowment Plans, Money Back, Child Plans, Retirement Solutions</p>
+                        <div class="service-card reveal" style="--card-img: url('assets/life-banner.png')">
+                            <div class="card-brand-marker">
+                                <img src="assets/logos/lic-color.svg" alt="LIC">
                             </div>
-                            <button class="btn btn-outline explore-btn" data-service="life" style="padding: 10px 20px; font-size: 0.85rem; width: 100%;">Explore</button>
+                            <div class="card-bottom-content">
+                                <h3>Life & Wealth</h3>
+                                <span class="subtitle">LIC (Life Insurance Corporation of India)</span>
+                                <button class="explore-btn" data-service="life">Explore More</button>
+                            </div>
                         </div>
                         
                         <!-- Health Insurance -->
-                        <div class="service-card reveal">
-                            <div>
-                                <div class="card-badge-container">
-                                    <img src="assets/logos/star-health-color.svg" alt="Star Health" class="card-badge">
-                                </div>
-                                <span class="provider-name">Star Health and Allied Insurance</span>
-                                <h3>Health Insurance</h3>
-                                <p>Individual Plans, Family Floater, Senior Citizen Plans, Critical Illness, Top-Up Covers</p>
+                        <div class="service-card reveal" style="--card-img: url('assets/health-banner.png')">
+                            <div class="card-brand-marker">
+                                <img src="assets/logos/star-health-color.svg" alt="Star Health">
                             </div>
-                            <button class="btn btn-outline explore-btn" data-service="health" style="padding: 10px 20px; font-size: 0.85rem; width: 100%;">Explore</button>
+                            <div class="card-bottom-content">
+                                <h3>Health Insurance</h3>
+                                <span class="subtitle">Star Health & Allied Insurance</span>
+                                <button class="explore-btn" data-service="health">Explore More</button>
+                            </div>
                         </div>
                         
                         <!-- General Insurance -->
-                        <div class="service-card reveal">
-                            <div>
-                                <div class="card-badge-container">
-                                    <img src="assets/logos/united-color.svg" alt="United India" class="card-badge">
-                                </div>
-                                <span class="provider-name">United India Insurance Company</span>
-                                <h3>General Insurance</h3>
-                                <p>Motor, Travel, Property, Personal Accident, Cyber Insurance</p>
+                        <div class="service-card reveal" style="--card-img: url('assets/general-banner.png')">
+                            <div class="card-brand-marker">
+                                <img src="assets/logo-1/united-collapse.png" alt="United India">
                             </div>
-                            <button class="btn btn-outline explore-btn" data-service="general" style="padding: 10px 20px; font-size: 0.85rem; width: 100%;">Explore</button>
+                            <div class="card-bottom-content">
+                                <h3>General Insurance</h3>
+                                <span class="subtitle">United India Insurance Company</span>
+                                <button class="explore-btn" data-service="general">Explore More</button>
+                            </div>
                         </div>
                         
                         <!-- Loans & Finance -->
-                        <div class="service-card reveal">
-                            <div>
-                                <div class="card-badge-container">
-                                    <img src="assets/logos/lic-housing-color.svg" alt="LIC Housing Finance" class="card-badge">
-                                </div>
-                                <span class="provider-name">LIC Housing Finance Ltd</span>
-                                <h3>Loans & Finance</h3>
-                                <p>Home Loans, Loan Against Property, Renovation Loans, Balance Transfer</p>
+                        <div class="service-card reveal" style="--card-img: url('assets/loans-banner.png')">
+                            <div class="card-brand-marker">
+                                <img src="assets/logos/lic-housing-color.svg" alt="LIC Housing Finance">
                             </div>
-                            <button class="btn btn-outline explore-btn" data-service="loans" style="padding: 10px 20px; font-size: 0.85rem; width: 100%;">Explore</button>
+                            <div class="card-bottom-content">
+                                <h3>Loans & Finance</h3>
+                                <span class="subtitle">LIC Housing Finance Ltd</span>
+                                <button class="explore-btn" data-service="loans">Explore More</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1175,130 +1503,90 @@
             <h2 class="section-title reveal">Popular LIC Plans</h2>
             
             <div class="carousel-container">
-                <div class="carousel-view">
-                    <div class="carousel-track" id="plansTrack">
+                <div class="carousel-view" id="plansCarouselView">
+                    <div class="carousel-track">
                         <!-- Future-Ready Child Plan -->
-                        <div class="service-card reveal">
-                            <div>
-                                <img src="assets/logos/lic-color.svg" alt="LIC" class="card-badge">
-                                <span class="provider-name">LIC Jeevan Tarun</span>
-                                <h3>Future-Ready Child Plan</h3>
-                                <p>Secure your child’s future with guaranteed savings and protection</p>
-                                <ul style="list-style: none; margin-bottom: 20px;">
-                                    <li style="font-size: 0.9rem; color: var(--color-plans-text); margin-bottom: 5px; opacity: 0.85;">✔ Education payouts (20–24)</li>
-                                    <li style="font-size: 0.9rem; color: var(--color-plans-text); margin-bottom: 5px; opacity: 0.85;">✔ Maturity at 25</li>
-                                    <li style="font-size: 0.9rem; color: var(--color-plans-text); margin-bottom: 5px; opacity: 0.85;">✔ Life cover + bonus</li>
-                                </ul>
+                        <div class="service-card reveal" style="--card-img: url('assets/tarun-banner.png')">
+                            <div class="card-brand-marker">
+                                <div class="card-trust-badge">Trusted Plan</div>
                             </div>
-                            <button class="btn btn-outline explore-btn" data-service="tarun" style="padding: 10px 20px; font-size: 0.85rem; width: 100%;">Explore</button>
+                            <div class="card-bottom-content">
+                                <h3>Child Savings</h3>
+                                <span class="subtitle">Secure Your Child’s Future Today</span>
+                                <button class="explore-btn" data-service="tarun">Explore More</button>
+                            </div>
                         </div>
 
                         <!-- Guaranteed Savings Plan -->
-                        <div class="service-card reveal">
-                            <div>
-                                <div class="card-badge-container">
-                                    <img src="assets/logos/lic-color.svg" alt="LIC" class="card-badge">
-                                </div>
-                                <span class="provider-name">LIC Jeevan Labh</span>
-                                <h3>Guaranteed Savings Plan</h3>
-                                <p>Pay for a limited time. Enjoy long-term benefits</p>
-                                <ul style="list-style: none; margin-bottom: 20px;">
-                                    <li style="font-size: 0.9rem; color: var(--text-dark); margin-bottom: 5px; opacity: 0.85;">✔ Limited premium term</li>
-                                    <li style="font-size: 0.9rem; color: var(--text-dark); margin-bottom: 5px; opacity: 0.85;">✔ Guaranteed maturity + bonus</li>
-                                    <li style="font-size: 0.9rem; color: var(--text-dark); margin-bottom: 5px; opacity: 0.85;">✔ Life cover throughout</li>
-                                </ul>
+                        <div class="service-card reveal" style="--card-img: url('assets/life-banner.png')">
+                            <div class="card-brand-marker">
+                                <div class="card-trust-badge">Best Seller</div>
                             </div>
-                            <button class="btn btn-outline explore-btn" data-service="labh" style="padding: 10px 20px; font-size: 0.85rem; width: 100%;">Explore</button>
+                            <div class="card-bottom-content">
+                                <h3>Guaranteed Savings</h3>
+                                <span class="subtitle">Limited Term, Lifelong Benefit</span>
+                                <button class="explore-btn" data-service="labh">Explore More</button>
+                            </div>
                         </div>
 
                         <!-- Lifetime Income Plan -->
-                        <div class="service-card reveal">
-                            <div>
-                                <div class="card-badge-container">
-                                    <img src="assets/logos/lic-color.svg" alt="LIC" class="card-badge">
-                                </div>
-                                <span class="provider-name">LIC Jeevan Utsav</span>
-                                <h3>Lifetime Income Plan</h3>
-                                <p>Turn your savings into a guaranteed lifelong income</p>
-                                <ul style="list-style: none; margin-bottom: 20px;">
-                                    <li style="font-size: 0.9rem; color: var(--text-dark); margin-bottom: 5px; opacity: 0.85;">✔ Guaranteed yearly income</li>
-                                    <li style="font-size: 0.9rem; color: var(--text-dark); margin-bottom: 5px; opacity: 0.85;">✔ Whole life coverage</li>
-                                    <li style="font-size: 0.9rem; color: var(--text-dark); margin-bottom: 5px; opacity: 0.85;">✔ Flexible income options</li>
-                                </ul>
+                        <div class="service-card reveal" style="--card-img: url('assets/life-banner.png')">
+                            <div class="card-brand-marker">
+                                <div class="card-trust-badge">Popular</div>
                             </div>
-                            <button class="btn btn-outline explore-btn" data-service="utsav" style="padding: 10px 20px; font-size: 0.85rem; width: 100%;">Explore</button>
+                            <div class="card-bottom-content">
+                                <h3>Lifetime Income</h3>
+                                <span class="subtitle">Guaranteed Yearly Payouts for Life</span>
+                                <button class="explore-btn" data-service="utsav">Explore More</button>
+                            </div>
                         </div>
 
                         <!-- Money Back Savings Plan -->
-                        <div class="service-card reveal">
-                            <div>
-                                <div class="card-badge-container">
-                                    <img src="assets/logos/lic-color.svg" alt="LIC" class="card-badge">
-                                </div>
-                                <span class="provider-name">LIC Money Back Plan – 25 Years</span>
-                                <h3>Money Back Savings Plan</h3>
-                                <p>Get regular payouts while staying fully protected</p>
-                                <ul style="list-style: none; margin-bottom: 20px;">
-                                    <li style="font-size: 0.9rem; color: var(--text-dark); margin-bottom: 5px; opacity: 0.85;">✔ Periodic payouts (every 5 years)</li>
-                                    <li style="font-size: 0.9rem; color: var(--text-dark); margin-bottom: 5px; opacity: 0.85;">✔ Life cover + bonus</li>
-                                    <li style="font-size: 0.9rem; color: var(--text-dark); margin-bottom: 5px; opacity: 0.85;">✔ Final maturity benefit</li>
-                                </ul>
+                        <div class="service-card reveal" style="--card-img: url('assets/life-banner.png')">
+                            <div class="card-brand-marker">
+                                <img src="assets/logos/lic-color.svg" alt="LIC">
                             </div>
-                            <button class="btn btn-outline explore-btn" data-service="moneyBack" style="padding: 10px 20px; font-size: 0.85rem; width: 100%;">Explore</button>
+                            <div class="card-bottom-content">
+                                <h3>Money Back</h3>
+                                <span class="subtitle">Regular Payouts & Full Protection</span>
+                                <button class="explore-btn" data-service="moneyBack">Explore More</button>
+                            </div>
                         </div>
 
                         <!-- Guaranteed Income Plan -->
-                        <div class="service-card reveal">
-                            <div>
-                                <div class="card-badge-container">
-                                    <img src="assets/logos/lic-color.svg" alt="LIC" class="card-badge">
-                                </div>
-                                <span class="provider-name">LIC Jeevan Shanti</span>
-                                <h3>Guaranteed Income Plan</h3>
-                                <p>Turn a one-time investment into lifelong income</p>
-                                <ul style="list-style: none; margin-bottom: 20px;">
-                                    <li style="font-size: 0.9rem; color: var(--text-dark); margin-bottom: 5px; opacity: 0.85;">✔ Lifetime guaranteed annuity</li>
-                                    <li style="font-size: 0.9rem; color: var(--text-dark); margin-bottom: 5px; opacity: 0.85;">✔ Single premium (no recurring payments)</li>
-                                    <li style="font-size: 0.9rem; color: var(--text-dark); margin-bottom: 5px; opacity: 0.85;">✔ Flexible payout options</li>
-                                </ul>
+                        <div class="service-card reveal" style="--card-img: url('assets/life-banner.png')">
+                            <div class="card-brand-marker">
+                                <div class="card-trust-badge">Guaranteed</div>
                             </div>
-                            <button class="btn btn-outline explore-btn" data-service="shanti" style="padding: 10px 20px; font-size: 0.85rem; width: 100%;">Explore</button>
+                            <div class="card-bottom-content">
+                                <h3>Guaranteed Income</h3>
+                                <span class="subtitle">One-Time Investment, Lifelong Income</span>
+                                <button class="explore-btn" data-service="shanti">Explore More</button>
+                            </div>
                         </div>
 
                         <!-- Instant Income Plan -->
-                        <div class="service-card reveal">
-                            <div>
-                                <div class="card-badge-container">
-                                    <img src="assets/logos/lic-color.svg" alt="LIC" class="card-badge">
-                                </div>
-                                <span class="provider-name">LIC Jeevan Akshay VII</span>
-                                <h3>Instant Income Plan</h3>
-                                <p>Start receiving guaranteed income immediately</p>
-                                <ul style="list-style: none; margin-bottom: 20px;">
-                                    <li style="font-size: 0.9rem; color: var(--text-dark); margin-bottom: 5px; opacity: 0.85;">✔ Immediate annuity (no waiting)</li>
-                                    <li style="font-size: 0.9rem; color: var(--text-dark); margin-bottom: 5px; opacity: 0.85;">✔ Lifetime guaranteed income</li>
-                                    <li style="font-size: 0.9rem; color: var(--text-dark); margin-bottom: 5px; opacity: 0.85;">✔ Multiple payout options</li>
-                                </ul>
+                        <div class="service-card reveal" style="--card-img: url('assets/life-banner.png')">
+                            <div class="card-brand-marker">
+                                <div class="card-trust-badge">Instant</div>
                             </div>
-                            <button class="btn btn-outline explore-btn" data-service="akshay" style="padding: 10px 20px; font-size: 0.85rem; width: 100%;">Explore</button>
+                            <div class="card-bottom-content">
+                                <h3>Instant Income</h3>
+                                <span class="subtitle">Immediate Guaranteed Lifetime Cash Flow</span>
+                                <button class="explore-btn" data-service="akshay">Explore More</button>
+                            </div>
                         </div>
 
                         <!-- Pure Protection Plan -->
-                        <div class="service-card reveal">
-                            <div>
-                                <div class="card-badge-container">
-                                    <img src="assets/logos/lic-color.svg" alt="LIC" class="card-badge">
-                                </div>
-                                <span class="provider-name">LIC Jeevan Amar</span>
-                                <h3>Pure Protection Plan</h3>
-                                <p>Maximum life cover at minimal cost</p>
-                                <ul style="list-style: none; margin-bottom: 20px;">
-                                    <li style="font-size: 0.9rem; color: var(--text-dark); margin-bottom: 5px; opacity: 0.85;">✔ High coverage at low premium</li>
-                                    <li style="font-size: 0.9rem; color: var(--text-dark); margin-bottom: 5px; opacity: 0.85;">✔ Pure protection (no investment)</li>
-                                    <li style="font-size: 0.9rem; color: var(--text-dark); margin-bottom: 5px; opacity: 0.85;">✔ Flexible policy options</li>
-                                </ul>
+                        <div class="service-card reveal" style="--card-img: url('assets/life-banner.png')">
+                            <div class="card-brand-marker">
+                                <div class="card-trust-badge">Pure Protection</div>
                             </div>
-                            <button class="btn btn-outline explore-btn" data-service="amar" style="padding: 10px 20px; font-size: 0.85rem; width: 100%;">Explore</button>
+                            <div class="card-bottom-content">
+                                <h3>Pure Protection</h3>
+                                <span class="subtitle">Maximum Life Cover at Minimal Cost</span>
+                                <button class="explore-btn" data-service="amar">Explore More</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1347,7 +1635,7 @@
                         <img src="assets/logos/star-health-color.svg" alt="Star Health">
                     </div>
                     <div class="logo-container">
-                        <img src="assets/logos/united-color.svg" alt="United India">
+                        <img src="assets/logo-1/united-collapse.png" alt="United India">
                     </div>
                     <div class="logo-container">
                         <img src="assets/logos/lic-housing-color.svg" alt="LIC Housing Finance">
@@ -1411,7 +1699,7 @@
                             <img src="assets/logos/star-health-color.svg" alt="Star Health">
                         </div>
                         <div class="logo-container">
-                            <img src="assets/logos/united-color.svg" alt="United India">
+                            <img src="assets/logo-1/united-collapse.png" alt="United India">
                         </div>
                         <div class="logo-container">
                             <img src="assets/logos/lic-housing-color.svg" alt="LIC Housing Finance">
@@ -1449,47 +1737,31 @@
     <!-- Solutions Modal System -->
     <div class="modal-overlay" id="serviceModalOverlay">
         <div class="modal-poster" id="serviceModal">
-            <button class="modal-close" id="closeModal">&times;</button>
+            <button class="modal-close" id="closeModal" aria-label="Close modal">&times;</button>
             
-            <div class="modal-header-section">
-                <div class="logo-container" style="padding: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.08);">
-                    <img src="" alt="Provider Logo" class="modal-logo" id="modalLogo" style="height: 48px; width: auto; object-fit: contain;">
+            <div class="modal-left-pane">
+                <span class="modal-badge">Trusted Insurance</span>
+                <div class="modal-logo-pill">
+                    <img src="" alt="Provider Logo" class="modal-logo" id="modalLogo">
                 </div>
-                <div class="modal-header-text">
-                    <p id="modalProvider" class="modal-subtitle">Category Title</p>
-                    <h2 id="modalTitle" class="modal-main-title">Plan Name</h2>
-                </div>
-            </div>
-
-            <div class="modal-banner" id="modalBanner"></div>
-
-            <div class="modal-body-scroll">
-                <div class="modal-detail-content">
-                    <p class="modal-tagline" id="modalTagline">Tagline goes here...</p>
-                    <p class="modal-intro" id="modalIntro"></p>
+                <h2 class="modal-main-title" id="modalTitle">Life & Wealth Protection</h2>
+                <p class="modal-description" id="modalDescription">Secure your family's future with trusted LIC plans.</p>
+                
+                <div class="modal-info-grid">
+                    <div class="modal-info-section">
+                        <span class="modal-info-label">Plan Highlights</span>
+                        <ul class="modal-vertical-list" id="modalHighlights"></ul>
+                    </div>
                     
-                    <div class="modal-section" id="sectionHighlights">
-                        <h4 id="labelHighlights">Plan Highlights</h4>
-                        <ul id="modalPlanTypes"></ul>
+                    <div class="modal-info-section">
+                        <span class="modal-info-label">Who is this for?</span>
+                        <ul class="modal-vertical-list" id="modalWhoFor"></ul>
                     </div>
-
-                    <div class="modal-section" id="sectionReason">
-                        <h4 id="labelReason">Why choose this plan?</h4>
-                        <p id="modalReasonDesc" style="margin-bottom: 15px; display: none;"></p>
-                        <ul id="modalWhoFor"></ul>
-                    </div>
-
-                    <div class="modal-section" id="sectionBenefits">
-                        <h4 id="labelBenefits">Key Benefits</h4>
-                        <ul id="modalBenefits"></ul>
-                    </div>
-
-                    <p class="modal-closing" id="modalClosing"></p>
                 </div>
             </div>
 
-            <div class="modal-footer-cta">
-                <a href="tel:8248013879" class="btn btn-primary">Contact Advisor</a>
+            <div class="modal-right-pane">
+                <img src="" alt="Banner" class="modal-banner-img" id="modalBanner">
             </div>
         </div>
     </div>
@@ -1502,14 +1774,13 @@
                 var windowHeight = window.innerHeight;
                 var elementTop = reveals[i].getBoundingClientRect().top;
                 var elementVisible = 100;
-                if (elementTop < windowHeight - elementVisible) {
+                if (elementTop < windowHeight - windowHeight / 4) {
                     reveals[i].classList.add("active");
                 }
             }
         }
 
         window.addEventListener("scroll", reveal);
-        // Initial call
         reveal();
 
         // Modal Logic
@@ -1537,7 +1808,7 @@
             general: {
                 title: "General Insurance",
                 provider: "United India Insurance Company",
-                logo: "assets/logos/united-color.svg",
+                logo: "assets/logo-1/united-expnd.png",
                 banner: "assets/general-banner.png",
                 tagline: "Protect your assets, travel, and risks effectively.",
                 plans: ["Motor Insurance (2W/4W)", "Travel Insurance", "Property/Home Insurance", "Personal Accident Cover", "Cyber Insurance"],
@@ -1788,52 +2059,27 @@
             const data = modalData[serviceKey];
             if (!data) return;
 
-            // Populate header & banner
-            document.getElementById('modalLogo').src = data.logo;
+            // Populate Text & Assets
             document.getElementById('modalTitle').textContent = data.title;
-            document.getElementById('modalProvider').textContent = data.provider;
-            document.getElementById('modalBanner').style.backgroundImage = `url('${data.banner}')`;
-            
-            // Populate tagline and intro
-            document.getElementById('modalTagline').textContent = data.tagline;
-            document.getElementById('modalIntro').textContent = data.intro || '';
-            document.getElementById('modalClosing').textContent = data.closing || '';
+            document.getElementById('modalDescription').textContent = data.tagline;
+            document.getElementById('modalLogo').src = data.logo;
+            document.getElementById('modalBanner').src = data.banner;
 
-            // Populate labels
-            document.getElementById('labelHighlights').textContent = data.labelHighlights || 'Plan Highlights';
-            document.getElementById('labelReason').textContent = data.labelReason || 'Who is this for?';
-            document.getElementById('labelBenefits').textContent = data.labelBenefits || 'Key Benefits';
-
-            // Populate Reason Description
-            const reasonDesc = document.getElementById('modalReasonDesc');
-            if (data.reasonDesc) {
-                reasonDesc.innerHTML = data.reasonDesc;
-                reasonDesc.style.display = 'block';
-            } else {
-                reasonDesc.style.display = 'none';
-            }
-
+            // Populate Lists
             const populateList = (id, items) => {
-                const el = document.getElementById(id);
-                if (data.isStacked && id === 'modalBenefits') {
-                    el.classList.add('stacked-list');
-                } else {
-                    el.classList.remove('stacked-list');
+                const list = document.getElementById(id);
+                list.innerHTML = '';
+                if (items && items.length > 0) {
+                    items.forEach(text => {
+                        const li = document.createElement('li');
+                        li.textContent = text.replace(/<\/?[^>]+(>|$)/g, ""); // Clean incidental HTML
+                        list.appendChild(li);
+                    });
                 }
-                el.innerHTML = items ? items.map(item => `<li>${item}</li>`).join('') : '';
             };
 
-            populateList('modalPlanTypes', data.plans);
+            populateList('modalHighlights', data.plans);
             populateList('modalWhoFor', data.whoFor);
-            populateList('modalBenefits', data.benefits);
-
-            // Handle CTA Visibility
-            const footer = document.querySelector('.modal-footer-cta');
-            if (data.hideCta) {
-                footer.style.display = 'none';
-            } else {
-                footer.style.display = 'flex';
-            }
 
             // Show modal
             document.body.classList.add('modal-open');
@@ -1863,100 +2109,88 @@
             if (e.key === 'Escape') closeModal();
         });
 
-        // Modular Carousel Logic
-        function initCarousel(trackId, nextId, prevId) {
-            const track = document.getElementById(trackId);
-            if (!track) return;
-            const originalCards = Array.from(track.children);
+        // Modern Scroll-Based Carousel Logic
+        function initCarousel(viewId, nextId, prevId) {
+            const view = document.getElementById(viewId);
             const nextBtn = document.getElementById(nextId);
             const prevBtn = document.getElementById(prevId);
-            
-            // Clone cards for infinite loop
-            const firstClones = originalCards.map(card => {
-                const clone = card.cloneNode(true);
-                clone.classList.add('is-clone');
-                return clone;
-            });
-            const lastClones = originalCards.map(card => {
-                const clone = card.cloneNode(true);
-                clone.classList.add('is-clone');
-                return clone;
-            });
-            
-            // Insert lastClones at start (reverse to maintain order: T,L,U... becomes [T,L,U][Originals])
-            [...lastClones].reverse().forEach(clone => track.insertBefore(clone, track.firstChild));
-            firstClones.forEach(clone => track.appendChild(clone));
-            
-            let currentIndex = originalCards.length;
-            let isTransitioning = false;
+            if (!view) return;
 
-            function updateCarousel(instant = false) {
-                if (instant) track.style.transition = 'none';
-                else track.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
-                
-                const cardWidth = track.children[0].offsetWidth;
-                const gap = 30;
-                const offset = currentIndex * (cardWidth + gap);
-                
-                const containerWidth = track.parentElement.offsetWidth;
-                const centerPadding = (containerWidth - cardWidth) / 2;
-                
-                track.style.transform = `translateX(${-offset + centerPadding}px)`;
-                
-                Array.from(track.children).forEach((card, index) => {
-                    if (index === currentIndex) {
-                        card.classList.add('focused');
-                        card.classList.add('active');
-                    } else {
-                        card.classList.remove('focused');
-                    }
+            const track = view.querySelector('.carousel-track');
+            
+            // Navigation Buttons
+            const scrollAmount = () => view.offsetWidth * 0.8;
+
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    view.scrollBy({ left: scrollAmount(), behavior: 'smooth' });
                 });
-
-                if (instant) {
-                    track.offsetHeight;
-                    track.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
-                }
             }
 
-            function moveNext() {
-                if (isTransitioning) return;
-                isTransitioning = true;
-                currentIndex++;
-                updateCarousel();
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    view.scrollBy({ left: -scrollAmount(), behavior: 'smooth' });
+                });
             }
 
-            function movePrev() {
-                if (isTransitioning) return;
-                isTransitioning = true;
-                currentIndex--;
-                updateCarousel();
-            }
+            // Drag-to-Scroll Enhancement (Desktop only)
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+            let isDragging = false;
 
-            track.addEventListener('transitionend', () => {
-                isTransitioning = false;
-                if (currentIndex >= originalCards.length * 2) {
-                    currentIndex = originalCards.length;
-                    updateCarousel(true);
-                } else if (currentIndex < originalCards.length) {
-                    currentIndex = originalCards.length * 2 - 1;
-                    updateCarousel(true);
+            view.addEventListener('mousedown', (e) => {
+                isDown = true;
+                view.classList.add('grabbing');
+                startX = e.pageX - view.offsetLeft;
+                scrollLeft = view.scrollLeft;
+                isDragging = false;
+                
+                // Dynamic performance optimization
+                track.style.willChange = 'transform';
+            });
+
+            view.addEventListener('mouseleave', () => {
+                isDown = false;
+                view.classList.remove('grabbing');
+                track.style.willChange = 'auto';
+            });
+
+            view.addEventListener('mouseup', () => {
+                isDown = false;
+                view.classList.remove('grabbing');
+                track.style.willChange = 'auto';
+            });
+
+            view.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - view.offsetLeft;
+                const walk = (x - startX) * 2; // Scroll multiplier
+                view.scrollLeft = scrollLeft - walk;
+                
+                if (Math.abs(walk) > 5) {
+                    isDragging = true;
                 }
             });
 
-            if (nextBtn) nextBtn.addEventListener('click', moveNext);
-            if (prevBtn) prevBtn.addEventListener('click', movePrev);
+            // Prevent link clicks during drag
+            view.addEventListener('click', (e) => {
+                if (isDragging) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+            }, true);
 
-            window.addEventListener('resize', () => updateCarousel(true));
-            
-            // Initial positioning
-            setTimeout(() => updateCarousel(true), 10);
-
-            return { moveNext, movePrev };
+            return {
+                moveNext: () => view.scrollBy({ left: scrollAmount(), behavior: 'smooth' }),
+                movePrev: () => view.scrollBy({ left: -scrollAmount(), behavior: 'smooth' })
+            };
         }
 
-        // Initialize Carousels
-        const solutionsCarousel = initCarousel('carouselTrack', 'nextBtn', 'prevBtn');
-        const plansCarousel = initCarousel('plansTrack', 'plansNextBtn', 'plansPrevBtn');
+        // Initialize Native Carousels
+        const solutionsCarousel = initCarousel('solutionsCarouselView', 'nextBtn', 'prevBtn');
+        const plansCarousel = initCarousel('plansCarouselView', 'plansNextBtn', 'plansPrevBtn');
 
         // Keyboard Navigation
         window.addEventListener('keydown', (e) => {
