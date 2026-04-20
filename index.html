@@ -31,6 +31,23 @@
             --color-white: #FFFFFF;
 
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+            /* Brand Colors for Popular Plans */
+            --lic-primary: #1D3C8F;
+            --lic-accent: #F7C948;
+            --lic-bg: #F3F6FF;
+
+            --lichfl-primary: #005BAC;
+            --lichfl-accent: #A7C7E7;
+            --lichfl-bg: #F5FAFF;
+
+            --star-primary: #E53935;
+            --star-secondary: #1E88E5;
+            --star-bg: #FFF5F5;
+
+            --united-primary: #00796B;
+            --united-accent: #B2DFDB;
+            --united-bg: #F1FBF9;
         }
 
         * {
@@ -269,7 +286,7 @@
             position: relative;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px 40px 60px;
+            padding: 20px 0; /* Reduced padding to allow peek */
         }
 
         .carousel-view {
@@ -287,7 +304,7 @@
 
         .carousel-track {
             display: flex;
-            gap: 24px;
+            gap: 32px;
             width: max-content;
         }
 
@@ -299,8 +316,8 @@
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
             border: 1px solid rgba(0,0,0,0.05);
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            flex: 0 0 31%;
-            min-width: 320px;
+            flex: 0 0 45%;
+            min-width: 280px;
             aspect-ratio: 16 / 9;
             display: flex;
             flex-direction: column;
@@ -336,7 +353,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.35) 0%, transparent 40%);
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.1) 100%);
             z-index: 2;
         }
 
@@ -441,6 +458,7 @@
             line-height: 1.2;
             color: white;
             transition: transform 0.3s ease;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.5);
         }
 
         .service-card:hover h3 {
@@ -453,6 +471,7 @@
             font-weight: 500;
             color: rgba(255, 255, 255, 0.9);
             margin-bottom: 4px;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.5);
         }
 
         .service-card .explore-btn {
@@ -553,11 +572,11 @@
                 padding: 20px 16px;
             }
             .service-card {
-                flex: 0 0 85%; /* ~1.1 cards visible */
+                flex: 0 0 85%; /* Shows 1 full + peek of next */
                 min-width: 240px;
             }
             .carousel-track {
-                gap: 16px;
+                gap: 24px;
             }
         }
 
@@ -984,6 +1003,74 @@
             margin-top: -2px;
         }
 
+        /* Progressive Content Expansion */
+        .modal-expand-container {
+            margin-top: 30px;
+            display: none; /* Hidden by default, shown via JS if extraSections exists */
+        }
+
+        .modal-expand-btn {
+            background-color: transparent;
+            color: white;
+            border: 1.5px solid rgba(255, 255, 255, 0.3);
+            padding: 10px 22px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .modal-expand-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: white;
+            transform: translateY(-2px);
+        }
+
+        .modal-expand-content {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+            position: relative;
+        }
+
+        .modal-expand-content.active {
+            max-height: 3000px; /* Large enough for detailed content */
+            opacity: 1;
+            padding-top: 25px;
+            margin-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .modal-extra-section {
+            margin-bottom: 30px;
+        }
+
+        .modal-extra-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .modal-extra-title::before {
+            content: '';
+            width: 4px;
+            height: 18px;
+            background: var(--color-accent);
+            border-radius: 2px;
+        }
+
         /* Stacked Detail List Styles */
         .stacked-list li {
             display: block !important;
@@ -1054,7 +1141,7 @@
 
         /* Plans Section */
         #plans {
-            background: #A3B18A;
+            background: var(--lic-bg);
             color: var(--color-plans-text);
         }
         
@@ -1063,15 +1150,104 @@
         }
 
         #plans .nav-btn {
-            background: #A3B18A;
-            border-color: #A3B18A;
-            color: var(--color-plans-heading);
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            color: #344E41;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         #plans .nav-btn:hover {
-            background: var(--color-white);
+            background: rgba(255, 255, 255, 0.7);
             color: var(--color-accent);
-            border-color: var(--color-accent);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        #plans #plansPrevBtn { left: -30px; }
+        #plans #plansNextBtn { right: -30px; }
+        
+        /* Plans Tabs Style */
+        .plans-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 12px 24px;
+            border-radius: 50px;
+            border: 1px solid rgba(0,0,0,0.1);
+            background: rgba(255,255,255,0.5);
+            color: var(--color-plans-heading);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 0.95rem;
+            backdrop-filter: blur(5px);
+        }
+
+        .tab-btn:hover {
+            transform: translateY(-2px);
+            background: rgba(255,255,255,0.8);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .tab-btn.active {
+            background: var(--tab-primary, var(--color-primary));
+            color: white;
+            border-color: var(--tab-primary, var(--color-primary));
+            box-shadow: 0 8px 20px var(--tab-glow, rgba(0,0,0,0.1));
+        }
+
+        /* Brand Card Modifiers */
+        .card-brand-lic { --brand-primary: var(--lic-primary); --brand-bg: var(--lic-bg); }
+        .card-brand-lichfl { --brand-primary: var(--lichfl-primary); --brand-bg: var(--lichfl-bg); }
+        .card-brand-star { --brand-primary: var(--star-primary); --brand-bg: var(--star-bg); }
+        .card-brand-united { --brand-primary: var(--united-primary); --brand-bg: var(--united-bg); }
+
+        .service-card[class*="card-brand-"] {
+            border-color: rgba(0,0,0,0.05);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .service-card[class*="card-brand-"]:hover {
+            border-color: var(--brand-primary);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+        }
+
+        .service-card[class*="card-brand-"] .explore-btn {
+            border-color: var(--brand-primary);
+            color: var(--brand-primary);
+        }
+
+        .service-card[class*="card-brand-"] .explore-btn:hover {
+            background: var(--brand-primary);
+            color: white;
+        }
+
+        /* Visibility classes for tabs */
+        .plans-track-group {
+            display: none;
+            width: 100%;
+        }
+
+        .plans-track-group.active {
+            display: flex;
+            animation: fadeIn 0.4s ease-out;
+            padding-bottom: 20px; /* Space for hover lift */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Section transition */
+        #plans {
+            transition: background-color 0.8s ease;
         }
         
         /* Plans Section Updates - Sharing Carousel Styles */
@@ -1500,13 +1676,22 @@
     <!-- Popular Plans Section -->
     <section id="plans">
         <div class="container">
-            <h2 class="section-title reveal">Popular LIC Plans</h2>
+            <h2 class="section-title reveal">Popular Plans</h2>
+
+            <!-- Provider Tabs -->
+            <div class="plans-tabs reveal">
+                <button class="tab-btn active" onclick="switchTab('lic', this)" style="--tab-primary: var(--lic-primary); --tab-glow: rgba(29, 60, 143, 0.3);">LIC</button>
+                <button class="tab-btn" onclick="switchTab('lichfl', this)" style="--tab-primary: var(--lichfl-primary); --tab-glow: rgba(0, 91, 172, 0.3);">LIC HFL</button>
+                <button class="tab-btn" onclick="switchTab('star', this)" style="--tab-primary: var(--star-primary); --tab-glow: rgba(229, 57, 53, 0.3);">Star Health</button>
+                <button class="tab-btn" onclick="switchTab('united', this)" style="--tab-primary: var(--united-primary); --tab-glow: rgba(0, 121, 107, 0.3);">United India</button>
+            </div>
             
             <div class="carousel-container">
                 <div class="carousel-view" id="plansCarouselView">
-                    <div class="carousel-track">
+                    <!-- LIC Track -->
+                    <div class="carousel-track plans-track-group active" id="track-lic">
                         <!-- Future-Ready Child Plan -->
-                        <div class="service-card reveal" style="--card-img: url('assets/tarun-banner.png')">
+                        <div class="service-card card-brand-lic reveal" style="--card-img: url('assets/tarun-banner.png')">
                             <div class="card-brand-marker">
                                 <div class="card-trust-badge">Trusted Plan</div>
                             </div>
@@ -1518,7 +1703,7 @@
                         </div>
 
                         <!-- Guaranteed Savings Plan -->
-                        <div class="service-card reveal" style="--card-img: url('assets/life-banner.png')">
+                        <div class="service-card card-brand-lic reveal" style="--card-img: url('assets/life-banner.png')">
                             <div class="card-brand-marker">
                                 <div class="card-trust-badge">Best Seller</div>
                             </div>
@@ -1530,7 +1715,7 @@
                         </div>
 
                         <!-- Lifetime Income Plan -->
-                        <div class="service-card reveal" style="--card-img: url('assets/life-banner.png')">
+                        <div class="service-card card-brand-lic reveal" style="--card-img: url('assets/life-banner.png')">
                             <div class="card-brand-marker">
                                 <div class="card-trust-badge">Popular</div>
                             </div>
@@ -1542,7 +1727,7 @@
                         </div>
 
                         <!-- Money Back Savings Plan -->
-                        <div class="service-card reveal" style="--card-img: url('assets/life-banner.png')">
+                        <div class="service-card card-brand-lic reveal" style="--card-img: url('assets/life-banner.png')">
                             <div class="card-brand-marker">
                                 <img src="assets/logos/lic-color.svg" alt="LIC">
                             </div>
@@ -1554,7 +1739,7 @@
                         </div>
 
                         <!-- Guaranteed Income Plan -->
-                        <div class="service-card reveal" style="--card-img: url('assets/life-banner.png')">
+                        <div class="service-card card-brand-lic reveal" style="--card-img: url('assets/life-banner.png')">
                             <div class="card-brand-marker">
                                 <div class="card-trust-badge">Guaranteed</div>
                             </div>
@@ -1566,7 +1751,7 @@
                         </div>
 
                         <!-- Instant Income Plan -->
-                        <div class="service-card reveal" style="--card-img: url('assets/life-banner.png')">
+                        <div class="service-card card-brand-lic reveal" style="--card-img: url('assets/life-banner.png')">
                             <div class="card-brand-marker">
                                 <div class="card-trust-badge">Instant</div>
                             </div>
@@ -1578,7 +1763,7 @@
                         </div>
 
                         <!-- Pure Protection Plan -->
-                        <div class="service-card reveal" style="--card-img: url('assets/life-banner.png')">
+                        <div class="service-card card-brand-lic reveal" style="--card-img: url('assets/life-banner.png')">
                             <div class="card-brand-marker">
                                 <div class="card-trust-badge">Pure Protection</div>
                             </div>
@@ -1586,6 +1771,123 @@
                                 <h3>Pure Protection</h3>
                                 <span class="subtitle">Maximum Life Cover at Minimal Cost</span>
                                 <button class="explore-btn" data-service="amar">Explore More</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- LIC HFL Track -->
+                    <div class="carousel-track plans-track-group" id="track-lichfl">
+                        <!-- Home Loan -->
+                        <div class="service-card card-brand-lichfl reveal" style="--card-img: url('assets/loans-banner.png')">
+                            <div class="card-brand-marker">
+                                <img src="assets/logos/lic-housing-color.svg" alt="LIC HFL">
+                            </div>
+                            <div class="card-bottom-content">
+                                <h3>Home Loan</h3>
+                                <span class="subtitle">Competitive Rates for Your Dream Home</span>
+                                <button class="explore-btn" data-service="homeLoan">Explore More</button>
+                            </div>
+                        </div>
+
+                        <!-- Loan Against Property -->
+                        <div class="service-card card-brand-lichfl reveal" style="--card-img: url('assets/loans-banner.png')">
+                            <div class="card-brand-marker">
+                                <div class="card-trust-badge">High Value</div>
+                            </div>
+                            <div class="card-bottom-content">
+                                <h3>Property Loan</h3>
+                                <span class="subtitle">Unlock Value from Your Owned Property</span>
+                                <button class="explore-btn" data-service="lap">Explore More</button>
+                            </div>
+                        </div>
+
+                        <!-- Plot Loan -->
+                        <div class="service-card card-brand-lichfl reveal" style="--card-img: url('assets/loans-banner.png')">
+                            <div class="card-brand-marker">
+                                <div class="card-trust-badge">Land Purchase</div>
+                            </div>
+                            <div class="card-bottom-content">
+                                <h3>Plot Loan</h3>
+                                <span class="subtitle">Financing for Your Land Investment</span>
+                                <button class="explore-btn" data-service="plot">Explore More</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Star Health Track -->
+                    <div class="carousel-track plans-track-group" id="track-star">
+                        <!-- Star Women Care -->
+                        <div class="service-card card-brand-star reveal" style="--card-img: url('assets/health-banner.png')">
+                            <div class="card-brand-marker">
+                                <img src="assets/logos/star-health-color.svg" alt="Star Health">
+                            </div>
+                            <div class="card-bottom-content">
+                                <h3>Women Care</h3>
+                                <span class="subtitle">Comprehensive Health for Modern Women</span>
+                                <button class="explore-btn" data-service="starWomen">Explore More</button>
+                            </div>
+                        </div>
+
+                        <!-- Senior Citizen Red Carpet -->
+                        <div class="service-card card-brand-star reveal" style="--card-img: url('assets/health-banner.png')">
+                            <div class="card-brand-marker">
+                                <div class="card-trust-badge">60+ Plus</div>
+                            </div>
+                            <div class="card-bottom-content">
+                                <h3>Senior Carpet</h3>
+                                <span class="subtitle">Zero Medical Checkup for Seniors</span>
+                                <button class="explore-btn" data-service="starSenior">Explore More</button>
+                            </div>
+                        </div>
+
+                        <!-- Star Comprehensive -->
+                        <div class="service-card card-brand-star reveal" style="--card-img: url('assets/health-banner.png')">
+                            <div class="card-brand-marker">
+                                <div class="card-trust-badge">Best Seller</div>
+                            </div>
+                            <div class="card-bottom-content">
+                                <h3>Comprehensive</h3>
+                                <span class="subtitle">All-In-One Health Protection</span>
+                                <button class="explore-btn" data-service="starComp">Explore More</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- United India Track -->
+                    <div class="carousel-track plans-track-group" id="track-united">
+                        <!-- Motor Insurance -->
+                        <div class="service-card card-brand-united reveal" style="--card-img: url('assets/general-banner.png')">
+                            <div class="card-brand-marker">
+                                <img src="assets/logo-1/united-collapse.png" alt="United India">
+                            </div>
+                            <div class="card-bottom-content">
+                                <h3>Motor Insurance</h3>
+                                <span class="subtitle">Complete Protection for Your Vehicle</span>
+                                <button class="explore-btn" data-service="uiMotor">Explore More</button>
+                            </div>
+                        </div>
+
+                        <!-- Family Medicare -->
+                        <div class="service-card card-brand-united reveal" style="--card-img: url('assets/general-banner.png')">
+                            <div class="card-brand-marker">
+                                <div class="card-trust-badge">Family First</div>
+                            </div>
+                            <div class="card-bottom-content">
+                                <h3>Family Medicare</h3>
+                                <span class="subtitle">Affordable Health Cover for Families</span>
+                                <button class="explore-btn" data-service="uiFamily">Explore More</button>
+                            </div>
+                        </div>
+
+                        <!-- Personal Accident -->
+                        <div class="service-card card-brand-united reveal" style="--card-img: url('assets/general-banner.png')">
+                            <div class="card-brand-marker">
+                                <div class="card-trust-badge">Accident Shield</div>
+                            </div>
+                            <div class="card-bottom-content">
+                                <h3>Personal Accident</h3>
+                                <span class="subtitle">Financial Support Against Risks</span>
+                                <button class="explore-btn" data-service="uiAccident">Explore More</button>
                             </div>
                         </div>
                     </div>
@@ -1758,6 +2060,17 @@
                         <ul class="modal-vertical-list" id="modalWhoFor"></ul>
                     </div>
                 </div>
+
+                <!-- Progressive Content Expansion Container -->
+                <div class="modal-expand-container" id="modalExpandContainer">
+                    <button class="modal-expand-btn" id="modalExpandBtn">
+                        <span class="btn-text">More Details</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                    <div class="modal-expand-content" id="modalExpandContent">
+                        <!-- Dynamic Detailed Content Here -->
+                    </div>
+                </div>
             </div>
 
             <div class="modal-right-pane">
@@ -1844,6 +2157,43 @@
                     "Structured payouts during key education years",
                     "Combines savings with insurance protection",
                     "Flexible options based on your financial goals"
+                ],
+                extraSections: [
+                    {
+                        title: "What Your Child Gets",
+                        items: [
+                            "<strong>Maturity Benefit:</strong> Receive a lump sum at age 25 along with bonuses (25% to 100% of Sum Assured depending on chosen option)",
+                            "<strong>Life Protection:</strong> Higher of 7× annual premium or 125% of Sum Assured plus bonuses",
+                            "<strong>Guaranteed safety:</strong> Minimum 105% of total premiums paid guaranteed"
+                        ]
+                    },
+                    {
+                        title: "Bonus Growth Benefits",
+                        items: [
+                            "Participates in LIC profits regularly",
+                            "Earns Simple Reversionary Bonus annually",
+                            "Eligible for Final Additional Bonus on maturity or claim"
+                        ]
+                    },
+                    {
+                        title: "Flexible As Your Needs",
+                        items: [
+                            "Choose annual payout option (0% to 15% from age 20 to 24)",
+                            "Option to receive benefits in installments",
+                            "Loan facility available after 2 full years of premiums",
+                            "Premium Waiver Rider available for parent's protection"
+                        ]
+                    },
+                    {
+                        title: "Plan At a Glance",
+                        items: [
+                            "Plan Type: Non-linked, Participating, Child Savings Plan",
+                            "Premium Paying Term: (20 – entry age) years",
+                            "Policy Term: (25 – entry age) years",
+                            "Entry Age: 90 days to 12 years",
+                            "Sum Assured: ₹75,000 (minimum) – No upper limit"
+                        ]
+                    }
                 ],
                 labelBenefits: "What Your Child Gets",
                 isStacked: true,
@@ -2049,6 +2399,96 @@
                 ],
                 closing: "A plan focused purely on protecting your family with maximum coverage at minimum cost",
                 hideCta: true
+            },
+            homeLoan: {
+                title: "LIC HFL Home Loan",
+                provider: "LIC Housing Finance Ltd",
+                logo: "assets/logos/lic-housing-color.svg",
+                banner: "assets/loans-banner.png",
+                tagline: "Competitive interest rates and easy processing for your dream home",
+                plans: ["Home Purchase Loans", "Construction Loans", "Extension Loans", "Renovation Loans"],
+                whoFor: ["New home buyers", "Individuals planning to build", "Home owners looking to renovate"],
+                benefits: ["Attractive interest rates", "Simple documentation", "Quick sanctions"]
+            },
+            lap: {
+                title: "LIC HFL Loan Against Property",
+                provider: "LIC Housing Finance Ltd",
+                logo: "assets/logos/lic-housing-color.svg",
+                banner: "assets/loans-banner.png",
+                tagline: "Unlock the value of your property for your financial needs",
+                plans: ["Personal Use", "Business Expansion", "Education/Marriage"],
+                whoFor: ["Property owners needing liquidity", "Business owners"],
+                benefits: ["High loan amounts", "Longer repayment tenure", "Competitive rates"]
+            },
+            plot: {
+                title: "LIC HFL Plot Loan",
+                provider: "LIC Housing Finance Ltd",
+                logo: "assets/logos/lic-housing-color.svg",
+                banner: "assets/loans-banner.png",
+                tagline: "Finance your residential plot purchase with ease",
+                plans: ["Residential Plot Purchase"],
+                whoFor: ["Investors in land", "Families planning future homes"],
+                benefits: ["Easy financing", "Low processing fees", "Trusted HFC support"]
+            },
+            starWomen: {
+                title: "Star Women Care Insurance Policy",
+                provider: "Star Health and Allied Insurance",
+                logo: "assets/logos/star-health-color.svg",
+                banner: "assets/health-banner.png",
+                tagline: "Specialized health cover designed for every stage of a woman's life",
+                plans: ["Maternity & Newborn Cover", "Assisted Reproduction Treatment", "Cancer Cover for Women"],
+                whoFor: ["Modern women of all ages", "Expectant mothers", "Health-conscious women"],
+                benefits: ["No medical checkup needed", "Newborn cover from day 1", "Automatic restoration of sum insured"]
+            },
+            starSenior: {
+                title: "Senior Citizen Red Carpet",
+                provider: "Star Health and Allied Insurance",
+                logo: "assets/logos/star-health-color.svg",
+                banner: "assets/health-banner.png",
+                tagline: "Health insurance for senior citizens without pre-policy medical checkup",
+                plans: ["Individual Plan", "Floater Plan"],
+                whoFor: ["Senior citizens aged 60-75", "Couples looking for medical security"],
+                benefits: ["Covers pre-existing diseases from year 2", "Guaranteed lifelong renewals", "Hassle-free claim process"]
+            },
+            starComp: {
+                title: "Star Comprehensive Insurance Policy",
+                provider: "Star Health and Allied Insurance",
+                logo: "assets/logos/star-health-color.svg",
+                banner: "assets/health-banner.png",
+                tagline: "Complete health protection for you and your family with high sum insured",
+                plans: ["Family Floater", "Individual Cover"],
+                whoFor: ["Families seeking holistic cover", "Individuals with high medical risks"],
+                benefits: ["Air Ambulance cover", "Personal Accident cover included", "Out-patient dental/ophthalmic treatment"]
+            },
+            uiMotor: {
+                title: "United India Motor Insurance",
+                provider: "United India Insurance Company",
+                logo: "assets/logo-1/united-expnd.png",
+                banner: "assets/general-banner.png",
+                tagline: "Comprehensive protection for your vehicle against unforeseen risks",
+                plans: ["Two-Wheeler Insurance", "Private Car Insurance", "Commercial Vehicle Cover"],
+                whoFor: ["Owners of cars and bikes", "Commercial vehicle operators"],
+                benefits: ["Third-party liability cover", "Own damage protection", "Cashless repair in network garages"]
+            },
+            uiFamily: {
+                title: "United India Family Medicare",
+                provider: "United India Insurance Company",
+                logo: "assets/logo-1/united-expnd.png",
+                banner: "assets/general-banner.png",
+                tagline: "Affordable and comprehensive health cover for the entire family",
+                plans: ["Family Floater Health Plan"],
+                whoFor: ["Middle-class families", "Individuals seeking value-for-money health cover"],
+                benefits: ["Cashless hospitalization", "Pre & Post hospitalization expenses", "Coverage for AYUSH treatments"]
+            },
+            uiAccident: {
+                title: "Personal Accident Insurance",
+                provider: "United India Insurance Company",
+                logo: "assets/logo-1/united-expnd.png",
+                banner: "assets/general-banner.png",
+                tagline: "Financial security for you and your family in case of accidental risks",
+                plans: ["Individual Personal Accident", "Group Personal Accident"],
+                whoFor: ["Earning individuals", "Professionals with high mobility"],
+                benefits: ["Accidental death benefit", "Permanent/Partial disability cover", "Educational grant for children"]
             }
         };
 
@@ -2065,6 +2505,14 @@
             document.getElementById('modalLogo').src = data.logo;
             document.getElementById('modalBanner').src = data.banner;
 
+            // Update Labels if present
+            const whoForLabel = document.querySelector('#modalWhoFor').previousElementSibling;
+            if (data.labelReason) {
+                whoForLabel.textContent = data.labelReason;
+            } else {
+                whoForLabel.textContent = "Who is this for?";
+            }
+
             // Populate Lists
             const populateList = (id, items) => {
                 const list = document.getElementById(id);
@@ -2072,7 +2520,7 @@
                 if (items && items.length > 0) {
                     items.forEach(text => {
                         const li = document.createElement('li');
-                        li.textContent = text.replace(/<\/?[^>]+(>|$)/g, ""); // Clean incidental HTML
+                        li.innerHTML = text; // Allow rich text for bolding etc.
                         list.appendChild(li);
                     });
                 }
@@ -2081,10 +2529,69 @@
             populateList('modalHighlights', data.plans);
             populateList('modalWhoFor', data.whoFor);
 
+            // Progressive Expansion Handling
+            const expandContainer = document.getElementById('modalExpandContainer');
+            const expandContent = document.getElementById('modalExpandContent');
+            const expandBtn = document.getElementById('modalExpandBtn');
+            
+            // Reset Expansion State
+            expandContent.classList.remove('active');
+            expandContent.style.maxHeight = null;
+            expandBtn.querySelector('.btn-text').textContent = 'More Details';
+            expandBtn.querySelector('svg').style.transform = 'rotate(0deg)';
+
+            if (data.extraSections && data.extraSections.length > 0) {
+                expandContainer.style.display = 'block';
+                expandContent.innerHTML = ''; // Clear previous and build fresh
+                
+                data.extraSections.forEach(section => {
+                    const sectionDiv = document.createElement('div');
+                    sectionDiv.className = 'modal-extra-section';
+                    
+                    const title = document.createElement('div');
+                    title.className = 'modal-extra-title';
+                    title.textContent = section.title;
+                    
+                    const list = document.createElement('ul');
+                    list.className = 'modal-vertical-list';
+                    
+                    section.items.forEach(item => {
+                        const li = document.createElement('li');
+                        li.innerHTML = item;
+                        list.appendChild(li);
+                    });
+                    
+                    sectionDiv.appendChild(title);
+                    sectionDiv.appendChild(list);
+                    expandContent.appendChild(sectionDiv);
+                });
+            } else {
+                expandContainer.style.display = 'none';
+            }
+
             // Show modal
             document.body.classList.add('modal-open');
             modalOverlay.classList.add('active');
         }
+
+        // Toggle Expansion Logic
+        document.getElementById('modalExpandBtn').addEventListener('click', function() {
+            const content = document.getElementById('modalExpandContent');
+            const btnText = this.querySelector('.btn-text');
+            const icon = this.querySelector('svg');
+            const isExpanded = content.classList.contains('active');
+
+            if (!isExpanded) {
+                content.classList.add('active');
+                btnText.textContent = 'Show Less';
+                icon.style.transform = 'rotate(180deg)';
+                icon.style.transition = 'transform 0.3s ease';
+            } else {
+                content.classList.remove('active');
+                btnText.textContent = 'More Details';
+                icon.style.transform = 'rotate(0deg)';
+            }
+        });
 
         function closeModal() {
             document.body.classList.remove('modal-open');
@@ -2108,6 +2615,33 @@
         window.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') closeModal();
         });
+
+        // Tab Switching Logic
+        function switchTab(provider, btn) {
+            // Update Tab Buttons
+            const tabs = document.querySelectorAll('.tab-btn');
+            tabs.forEach(t => t.classList.remove('active'));
+            btn.classList.add('active');
+
+            // Update Tracks
+            const tracks = document.querySelectorAll('.plans-track-group');
+            tracks.forEach(t => t.classList.remove('active'));
+            const activeTrack = document.getElementById(`track-${provider}`);
+            activeTrack.classList.add('active');
+
+            // Reset Scroll Position
+            const view = document.getElementById('plansCarouselView');
+            view.scrollLeft = 0;
+
+            // Update Section Background
+            const section = document.getElementById('plans');
+            const bgVariable = `--${provider}-bg`;
+            const bgColor = getComputedStyle(document.documentElement).getPropertyValue(bgVariable);
+            section.style.backgroundColor = bgColor;
+
+            // Re-trigger reveal for new cards
+            reveal();
+        }
 
         // Modern Scroll-Based Carousel Logic
         function initCarousel(viewId, nextId, prevId) {
@@ -2146,20 +2680,23 @@
                 scrollLeft = view.scrollLeft;
                 isDragging = false;
                 
-                // Dynamic performance optimization
-                track.style.willChange = 'transform';
+                // Dynamic performance optimization - find active track
+                const activeTrack = view.querySelector('.carousel-track.active') || view.querySelector('.carousel-track');
+                if (activeTrack) activeTrack.style.willChange = 'transform';
             });
 
             view.addEventListener('mouseleave', () => {
                 isDown = false;
                 view.classList.remove('grabbing');
-                track.style.willChange = 'auto';
+                const tracks = view.querySelectorAll('.carousel-track');
+                tracks.forEach(t => t.style.willChange = 'auto');
             });
 
             view.addEventListener('mouseup', () => {
                 isDown = false;
                 view.classList.remove('grabbing');
-                track.style.willChange = 'auto';
+                const tracks = view.querySelectorAll('.carousel-track');
+                tracks.forEach(t => t.style.willChange = 'auto');
             });
 
             view.addEventListener('mousemove', (e) => {
