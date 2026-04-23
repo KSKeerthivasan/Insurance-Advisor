@@ -1561,6 +1561,36 @@
             .footer-logo-strip { gap: 10px; }
             .footer-links li { margin-bottom: 8px; }
         }
+        /* --- CTA SYSTEM CSS --- */
+        .cta-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); z-index: 3000; }
+        .cta-modal-overlay.active { opacity: 1; visibility: visible; }
+        .cta-modal-content { background: #161B1A; color: #FFFFFF; width: 100%; max-width: 450px; border-radius: 24px; padding: 32px; position: relative; transform: scale(0.95); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .cta-modal-overlay.active .cta-modal-content { transform: scale(1); }
+        @media (max-width: 768px) { .cta-modal-overlay { align-items: flex-end; } .cta-modal-content { border-radius: 24px 24px 0 0; transform: translateY(100%); } .cta-modal-overlay.active .cta-modal-content { transform: translateY(0); } }
+        .cta-modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+        .cta-modal-title { font-size: 20px; font-weight: 700; letter-spacing: -0.5px; color: white; margin: 0; }
+        .cta-close-btn { background: rgba(255, 255, 255, 0.05); border: none; color: #FFFFFF; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 16px; transition: all 0.3s ease; }
+        .cta-close-btn:hover { background: rgba(255, 255, 255, 0.1); transform: rotate(90deg); }
+        .cta-advisor-list { display: flex; flex-direction: column; gap: 16px; }
+        .cta-advisor-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 16px; padding: 20px; display: flex; align-items: center; gap: 16px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .cta-advisor-card:first-child { border-color: rgba(0, 255, 157, 0.2); background: linear-gradient(145deg, rgba(0, 255, 157, 0.05), transparent); }
+        .cta-avatar { width: 48px; height: 48px; background: linear-gradient(135deg, #00FF9D, #00A3FF); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 700; color: #000; font-size: 14px; flex-shrink: 0; }
+        .cta-advisor-info { flex-grow: 1; text-align: left; }
+        .cta-advisor-name { font-size: 16px; font-weight: 600; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; color: white; }
+        .cta-available-badge { font-size: 10px; background: rgba(37, 211, 102, 0.1); color: #25D366; padding: 2px 8px; border-radius: 100px; text-transform: uppercase; font-weight: 700; }
+        .cta-advisor-phone { font-size: 14px; color: #A0A0A0; }
+        .cta-action-btn { padding: 10px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; border: none; transition: all 0.3s ease; text-decoration: none; display: inline-block; text-align: center; }
+        .cta-action-btn-green { background: #25D366; color: #000; }
+        .cta-action-btn-green:hover { background: #00FF9D; transform: translateY(-2px); }
+        .cta-action-btn-outline { background: rgba(255, 255, 255, 0.05); color: #FFFFFF; border: 1px solid rgba(255, 255, 255, 0.1); }
+        .cta-action-btn-outline:hover { background: rgba(255, 255, 255, 0.1); border-color: #FFFFFF; transform: translateY(-2px); }
+        .cta-action-btn:active { transform: scale(0.95); }
+        #cta-fallback-container { display: none; text-align: center; padding: 20px 0; }
+        .cta-fallback-message { color: #A0A0A0; font-size: 14px; margin-bottom: 16px; }
+        .cta-selected-number { font-size: 24px; font-weight: 700; margin-bottom: 24px; color: #00FF9D; }
+        .cta-fallback-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .cta-copy-feedback { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); background: #00FF9D; color: #000; padding: 8px 16px; border-radius: 8px; font-size: 12px; font-weight: 700; opacity: 0; transition: all 0.3s ease; pointer-events: none; }
+        .cta-copy-feedback.show { opacity: 1; transform: translateX(-50%) translateY(-10px); }
     </style>
 </head>
 <body>
@@ -1571,7 +1601,7 @@
                 <img src="assets/logos/lic-color.svg" alt="LIC Logo">
             </div>
             <div class="cta-group">
-                <a href="tel:8248013879" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.9rem;">Call Agent</a>
+                <a href="javascript:void(0)" onclick="openCtaModal('call')" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.9rem;">Call Advisor</a>
             </div>
         </div>
     </header>
@@ -1586,11 +1616,11 @@
             <p class="hero-tagline">Helping families make financially secure decisions through trusted guidance.</p>
             
             <div class="cta-group">
-                <a href="tel:8248013879" class="btn btn-primary">
+                <a href="javascript:void(0)" onclick="openCtaModal('call')" class="btn btn-primary">
                     <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.15 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
                     Call Now
                 </a>
-                <a href="https://wa.me/918248013879" class="btn btn-whatsapp">
+                <a href="javascript:void(0)" onclick="openCtaModal('whatsapp')" class="btn btn-whatsapp">
                     <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 2c-5.517 0-9.997 4.48-9.997 9.997 0 1.763.459 3.479 1.332 4.99L2 22l5.145-1.35a9.96 9.96 0 004.886 1.277h.004c5.517 0 9.997-4.48 9.997-9.997 0-2.665-1.037-5.17-2.921-7.054A9.944 9.944 0 0012.031 2zM17.658 15.3c-.307-.154-1.817-.897-2.099-1.002-.281-.103-.486-.154-.69.154-.204.308-.791.996-.969 1.2-.178.205-.356.23-.663.077-.306-.155-1.294-.477-2.464-1.521-.91-.812-1.525-1.815-1.704-2.122-.178-.308-.019-.474.135-.626.139-.136.307-.359.461-.538.154-.18.204-.308.307-.513.102-.205.051-.385-.026-.538-.077-.154-.69-1.666-.945-2.28-.248-.598-.5-.517-.69-.527-.179-.009-.384-.01-.59-.01a1.137 1.137 0 00-.82.384c-.282.308-1.076 1.051-1.076 2.564 0 1.513 1.102 2.974 1.256 3.179.154.205 2.169 3.313 5.253 4.643.734.316 1.307.505 1.751.646.736.235 1.408.202 1.94.122.593-.088 1.817-.743 2.072-1.46.256-.718.256-1.334.18-1.46-.076-.128-.282-.205-.589-.36z"/></svg>
                     WhatsApp
                 </a>
@@ -2029,8 +2059,8 @@
         <div class="final-cta reveal">
             <h2>Get the Right Plan for Your Future Today</h2>
             <div class="cta-group" style="justify-content: center;">
-                <a href="tel:8248013879" class="btn btn-primary" style="background: var(--color-white); color: var(--color-primary);">Call Now</a>
-                <a href="https://wa.me/918248013879" class="btn btn-whatsapp" style="border-color: white; color: white;">WhatsApp</a>
+                <a href="javascript:void(0)" onclick="openCtaModal('call')" class="btn btn-primary" style="background: var(--color-white); color: var(--color-primary);">Call Now</a>
+                <a href="javascript:void(0)" onclick="openCtaModal('whatsapp')" class="btn btn-whatsapp" style="border-color: white; color: white;">WhatsApp</a>
             </div>
         </div>
     </section>
@@ -3416,6 +3446,145 @@
                 plansCarousel.movePrev();
             }
         });
+
+        // CTA Modal Logic
+        let currentCtaMode = 'whatsapp';
+        let currentCtaSelectedNumber = '';
+
+        function detectCtaDevice() {
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            const isSmallScreen = window.innerWidth <= 768;
+            return isMobile || isSmallScreen;
+        }
+
+        function openCtaModal(type) {
+            currentCtaMode = type;
+            const overlay = document.getElementById('ctaModalOverlay');
+            const title = document.getElementById('ctaModalTitle');
+            const listContainer = document.getElementById('cta-advisor-list-container');
+            const fallbackContainer = document.getElementById('cta-fallback-container');
+
+            listContainer.style.display = 'flex';
+            fallbackContainer.style.display = 'none';
+
+            if (type === 'whatsapp') {
+                title.textContent = "Chat with an Advisor";
+                updateCtaButtons("Chat on WhatsApp", "cta-action-btn-green");
+            } else {
+                title.textContent = "Call an Advisor";
+                updateCtaButtons("Call Now", "cta-action-btn-outline");
+            }
+
+            overlay.classList.add('active');
+            document.body.classList.add('modal-open');
+        }
+
+        function updateCtaButtons(text, className) {
+            const btn1 = document.getElementById('btn-advisor-1');
+            const btn2 = document.getElementById('btn-advisor-2');
+            [btn1, btn2].forEach(btn => {
+                btn.textContent = text;
+                btn.className = `cta-action-btn ${className}`;
+            });
+        }
+
+        function closeCtaModal() {
+            const overlay = document.getElementById('ctaModalOverlay');
+            overlay.classList.remove('active');
+            document.body.classList.remove('modal-open');
+        }
+
+        function handleCtaOutsideClick(e) {
+            if (e.target.id === 'ctaModalOverlay') closeCtaModal();
+        }
+
+        function handleCtaAction(number) {
+            currentCtaSelectedNumber = number;
+            if (currentCtaMode === 'whatsapp') {
+                handleCtaWhatsApp(number);
+            } else {
+                handleCtaCall(number);
+            }
+        }
+
+        function handleCtaWhatsApp(number) {
+            const text = encodeURIComponent("Hi, I am interested in your insurance services");
+            const url = `https://wa.me/${number}?text=${text}`;
+            window.open(url, '_blank');
+        }
+
+        function handleCtaCall(number) {
+            if (detectCtaDevice()) {
+                window.location.href = `tel:+${number}`;
+            } else {
+                showCtaFallback(number);
+            }
+        }
+
+        function showCtaFallback(number) {
+            const listContainer = document.getElementById('cta-advisor-list-container');
+            const fallbackContainer = document.getElementById('cta-fallback-container');
+            const fallbackNumber = document.getElementById('cta-fallback-number');
+            const title = document.getElementById('ctaModalTitle');
+
+            title.textContent = "Contact Advisor";
+            listContainer.style.display = 'none';
+            fallbackContainer.style.display = 'block';
+            fallbackNumber.textContent = `+${number}`;
+        }
+
+        function copyCtaNumber() {
+            navigator.clipboard.writeText(currentCtaSelectedNumber).then(() => {
+                const feedback = document.getElementById('ctaCopyFeedback');
+                feedback.classList.add('show');
+                setTimeout(() => feedback.classList.remove('show'), 2000);
+            });
+        }
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeCtaModal();
+        });
     </script>
+
+    <!-- CTA Modal Overlay HTML -->
+    <div class="cta-modal-overlay" id="ctaModalOverlay" onclick="handleCtaOutsideClick(event)">
+        <div class="cta-modal-content" id="ctaModalContent">
+            <div class="cta-modal-header">
+                <h2 class="cta-modal-title" id="ctaModalTitle">Chat with an Advisor</h2>
+                <button class="cta-close-btn" onclick="closeCtaModal()">✕</button>
+            </div>
+
+            <div id="cta-advisor-list-container" class="cta-advisor-list">
+                <div class="cta-advisor-card">
+                    <div class="cta-avatar">RK</div>
+                    <div class="cta-advisor-info">
+                        <div class="cta-advisor-name">R Kalpana</div>
+                        <div class="cta-advisor-phone">+91 82480 13879</div>
+                    </div>
+                    <button class="cta-action-btn" id="btn-advisor-1" onclick="handleCtaAction('918248013879')">Action</button>
+                </div>
+
+                <div class="cta-advisor-card">
+                    <div class="cta-avatar">PS</div>
+                    <div class="cta-advisor-info">
+                        <div class="cta-advisor-name">P Selvaraj</div>
+                        <div class="cta-advisor-phone">+91 87787 47430</div>
+                    </div>
+                    <button class="cta-action-btn" id="btn-advisor-2" onclick="handleCtaAction('918778747430')">Action</button>
+                </div>
+            </div>
+
+            <div id="cta-fallback-container">
+                <div class="cta-fallback-message">Calling not supported on this device</div>
+                <div class="cta-selected-number" id="cta-fallback-number">918248013879</div>
+                <div class="cta-fallback-actions">
+                    <button class="cta-action-btn cta-action-btn-outline" onclick="copyCtaNumber()">Copy Number</button>
+                    <button class="cta-action-btn cta-action-btn-green" onclick="handleCtaWhatsApp(currentCtaSelectedNumber)">WhatsApp</button>
+                </div>
+            </div>
+
+            <div class="cta-copy-feedback" id="ctaCopyFeedback">Copied!</div>
+        </div>
+    </div>
 </body>
 </html>
