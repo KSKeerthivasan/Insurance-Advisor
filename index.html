@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rajesh Kumar | Insurance Advisor - Securing Your Family's Future</title>
-    <meta name="description" content="Professional Insurance Advisor helping you secure your family's future with life insurance, retirement planning, and more.">
+    <meta name="description"
+        content="Professional Insurance Advisor helping you secure your family's future with life insurance, retirement planning, and more.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -88,7 +90,9 @@
         }
 
         /* Typography */
-        h1, h2, h3 {
+        h1,
+        h2,
+        h3 {
             font-weight: 700;
             line-height: 1.2;
         }
@@ -108,7 +112,7 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         .nav-content {
@@ -141,7 +145,7 @@
             padding: 40px 0;
             min-height: 85vh;
         }
-        
+
         .hero-content {
             max-width: 520px;
         }
@@ -169,9 +173,9 @@
 
         .hero-trust {
             display: inline-block;
-            background: rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.1);
             color: var(--color-hero-text);
-            border: 1px solid rgba(255,255,255,0.25);
+            border: 1px solid rgba(255, 255, 255, 0.25);
             padding: 8px 16px;
             border-radius: 50px;
             font-size: 0.9rem;
@@ -251,7 +255,7 @@
             border-color: var(--color-hero-text);
             color: var(--color-hero-text);
         }
-        
+
         .hero .btn-outline:hover {
             background-color: var(--color-hero-text);
             color: var(--color-hero-bg);
@@ -264,13 +268,20 @@
             object-fit: contain;
             background-color: #F9F9F7;
             border-radius: 24px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
             animation: float 6s ease-in-out infinite;
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
         }
 
         /* Services Section - Carousel Enhancements */
@@ -286,7 +297,8 @@
             position: relative;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px 0; /* Reduced padding to allow peek */
+            padding: 20px 0;
+            /* Reduced padding to allow peek */
         }
 
         .carousel-view {
@@ -314,8 +326,8 @@
             border-radius: 20px;
             text-align: left;
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
-            border: 1px solid rgba(0,0,0,0.05);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
             flex: 0 0 45%;
             min-width: 280px;
             aspect-ratio: 16 / 9;
@@ -330,7 +342,7 @@
         .service-card:hover {
             opacity: 1;
             transform: scale(1.03);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
         }
 
         .service-card::before {
@@ -373,7 +385,22 @@
             height: 32px;
             width: auto;
             object-fit: contain;
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+        }
+
+        /* Ambient Glow Effect for Logos (Solutions We Offer) */
+        #solutions .card-brand-marker::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 140px;
+            height: 140px;
+            transform: translate(-50%, -50%);
+            /* Pure radial gradient instead of blur() guarantees visibility and softness */
+            background: radial-gradient(circle, rgba(0, 255, 120, 0.25) 0%, rgba(0, 255, 120, 0.05) 50%, transparent 70%);
+            z-index: -1;
+            pointer-events: none;
         }
 
         .card-trust-badge {
@@ -383,9 +410,9 @@
             font-size: 0.75rem;
             font-weight: 700;
             color: var(--color-primary);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             backdrop-filter: blur(4px);
-            border: 1px solid rgba(255,255,255,0.4);
+            border: 1px solid rgba(255, 255, 255, 0.4);
             white-space: nowrap;
         }
 
@@ -441,7 +468,7 @@
             width: fit-content;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         .service-card .explore-btn:hover {
@@ -458,7 +485,7 @@
             line-height: 1.2;
             color: white;
             transition: transform 0.3s ease;
-            text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
         }
 
         .service-card:hover h3 {
@@ -471,7 +498,7 @@
             font-weight: 500;
             color: rgba(255, 255, 255, 0.9);
             margin-bottom: 4px;
-            text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
         }
 
         .service-card .explore-btn {
@@ -512,7 +539,8 @@
             /* Handled via absolute positioning, but keeping flex for fallback */
             display: flex;
             justify-content: center;
-            pointer-events: none; /* Let clicks pass through if it overlaps cards */
+            pointer-events: none;
+            /* Let clicks pass through if it overlaps cards */
         }
 
         .nav-btn {
@@ -523,7 +551,7 @@
             background: rgba(255, 255, 255, 0.25);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
             color: #344E41;
             cursor: pointer;
             display: flex;
@@ -534,7 +562,8 @@
             top: 50%;
             transform: translateY(-50%);
             z-index: 20;
-            pointer-events: auto; /* re-enable clicks */
+            pointer-events: auto;
+            /* re-enable clicks */
         }
 
         .nav-btn:hover {
@@ -562,7 +591,8 @@
         /* Responsive */
         @media (max-width: 1024px) {
             .service-card {
-                flex: 0 0 46%; /* ~2.1 cards visible */
+                flex: 0 0 46%;
+                /* ~2.1 cards visible */
                 min-width: 280px;
             }
         }
@@ -571,10 +601,13 @@
             .carousel-view {
                 padding: 20px 16px;
             }
+
             .service-card {
-                flex: 0 0 85%; /* Shows 1 full + peek of next */
+                flex: 0 0 85%;
+                /* Shows 1 full + peek of next */
                 min-width: 240px;
             }
+
             .carousel-track {
                 gap: 24px;
             }
@@ -582,11 +615,12 @@
 
         /* Solutions Specific Refinement: Stacked Layout */
         #solutions .service-card {
-            aspect-ratio: auto; /* Remove global ratio to allow vertical extension */
+            aspect-ratio: auto;
+            /* Remove global ratio to allow vertical extension */
             display: flex;
             flex-direction: column;
             background: #FFFFFF;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
         }
 
         #solutions .service-card::before {
@@ -599,7 +633,8 @@
         }
 
         #solutions .service-card::after {
-            display: none; /* Remove bottom-up gradient for clean stacked look */
+            display: none;
+            /* Remove bottom-up gradient for clean stacked look */
         }
 
         #solutions .card-bottom-content {
@@ -611,7 +646,8 @@
             display: flex;
             flex-direction: column;
             gap: 6px;
-            transform: none !important; /* Prevent hover lift conflicts */
+            transform: none !important;
+            /* Prevent hover lift conflicts */
         }
 
         #solutions .service-card h3 {
@@ -662,15 +698,18 @@
                 width: 36px;
                 height: 36px;
             }
+
             .nav-btn svg {
                 width: 20px;
                 height: 20px;
             }
+
             .carousel-nav .nav-btn:first-child,
             .nav-btn[id$="prevBtn"],
             .nav-btn[id="prevBtn"] {
                 left: -10px;
             }
+
             .carousel-nav .nav-btn:last-child,
             .nav-btn[id$="nextBtn"],
             .nav-btn[id="nextBtn"] {
@@ -762,31 +801,45 @@
             color: rgba(255, 255, 255, 0.9);
             margin-bottom: 20px;
             align-self: flex-start;
-            opacity: 0.7; /* Subtly integrated badge */
+            opacity: 0.7;
+            /* Subtly integrated badge */
         }
 
         .modal-logo-pill {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(245, 250, 247, 0.9));
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            padding: 8px 18px;
-            border-radius: 999px;
-            margin-bottom: 16px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            padding: 0;
+            margin-bottom: 24px;
             align-self: flex-start;
             width: fit-content;
             max-width: 320px;
             transition: all 0.3s ease;
+            position: relative; 
+            z-index: 1; /* Establishes a local stacking context so z-index: -1 glow doesn't fall behind the modal background */
+        }
+
+        /* Ambient Glow Effect for Logos (Modal) */
+        .modal-logo-pill::before {
+            content: '';
+            position: absolute;
+            top: 40%; /* Offset slightly up to center behind the box rather than the text */
+            left: 50%;
+            width: 220px;
+            height: 140px;
+            transform: translate(-50%, -50%);
+            /* Elliptical pure radial gradient to match logo proportions and provide a soft, visible green glow */
+            background: radial-gradient(ellipse at center, rgba(130, 255, 100, 0.4) 0%, rgba(130, 255, 100, 0.1) 50%, transparent 70%);
+            z-index: -1;
+            pointer-events: none;
         }
 
         .modal-logo {
-            height: 40px;
+            height: 48px;
             width: auto;
             object-fit: contain;
             display: block;
-            filter: none !important;
+            filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
         }
 
         .modal-main-title {
@@ -912,7 +965,10 @@
         .modal-banner::before {
             content: '';
             position: absolute;
-            top: -20px; left: -20px; right: -20px; bottom: -20px;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
             background-image: var(--banner-url);
             background-size: cover;
             background-position: center;
@@ -928,7 +984,7 @@
             left: 0;
             width: 100%;
             height: 50%;
-            background: linear-gradient(transparent, rgba(255,255,255,0.05));
+            background: linear-gradient(transparent, rgba(255, 255, 255, 0.05));
         }
 
         .modal-body-scroll {
@@ -1006,7 +1062,8 @@
         /* Progressive Content Expansion */
         .modal-expand-container {
             margin-top: 30px;
-            display: none; /* Hidden by default, shown via JS if extraSections exists */
+            display: none;
+            /* Hidden by default, shown via JS if extraSections exists */
         }
 
         .modal-expand-btn {
@@ -1042,7 +1099,8 @@
         }
 
         .modal-expand-content.active {
-            max-height: 3000px; /* Large enough for detailed content */
+            max-height: 3000px;
+            /* Large enough for detailed content */
             opacity: 1;
             padding-top: 25px;
             margin-top: 20px;
@@ -1128,12 +1186,15 @@
                 width: 95%;
                 max-height: 90vh;
             }
+
             .modal-header-section {
                 padding: 20px;
             }
+
             .modal-body-scroll {
                 padding: 20px;
             }
+
             .modal-banner {
                 height: 180px;
             }
@@ -1144,7 +1205,7 @@
             background: var(--lic-bg);
             color: var(--color-plans-text);
         }
-        
+
         #plans .section-title {
             color: var(--color-plans-heading);
         }
@@ -1164,9 +1225,14 @@
             transform: translateY(-50%) scale(1.1);
         }
 
-        #plans #plansPrevBtn { left: -30px; }
-        #plans #plansNextBtn { right: -30px; }
-        
+        #plans #plansPrevBtn {
+            left: -30px;
+        }
+
+        #plans #plansNextBtn {
+            right: -30px;
+        }
+
         /* Plans Tabs Style */
         .plans-tabs {
             display: flex;
@@ -1179,8 +1245,8 @@
         .tab-btn {
             padding: 12px 24px;
             border-radius: 50px;
-            border: 1px solid rgba(0,0,0,0.1);
-            background: rgba(255,255,255,0.5);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.5);
             color: var(--color-plans-heading);
             font-weight: 600;
             cursor: pointer;
@@ -1191,31 +1257,46 @@
 
         .tab-btn:hover {
             transform: translateY(-2px);
-            background: rgba(255,255,255,0.8);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
         }
 
         .tab-btn.active {
             background: var(--tab-primary, var(--color-primary));
             color: white;
             border-color: var(--tab-primary, var(--color-primary));
-            box-shadow: 0 8px 20px var(--tab-glow, rgba(0,0,0,0.1));
+            box-shadow: 0 8px 20px var(--tab-glow, rgba(0, 0, 0, 0.1));
         }
 
         /* Brand Card Modifiers */
-        .card-brand-lic { --brand-primary: var(--lic-primary); --brand-bg: var(--lic-bg); }
-        .card-brand-lichfl { --brand-primary: var(--lichfl-primary); --brand-bg: var(--lichfl-bg); }
-        .card-brand-star { --brand-primary: var(--star-primary); --brand-bg: var(--star-bg); }
-        .card-brand-united { --brand-primary: var(--united-primary); --brand-bg: var(--united-bg); }
+        .card-brand-lic {
+            --brand-primary: var(--lic-primary);
+            --brand-bg: var(--lic-bg);
+        }
+
+        .card-brand-lichfl {
+            --brand-primary: var(--lichfl-primary);
+            --brand-bg: var(--lichfl-bg);
+        }
+
+        .card-brand-star {
+            --brand-primary: var(--star-primary);
+            --brand-bg: var(--star-bg);
+        }
+
+        .card-brand-united {
+            --brand-primary: var(--united-primary);
+            --brand-bg: var(--united-bg);
+        }
 
         .service-card[class*="card-brand-"] {
-            border-color: rgba(0,0,0,0.05);
+            border-color: rgba(0, 0, 0, 0.05);
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .service-card[class*="card-brand-"]:hover {
             border-color: var(--brand-primary);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
         }
 
         .service-card[class*="card-brand-"] .explore-btn {
@@ -1237,47 +1318,79 @@
         .plans-track-group.active {
             display: flex;
             animation: fadeIn 0.4s ease-out;
-            padding-bottom: 20px; /* Space for hover lift */
+            padding-bottom: 20px;
+            /* Space for hover lift */
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Section transition */
         #plans {
             transition: background-color 0.8s ease;
         }
-        
+
         /* Plans Section Updates - Sharing Carousel Styles */
 
+        /* Unified Trust Section */
         .trust-section {
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 60px;
-            align-items: center;
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
             background: var(--color-agent-bg);
             color: var(--color-agent-text);
             padding: 80px 40px;
             border-radius: 40px;
             margin: 60px 0;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
-            border: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .trust-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .trust-header h2 {
+            font-size: 2.8rem;
+            color: var(--color-primary);
+            margin-bottom: 15px;
+        }
+
+        .trust-header p {
+            font-size: 1.2rem;
+            color: var(--color-agent-text);
+            opacity: 0.8;
         }
 
         .why-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
             list-style: none;
-            margin-top: 30px;
+            margin-bottom: 20px;
         }
 
         .why-item {
             display: flex;
             align-items: center;
             gap: 15px;
-            margin-bottom: 20px;
             font-size: 1.1rem;
             font-weight: 500;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 15px 20px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .check-icon {
@@ -1292,15 +1405,31 @@
             flex-shrink: 0;
         }
 
+        .advisors-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .advisors-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         .agent-profile {
             background: var(--color-white);
             padding: 40px;
             border-radius: 30px;
             text-align: center;
             border: 1px solid var(--color-agent-bg);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s ease;
             color: var(--color-agent-text);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
         }
 
         .agent-profile:hover {
@@ -1318,18 +1447,25 @@
             margin-bottom: 25px;
         }
 
-        .profile-info h3 { 
-            font-size: 1.75rem; 
+        .profile-info {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .profile-info h3 {
+            font-size: 1.75rem;
             font-weight: 700;
             color: var(--color-agent-heading);
-            margin-bottom: 8px; 
+            margin-bottom: 8px;
         }
-        
-        .profile-info .agent-role { 
-            color: var(--color-accent); 
+
+        .profile-info .agent-role {
+            color: var(--color-accent);
             font-weight: 500;
             font-size: 1.1rem;
-            margin-bottom: 5px; 
+            margin-bottom: 5px;
             letter-spacing: 0.5px;
         }
 
@@ -1348,7 +1484,7 @@
             text-align: left;
             margin-top: 25px;
             padding-top: 25px;
-            border-top: 1px solid rgba(0,0,0,0.05);
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         .meta-item {
@@ -1387,7 +1523,12 @@
             box-shadow: 0 10px 40px rgba(0, 77, 0, 0.15);
         }
 
-        .final-cta h2 { font-size: 3rem; margin-bottom: 40px; max-width: 800px; margin-inline: auto; }
+        .final-cta h2 {
+            font-size: 3rem;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-inline: auto;
+        }
 
         /* Footer */
         footer {
@@ -1466,24 +1607,24 @@
             background: #ffffff;
             padding: 10px 16px;
             border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
-            border: 1px solid rgba(0,0,0,0.02);
+            border: 1px solid rgba(0, 0, 0, 0.02);
         }
 
         .logo-container:hover {
             transform: translateY(-5px) scale(1.03);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         .card-badge-container {
             background: #F9F9F7;
             padding: 8px 12px;
             border-radius: 8px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -1544,64 +1685,321 @@
 
         /* Responsive */
         @media (max-width: 992px) {
-            .hero, .trust-section { grid-template-columns: 1fr; text-align: center; }
-            .hero-content h1 { font-size: 2.8rem; }
-            .cta-group { justify-content: center; }
-            .footer-content { grid-template-columns: 1fr; text-align: center; gap: 30px; }
-            .footer-logo-strip { justify-content: center; }
-            .trust-section { padding: 40px 20px; gap: 40px; }
-            .agent-profile { order: -1; }
-            .final-cta h2 { font-size: 2.2rem; }
+
+            .hero,
+            .trust-section {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+
+            .cta-group {
+                justify-content: center;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 30px;
+            }
+
+            .footer-logo-strip {
+                justify-content: center;
+            }
+
+            .trust-section {
+                padding: 40px 20px;
+                gap: 40px;
+            }
+
+            .agent-profile {
+                order: -1;
+            }
+
+            .final-cta h2 {
+                font-size: 2.2rem;
+            }
         }
 
         @media (max-width: 600px) {
-            .hero-content h1 { font-size: 2rem; }
-            section { padding: 60px 0; }
-            .footer-content { gap: 25px; }
-            .footer-logo-strip { gap: 10px; }
-            .footer-links li { margin-bottom: 8px; }
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+
+            .footer-content {
+                gap: 25px;
+            }
+
+            .footer-logo-strip {
+                gap: 10px;
+            }
+
+            .footer-links li {
+                margin-bottom: 8px;
+            }
         }
+
         /* --- CTA SYSTEM CSS --- */
-        .cta-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); z-index: 3000; }
-        .cta-modal-overlay.active { opacity: 1; visibility: visible; }
-        .cta-modal-content { background: #161B1A; color: #FFFFFF; width: 100%; max-width: 450px; border-radius: 24px; padding: 32px; position: relative; transform: scale(0.95); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .cta-modal-overlay.active .cta-modal-content { transform: scale(1); }
-        @media (max-width: 768px) { .cta-modal-overlay { align-items: flex-end; } .cta-modal-content { border-radius: 24px 24px 0 0; transform: translateY(100%); } .cta-modal-overlay.active .cta-modal-content { transform: translateY(0); } }
-        .cta-modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
-        .cta-modal-title { font-size: 20px; font-weight: 700; letter-spacing: -0.5px; color: white; margin: 0; }
-        .cta-close-btn { background: rgba(255, 255, 255, 0.05); border: none; color: #FFFFFF; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 16px; transition: all 0.3s ease; }
-        .cta-close-btn:hover { background: rgba(255, 255, 255, 0.1); transform: rotate(90deg); }
-        .cta-advisor-list { display: flex; flex-direction: column; gap: 16px; }
-        .cta-advisor-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 16px; padding: 20px; display: flex; align-items: center; gap: 16px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-        .cta-advisor-card:first-child { border-color: rgba(0, 255, 157, 0.2); background: linear-gradient(145deg, rgba(0, 255, 157, 0.05), transparent); }
-        .cta-avatar { width: 48px; height: 48px; background: linear-gradient(135deg, #00FF9D, #00A3FF); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 700; color: #000; font-size: 14px; flex-shrink: 0; }
-        .cta-advisor-info { flex-grow: 1; text-align: left; }
-        .cta-advisor-name { font-size: 16px; font-weight: 600; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; color: white; }
-        .cta-available-badge { font-size: 10px; background: rgba(37, 211, 102, 0.1); color: #25D366; padding: 2px 8px; border-radius: 100px; text-transform: uppercase; font-weight: 700; }
-        .cta-advisor-phone { font-size: 14px; color: #A0A0A0; }
-        .cta-action-btn { padding: 10px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; border: none; transition: all 0.3s ease; text-decoration: none; display: inline-block; text-align: center; }
-        .cta-action-btn-green { background: #25D366; color: #000; }
-        .cta-action-btn-green:hover { background: #00FF9D; transform: translateY(-2px); }
-        .cta-action-btn-outline { background: rgba(255, 255, 255, 0.05); color: #FFFFFF; border: 1px solid rgba(255, 255, 255, 0.1); }
-        .cta-action-btn-outline:hover { background: rgba(255, 255, 255, 0.1); border-color: #FFFFFF; transform: translateY(-2px); }
-        .cta-action-btn:active { transform: scale(0.95); }
-        #cta-fallback-container { display: none; text-align: center; padding: 20px 0; }
-        .cta-fallback-message { color: #A0A0A0; font-size: 14px; margin-bottom: 16px; }
-        .cta-selected-number { font-size: 24px; font-weight: 700; margin-bottom: 24px; color: #00FF9D; }
-        .cta-fallback-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-        .cta-copy-feedback { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); background: #00FF9D; color: #000; padding: 8px 16px; border-radius: 8px; font-size: 12px; font-weight: 700; opacity: 0; transition: all 0.3s ease; pointer-events: none; }
-        .cta-copy-feedback.show { opacity: 1; transform: translateX(-50%) translateY(-10px); }
+        .cta-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 3000;
+        }
+
+        .cta-modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .cta-modal-content {
+            background: #161B1A;
+            color: #FFFFFF;
+            width: 100%;
+            max-width: 450px;
+            border-radius: 24px;
+            padding: 32px;
+            position: relative;
+            transform: scale(0.95);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .cta-modal-overlay.active .cta-modal-content {
+            transform: scale(1);
+        }
+
+        @media (max-width: 768px) {
+            .cta-modal-overlay {
+                align-items: flex-end;
+            }
+
+            .cta-modal-content {
+                border-radius: 24px 24px 0 0;
+                transform: translateY(100%);
+            }
+
+            .cta-modal-overlay.active .cta-modal-content {
+                transform: translateY(0);
+            }
+        }
+
+        .cta-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .cta-modal-title {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: white;
+            margin: 0;
+        }
+
+        .cta-close-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: none;
+            color: #FFFFFF;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .cta-close-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(90deg);
+        }
+
+        .cta-advisor-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .cta-advisor-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .cta-advisor-card:first-child {
+            border-color: rgba(0, 255, 157, 0.2);
+            background: linear-gradient(145deg, rgba(0, 255, 157, 0.05), transparent);
+        }
+
+        .cta-avatar {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #00FF9D, #00A3FF);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: #000;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .cta-advisor-info {
+            flex-grow: 1;
+            text-align: left;
+        }
+
+        .cta-advisor-name {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+        }
+
+        .cta-available-badge {
+            font-size: 10px;
+            background: rgba(37, 211, 102, 0.1);
+            color: #25D366;
+            padding: 2px 8px;
+            border-radius: 100px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .cta-advisor-phone {
+            font-size: 14px;
+            color: #A0A0A0;
+        }
+
+        .cta-action-btn {
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .cta-action-btn-green {
+            background: #25D366;
+            color: #000;
+        }
+
+        .cta-action-btn-green:hover {
+            background: #00FF9D;
+            transform: translateY(-2px);
+        }
+
+        .cta-action-btn-outline {
+            background: rgba(255, 255, 255, 0.05);
+            color: #FFFFFF;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .cta-action-btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #FFFFFF;
+            transform: translateY(-2px);
+        }
+
+        .cta-action-btn:active {
+            transform: scale(0.95);
+        }
+
+        #cta-fallback-container {
+            display: none;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .cta-fallback-message {
+            color: #A0A0A0;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+
+        .cta-selected-number {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: #00FF9D;
+        }
+
+        .cta-fallback-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .cta-copy-feedback {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #00FF9D;
+            color: #000;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 700;
+            opacity: 0;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .cta-copy-feedback.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(-10px);
+        }
     </style>
 </head>
+
 <body>
 
     <header>
         <div class="container nav-content">
             <div class="logo">
-                <img src="assets/logos/lic-color.svg" alt="LIC Logo">
+                <img src="assets/logo-1/lic-color.png" alt="LIC Logo">
             </div>
             <div class="cta-group">
-                <a href="javascript:void(0)" onclick="openCtaModal('call')" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.9rem;">Call Advisor</a>
+                <button type="button" class="btn btn-primary cta-trigger-btn" data-cta-type="call"
+                    style="padding: 8px 20px; font-size: 0.9rem; cursor: pointer; font-family: inherit;">Call
+                    Advisor</button>
             </div>
         </div>
     </header>
@@ -1609,41 +2007,50 @@
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="container hero">
-        <div class="hero-content reveal">
-            <div class="hero-trust">Insurance Advisor | Agent ID: 0141271B</div>
-            <h1>R KALPANA, M.A</h1>
-            <p class="hero-role">Insurance Advisor</p>
-            <p class="hero-tagline">Helping families make financially secure decisions through trusted guidance.</p>
-            
-            <div class="cta-group">
-                <a href="javascript:void(0)" onclick="openCtaModal('call')" class="btn btn-primary">
-                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.15 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-                    Call Now
-                </a>
-                <a href="javascript:void(0)" onclick="openCtaModal('whatsapp')" class="btn btn-whatsapp">
-                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 2c-5.517 0-9.997 4.48-9.997 9.997 0 1.763.459 3.479 1.332 4.99L2 22l5.145-1.35a9.96 9.96 0 004.886 1.277h.004c5.517 0 9.997-4.48 9.997-9.997 0-2.665-1.037-5.17-2.921-7.054A9.944 9.944 0 0012.031 2zM17.658 15.3c-.307-.154-1.817-.897-2.099-1.002-.281-.103-.486-.154-.69.154-.204.308-.791.996-.969 1.2-.178.205-.356.23-.663.077-.306-.155-1.294-.477-2.464-1.521-.91-.812-1.525-1.815-1.704-2.122-.178-.308-.019-.474.135-.626.139-.136.307-.359.461-.538.154-.18.204-.308.307-.513.102-.205.051-.385-.026-.538-.077-.154-.69-1.666-.945-2.28-.248-.598-.5-.517-.69-.527-.179-.009-.384-.01-.59-.01a1.137 1.137 0 00-.82.384c-.282.308-1.076 1.051-1.076 2.564 0 1.513 1.102 2.974 1.256 3.179.154.205 2.169 3.313 5.253 4.643.734.316 1.307.505 1.751.646.736.235 1.408.202 1.94.122.593-.088 1.817-.743 2.072-1.46.256-.718.256-1.334.18-1.46-.076-.128-.282-.205-.589-.36z"/></svg>
-                    WhatsApp
-                </a>
-                <a href="#plans" class="btn btn-outline">View Plans</a>
+            <div class="hero-content reveal">
+                <div class="hero-trust">Insurance Advisor | Agent ID: 0141271B</div>
+                <h1>R KALPANA, M.A</h1>
+                <p class="hero-role">Insurance Advisor</p>
+                <p class="hero-tagline">Helping families make financially secure decisions through trusted guidance.</p>
+
+                <div class="cta-group">
+                    <button type="button" class="btn btn-primary cta-trigger-btn" data-cta-type="call"
+                        style="cursor: pointer; font-family: inherit;">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M6.62 10.79c1.44 2.83 3.76 5.15 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+                        </svg>
+                        Call Now
+                    </button>
+                    <button type="button" class="btn btn-whatsapp cta-trigger-btn" data-cta-type="whatsapp"
+                        style="cursor: pointer; font-family: inherit;">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12.031 2c-5.517 0-9.997 4.48-9.997 9.997 0 1.763.459 3.479 1.332 4.99L2 22l5.145-1.35a9.96 9.96 0 004.886 1.277h.004c5.517 0 9.997-4.48 9.997-9.997 0-2.665-1.037-5.17-2.921-7.054A9.944 9.944 0 0012.031 2zM17.658 15.3c-.307-.154-1.817-.897-2.099-1.002-.281-.103-.486-.154-.69.154-.204.308-.791.996-.969 1.2-.178.205-.356.23-.663.077-.306-.155-1.294-.477-2.464-1.521-.91-.812-1.525-1.815-1.704-2.122-.178-.308-.019-.474.135-.626.139-.136.307-.359.461-.538.154-.18.204-.308.307-.513.102-.205.051-.385-.026-.538-.077-.154-.69-1.666-.945-2.28-.248-.598-.5-.517-.69-.527-.179-.009-.384-.01-.59-.01a1.137 1.137 0 00-.82.384c-.282.308-1.076 1.051-1.076 2.564 0 1.513 1.102 2.974 1.256 3.179.154.205 2.169 3.313 5.253 4.643.734.316 1.307.505 1.751.646.736.235 1.408.202 1.94.122.593-.088 1.817-.743 2.072-1.46.256-.718.256-1.334.18-1.46-.076-.128-.282-.205-.589-.36z" />
+                        </svg>
+                        WhatsApp
+                    </button>
+                    <a href="#plans" class="btn btn-outline">View Plans</a>
+                </div>
             </div>
-        </div>
-        <div class="hero-image reveal">
-            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800" alt="R Kalpana, M.A - Insurance Advisor">
-        </div>
+            <div class="hero-image reveal">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800"
+                    alt="R Kalpana, M.A - Insurance Advisor">
+            </div>
     </section>
 
     <!-- Solutions Section -->
     <section class="solutions-section" id="solutions">
         <div class="container">
             <h2 class="section-title reveal">Solutions We Offer</h2>
-            
+
             <div class="carousel-container">
                 <div class="carousel-view" id="solutionsCarouselView">
                     <div class="carousel-track">
                         <!-- Life & Wealth Protection -->
                         <div class="service-card reveal" style="--card-img: url('assets/life-banner.png')">
                             <div class="card-brand-marker">
-                                <img src="assets/logos/lic-color.svg" alt="LIC">
+                                <img src="assets/logo-1/lic-color.png" alt="LIC">
                             </div>
                             <div class="card-bottom-content">
                                 <h3>Life & Wealth</h3>
@@ -1651,11 +2058,11 @@
                                 <button class="explore-btn" data-service="life">Explore More</button>
                             </div>
                         </div>
-                        
+
                         <!-- Health Insurance -->
-                        <div class="service-card reveal" style="--card-img: url('assets/health-banner.png')">
+                        <div class="service-card reveal" style="--card-img: url('assets/health-banner-1.png')">
                             <div class="card-brand-marker">
-                                <img src="assets/logos/star-health-color.svg" alt="Star Health">
+                                <img src="assets/logo-1/star-health-color.png" alt="Star Health">
                             </div>
                             <div class="card-bottom-content">
                                 <h3>Health Insurance</h3>
@@ -1663,11 +2070,11 @@
                                 <button class="explore-btn" data-service="health">Explore More</button>
                             </div>
                         </div>
-                        
+
                         <!-- General Insurance -->
-                        <div class="service-card reveal" style="--card-img: url('assets/general-banner.png')">
+                        <div class="service-card reveal" style="--card-img: url('assets/general-banner-c.png')">
                             <div class="card-brand-marker">
-                                <img src="assets/logo-1/united-collapse.png" alt="United India">
+                                <img src="assets/logo-1/united-expnd.png" alt="United India">
                             </div>
                             <div class="card-bottom-content">
                                 <h3>General Insurance</h3>
@@ -1675,11 +2082,11 @@
                                 <button class="explore-btn" data-service="general">Explore More</button>
                             </div>
                         </div>
-                        
+
                         <!-- Loans & Finance -->
                         <div class="service-card reveal" style="--card-img: url('assets/loans-banner.png')">
                             <div class="card-brand-marker">
-                                <img src="assets/logos/lic-housing-color.svg" alt="LIC Housing Finance">
+                                <img src="assets/logo-1/lic-hfl-color-final.png" alt="LIC Housing Finance">
                             </div>
                             <div class="card-bottom-content">
                                 <h3>Loans & Finance</h3>
@@ -1693,10 +2100,14 @@
                 <!-- Navigation Arrows -->
                 <div class="carousel-nav">
                     <button class="nav-btn" id="prevBtn" aria-label="Previous slide">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                        </svg>
                     </button>
                     <button class="nav-btn" id="nextBtn" aria-label="Next slide">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
                     </button>
                 </div>
             </div>
@@ -1710,18 +2121,24 @@
 
             <!-- Provider Tabs -->
             <div class="plans-tabs reveal">
-                <button class="tab-btn active" onclick="switchTab('lic', this)" style="--tab-primary: var(--lic-primary); --tab-glow: rgba(29, 60, 143, 0.3);">LIC</button>
-                <button class="tab-btn" onclick="switchTab('lichfl', this)" style="--tab-primary: var(--lichfl-primary); --tab-glow: rgba(0, 91, 172, 0.3);">LIC HFL</button>
-                <button class="tab-btn" onclick="switchTab('star', this)" style="--tab-primary: var(--star-primary); --tab-glow: rgba(229, 57, 53, 0.3);">Star Health</button>
-                <button class="tab-btn" onclick="switchTab('united', this)" style="--tab-primary: var(--united-primary); --tab-glow: rgba(0, 121, 107, 0.3);">United India</button>
+                <button class="tab-btn active" onclick="switchTab('lic', this)"
+                    style="--tab-primary: var(--lic-primary); --tab-glow: rgba(29, 60, 143, 0.3);">LIC</button>
+                <button class="tab-btn" onclick="switchTab('lichfl', this)"
+                    style="--tab-primary: var(--lichfl-primary); --tab-glow: rgba(0, 91, 172, 0.3);">LIC HFL</button>
+                <button class="tab-btn" onclick="switchTab('star', this)"
+                    style="--tab-primary: var(--star-primary); --tab-glow: rgba(229, 57, 53, 0.3);">Star Health</button>
+                <button class="tab-btn" onclick="switchTab('united', this)"
+                    style="--tab-primary: var(--united-primary); --tab-glow: rgba(0, 121, 107, 0.3);">United
+                    India</button>
             </div>
-            
+
             <div class="carousel-container">
                 <div class="carousel-view" id="plansCarouselView">
                     <!-- LIC Track -->
                     <div class="carousel-track plans-track-group active" id="track-lic">
                         <!-- Future-Ready Child Plan -->
-                        <div class="service-card card-brand-lic reveal" style="--card-img: url('assets/tarun-banner.png')">
+                        <div class="service-card card-brand-lic reveal"
+                            style="--card-img: url('assets/tarun-banner.png')">
                             <div class="card-brand-marker">
                                 <div class="card-trust-badge">Trusted Plan</div>
                             </div>
@@ -1733,7 +2150,8 @@
                         </div>
 
                         <!-- Guaranteed Savings Plan -->
-                        <div class="service-card card-brand-lic reveal" style="--card-img: url('assets/life-banner.png')">
+                        <div class="service-card card-brand-lic reveal"
+                            style="--card-img: url('assets/life-banner.png')">
                             <div class="card-brand-marker">
                                 <div class="card-trust-badge">Best Seller</div>
                             </div>
@@ -1745,7 +2163,8 @@
                         </div>
 
                         <!-- Lifetime Income Plan -->
-                        <div class="service-card card-brand-lic reveal" style="--card-img: url('assets/life-banner.png')">
+                        <div class="service-card card-brand-lic reveal"
+                            style="--card-img: url('assets/life-banner.png')">
                             <div class="card-brand-marker">
                                 <div class="card-trust-badge">Popular</div>
                             </div>
@@ -1757,9 +2176,10 @@
                         </div>
 
                         <!-- Money Back Savings Plan -->
-                        <div class="service-card card-brand-lic reveal" style="--card-img: url('assets/life-banner.png')">
+                        <div class="service-card card-brand-lic reveal"
+                            style="--card-img: url('assets/life-banner.png')">
                             <div class="card-brand-marker">
-                                <img src="assets/logos/lic-color.svg" alt="LIC">
+                                <div class="card-trust-badge">Regular Returns</div>
                             </div>
                             <div class="card-bottom-content">
                                 <h3>Money Back</h3>
@@ -1769,7 +2189,8 @@
                         </div>
 
                         <!-- Guaranteed Income Plan -->
-                        <div class="service-card card-brand-lic reveal" style="--card-img: url('assets/life-banner.png')">
+                        <div class="service-card card-brand-lic reveal"
+                            style="--card-img: url('assets/life-banner.png')">
                             <div class="card-brand-marker">
                                 <div class="card-trust-badge">Guaranteed</div>
                             </div>
@@ -1781,7 +2202,8 @@
                         </div>
 
                         <!-- Instant Income Plan -->
-                        <div class="service-card card-brand-lic reveal" style="--card-img: url('assets/life-banner.png')">
+                        <div class="service-card card-brand-lic reveal"
+                            style="--card-img: url('assets/life-banner.png')">
                             <div class="card-brand-marker">
                                 <div class="card-trust-badge">Instant</div>
                             </div>
@@ -1793,7 +2215,8 @@
                         </div>
 
                         <!-- Pure Protection Plan -->
-                        <div class="service-card card-brand-lic reveal" style="--card-img: url('assets/life-banner.png')">
+                        <div class="service-card card-brand-lic reveal"
+                            style="--card-img: url('assets/life-banner.png')">
                             <div class="card-brand-marker">
                                 <div class="card-trust-badge">Pure Protection</div>
                             </div>
@@ -1805,7 +2228,8 @@
                         </div>
 
                         <!-- Simple Protection Plan -->
-                        <div class="service-card card-brand-lic reveal" style="--card-img: url('assets/life-banner.png')">
+                        <div class="service-card card-brand-lic reveal"
+                            style="--card-img: url('assets/life-banner.png')">
                             <div class="card-brand-marker">
                                 <div class="card-trust-badge">Affordable</div>
                             </div>
@@ -1820,9 +2244,10 @@
                     <!-- LIC HFL Track -->
                     <div class="carousel-track plans-track-group" id="track-lichfl">
                         <!-- Home Loan -->
-                        <div class="service-card card-brand-lichfl reveal" style="--card-img: url('assets/loans-banner.png')">
+                        <div class="service-card card-brand-lichfl reveal"
+                            style="--card-img: url('assets/loans-banner.png')">
                             <div class="card-brand-marker">
-                                <img src="assets/logos/lic-housing-color.svg" alt="LIC HFL">
+                                <div class="card-trust-badge">Own Your Home</div>
                             </div>
                             <div class="card-bottom-content">
                                 <h3>Home Loan</h3>
@@ -1832,7 +2257,8 @@
                         </div>
 
                         <!-- Plot Loan -->
-                        <div class="service-card card-brand-lichfl reveal" style="--card-img: url('assets/loans-banner.png')">
+                        <div class="service-card card-brand-lichfl reveal"
+                            style="--card-img: url('assets/loans-banner.png')">
                             <div class="card-brand-marker">
                                 <div class="card-trust-badge">Land Purchase</div>
                             </div>
@@ -1844,7 +2270,8 @@
                         </div>
 
                         <!-- Pensioners Loan -->
-                        <div class="service-card card-brand-lichfl reveal" style="--card-img: url('assets/loans-banner.png')">
+                        <div class="service-card card-brand-lichfl reveal"
+                            style="--card-img: url('assets/loans-banner.png')">
                             <div class="card-brand-marker">
                                 <div class="card-trust-badge">Senior Support</div>
                             </div>
@@ -1856,7 +2283,8 @@
                         </div>
 
                         <!-- Construction Loan -->
-                        <div class="service-card card-brand-lichfl reveal" style="--card-img: url('assets/loans-banner.png')">
+                        <div class="service-card card-brand-lichfl reveal"
+                            style="--card-img: url('assets/loans-banner.png')">
                             <div class="card-brand-marker">
                                 <div class="card-trust-badge">Build Home</div>
                             </div>
@@ -1868,7 +2296,8 @@
                         </div>
 
                         <!-- Renovation Loan -->
-                        <div class="service-card card-brand-lichfl reveal" style="--card-img: url('assets/loans-banner.png')">
+                        <div class="service-card card-brand-lichfl reveal"
+                            style="--card-img: url('assets/loans-banner.png')">
                             <div class="card-brand-marker">
                                 <div class="card-trust-badge">Home Upgrade</div>
                             </div>
@@ -1883,7 +2312,8 @@
                     <!-- Star Health Track -->
                     <div class="carousel-track plans-track-group" id="track-star">
                         <!-- Star Super Star -->
-                        <div class="service-card card-brand-star reveal" style="--card-img: url('assets/health-banner.png')">
+                        <div class="service-card card-brand-star reveal"
+                            style="--card-img: url('assets/health-banner-1.png')">
                             <div class="card-brand-marker">
                                 <div class="card-trust-badge">Unlimited</div>
                             </div>
@@ -1895,7 +2325,8 @@
                         </div>
 
                         <!-- Star Comprehensive -->
-                        <div class="service-card card-brand-star reveal" style="--card-img: url('assets/health-banner.png')">
+                        <div class="service-card card-brand-star reveal"
+                            style="--card-img: url('assets/health-banner-1.png')">
                             <div class="card-brand-marker">
                                 <div class="card-trust-badge">Best Seller</div>
                             </div>
@@ -1907,7 +2338,8 @@
                         </div>
 
                         <!-- Senior Citizen Red Carpet -->
-                        <div class="service-card card-brand-star reveal" style="--card-img: url('assets/health-banner.png')">
+                        <div class="service-card card-brand-star reveal"
+                            style="--card-img: url('assets/health-banner-1.png')">
                             <div class="card-brand-marker">
                                 <div class="card-trust-badge">60+ Plus</div>
                             </div>
@@ -1919,7 +2351,8 @@
                         </div>
 
                         <!-- Global Student Travel -->
-                        <div class="service-card card-brand-star reveal" style="--card-img: url('assets/health-banner.png')">
+                        <div class="service-card card-brand-star reveal"
+                            style="--card-img: url('assets/health-banner-1.png')">
                             <div class="card-brand-marker">
                                 <div class="card-trust-badge">Study Abroad</div>
                             </div>
@@ -1934,9 +2367,10 @@
                     <!-- United India Track -->
                     <div class="carousel-track plans-track-group" id="track-united">
                         <!-- Motor Insurance -->
-                        <div class="service-card card-brand-united reveal" style="--card-img: url('assets/general-banner.png')">
+                        <div class="service-card card-brand-united reveal"
+                            style="--card-img: url('assets/general-banner-1.png')">
                             <div class="card-brand-marker">
-                                <img src="assets/logo-1/united-collapse.png" alt="United India">
+                                <div class="card-trust-badge">Drive Protected</div>
                             </div>
                             <div class="card-bottom-content">
                                 <h3>Motor Insurance</h3>
@@ -1946,7 +2380,8 @@
                         </div>
 
                         <!-- Family Medicare -->
-                        <div class="service-card card-brand-united reveal" style="--card-img: url('assets/general-banner.png')">
+                        <div class="service-card card-brand-united reveal"
+                            style="--card-img: url('assets/general-banner-1.png')">
                             <div class="card-brand-marker">
                                 <div class="card-trust-badge">Family First</div>
                             </div>
@@ -1958,7 +2393,8 @@
                         </div>
 
                         <!-- Personal Accident -->
-                        <div class="service-card card-brand-united reveal" style="--card-img: url('assets/general-banner.png')">
+                        <div class="service-card card-brand-united reveal"
+                            style="--card-img: url('assets/general-banner-1.png')">
                             <div class="card-brand-marker">
                                 <div class="card-trust-badge">Accident Shield</div>
                             </div>
@@ -1974,81 +2410,179 @@
                 <!-- Navigation Arrows -->
                 <div class="carousel-nav">
                     <button class="nav-btn" id="plansPrevBtn" aria-label="Previous slide">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                        </svg>
                     </button>
                     <button class="nav-btn" id="plansNextBtn" aria-label="Next slide">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
                     </button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Why Choose Me Section -->
+    <!-- Why Choose Us & Advisors Section -->
     <section class="container">
         <div class="trust-section reveal">
-            <div>
-                <h2 style="font-size: 2.5rem; color: var(--primary);">Why Choose Me</h2>
-                <div class="why-list">
-                    <div class="why-item">
-                        <div class="check-icon">✓</div>
-                        Personalized financial guidance based on your goals
-                    </div>
-                    <div class="why-item">
-                        <div class="check-icon">✓</div>
-                        Assistance in policy selection and claims
-                    </div>
-                    <div class="why-item">
-                        <div class="check-icon">✓</div>
-                        Quick response via call and WhatsApp
-                    </div>
-                    <div class="why-item">
-                        <div class="check-icon">✓</div>
-                        Trusted Insurance Advisor support
-                    </div>
+            <div class="trust-header">
+                <h2>Why Choose Us</h2>
+                <p>Trusted guidance for your financial security</p>
+            </div>
+
+            <div class="why-list">
+                <div class="why-item">
+                    <div class="check-icon">✓</div>
+                    Personalized financial guidance based on your goals
                 </div>
-                <div class="logo-strip">
-                    <div class="logo-container">
-                        <img src="assets/logos/lic-color.svg" alt="LIC">
-                    </div>
-                    <div class="logo-container">
-                        <img src="assets/logos/star-health-color.svg" alt="Star Health">
-                    </div>
-                    <div class="logo-container">
-                        <img src="assets/logo-1/united-collapse.png" alt="United India">
-                    </div>
-                    <div class="logo-container">
-                        <img src="assets/logos/lic-housing-color.svg" alt="LIC Housing Finance">
-                    </div>
+                <div class="why-item">
+                    <div class="check-icon">✓</div>
+                    Assistance in policy selection and claims
+                </div>
+                <div class="why-item">
+                    <div class="check-icon">✓</div>
+                    Quick response via call and WhatsApp
+                </div>
+                <div class="why-item">
+                    <div class="check-icon">✓</div>
+                    Trusted Insurance Advisor support
                 </div>
             </div>
-            <div class="agent-profile">
-                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800" alt="R Kalpana, M.A" class="profile-img">
-                <div class="profile-info">
-                    <h3>R KALPANA, M.A</h3>
-                    <p class="agent-role">Insurance Advisor</p>
-                    <span class="agent-id">Agent ID: 0141271B</span>
-                    
-                    <div class="agent-meta">
-                        <div class="meta-item">
-                            <svg class="meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                            Call : +91 82480 13879
+
+            <div class="logo-strip" style="justify-content: center; margin-bottom: 20px;">
+                <div class="logo-container">
+                    <img src="assets/logo-1/lic-color.png" alt="LIC">
+                </div>
+                <div class="logo-container">
+                    <img src="assets/logo-1/star-health-color.png" alt="Star Health">
+                </div>
+                <div class="logo-container">
+                    <img src="assets/logo-1/united-expnd.png" alt="United India">
+                </div>
+                <div class="logo-container">
+                    <img src="assets/logo-1/lic-hfl-color-final.png" alt="LIC Housing Finance">
+                </div>
+            </div>
+
+            <div class="advisors-grid">
+                <!-- Advisor 1 -->
+                <div class="agent-profile">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800"
+                        alt="R Kalpana, M.A" class="profile-img">
+                    <div class="profile-info">
+                        <h3>R KALPANA, M.A</h3>
+                        <p class="agent-role">Insurance Advisor</p>
+                        <span class="agent-id">Agent ID: 0141271B</span>
+
+                        <div class="agent-meta">
+                            <div class="meta-item">
+                                <svg class="meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                                </svg>
+                                Call : +91 82480 13879
+                            </div>
+                            <div class="meta-item">
+                                <svg class="meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                                </svg>
+                                Alternate : +91 87787 47430
+                            </div>
+                            <div class="meta-item">
+                                <svg class="meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 01-2 2v10a2 2 0 012 2z" />
+                                </svg>
+                                rkalpana78@gmail.com
+                            </div>
+                            <div class="meta-item">
+                                <svg class="meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+                                Porur, Chennai
+                            </div>
                         </div>
-                        <div class="meta-item">
-                            <svg class="meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
-                            Alternate : +91 87787 47430
-                        </div>
-                        <div class="meta-item">
-                            <svg class="meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 01-2 2v10a2 2 0 012 2z"/></svg>
-                            advisor.kalpana@gmail.com
-                        </div>
-                        <div class="meta-item">
-                            <svg class="meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                            Porur, Chennai
+
+                        <p class="agent-tagline">"Helping families make financially secure decisions"</p>
+
+                        <!-- CTA BUTTONS -->
+                        <div class="cta-group"
+                            style="margin-top: 25px; width: 100%; display: flex; flex-direction: column; gap: 12px;">
+                            <button type="button" class="btn btn-primary cta-trigger-btn" data-cta-type="whatsapp"
+                                style="width: 100%; justify-content: center;">
+                                Chat on WhatsApp
+                            </button>
+                            <button type="button" class="btn btn-outline cta-trigger-btn" data-cta-type="call"
+                                style="width: 100%; justify-content: center;">
+                                Call Now
+                            </button>
                         </div>
                     </div>
-                    
-                    <p class="agent-tagline">"Helping families make financially secure decisions"</p>
+                </div>
+
+                <!-- Advisor 2 -->
+                <div class="agent-profile">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=800"
+                        alt="P Selvaraj" class="profile-img">
+                    <div class="profile-info">
+                        <h3>P SELVARAJ</h3>
+                        <p class="agent-role">Insurance Advisor</p>
+                        <span class="agent-id">Agent ID: 78871B</span>
+
+                        <div class="agent-meta">
+                            <div class="meta-item">
+                                <svg class="meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                                </svg>
+                                Call : +91 87787 47430
+                            </div>
+                            <div class="meta-item">
+                                <svg class="meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                                </svg>
+                                Alternate : +91 82480 13879
+                            </div>
+                            <div class="meta-item">
+                                <svg class="meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 01-2 2v10a2 2 0 012 2z" />
+                                </svg>
+                                pachaiyappaselvaraj70@gmail.com
+                            </div>
+                            <div class="meta-item">
+                                <svg class="meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+                                Porur, Chennai
+                            </div>
+                        </div>
+
+                        <p class="agent-tagline">"Helping families make financially secure decisions"</p>
+
+                        <!-- CTA BUTTONS -->
+                        <div class="cta-group"
+                            style="margin-top: 25px; width: 100%; display: flex; flex-direction: column; gap: 12px;">
+                            <button type="button" class="btn btn-primary cta-trigger-btn" data-cta-type="whatsapp"
+                                style="width: 100%; justify-content: center;">
+                                Chat on WhatsApp
+                            </button>
+                            <button type="button" class="btn btn-outline cta-trigger-btn" data-cta-type="call"
+                                style="width: 100%; justify-content: center;">
+                                Call Now
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -2059,8 +2593,11 @@
         <div class="final-cta reveal">
             <h2>Get the Right Plan for Your Future Today</h2>
             <div class="cta-group" style="justify-content: center;">
-                <a href="javascript:void(0)" onclick="openCtaModal('call')" class="btn btn-primary" style="background: var(--color-white); color: var(--color-primary);">Call Now</a>
-                <a href="javascript:void(0)" onclick="openCtaModal('whatsapp')" class="btn btn-whatsapp" style="border-color: white; color: white;">WhatsApp</a>
+                <button type="button" class="btn btn-primary cta-trigger-btn" data-cta-type="call"
+                    style="background: var(--color-white); color: var(--color-primary); cursor: pointer; font-family: inherit;">Call
+                    Now</button>
+                <button type="button" class="btn btn-whatsapp cta-trigger-btn" data-cta-type="whatsapp"
+                    style="border-color: white; color: white; cursor: pointer; font-family: inherit;">WhatsApp</button>
             </div>
         </div>
     </section>
@@ -2073,20 +2610,22 @@
                     <h4>About R KALPANA, M.A</h4>
                     <div class="footer-logo-strip">
                         <div class="logo-container">
-                            <img src="assets/logos/lic-color.svg" alt="LIC">
+                            <img src="assets/logo-1/lic-color.png" alt="LIC">
                         </div>
                         <div class="logo-container">
-                            <img src="assets/logos/star-health-color.svg" alt="Star Health">
+                            <img src="assets/logo-1/star-health-color.png" alt="Star Health">
                         </div>
                         <div class="logo-container">
-                            <img src="assets/logo-1/united-collapse.png" alt="United India">
+                            <img src="assets/logo-1/united-expnd.png" alt="United India">
                         </div>
                         <div class="logo-container">
-                            <img src="assets/logos/lic-housing-color.svg" alt="LIC Housing Finance">
+                            <img src="assets/logo-1/lic-hfl-color-final.png" alt="LIC Housing Finance">
                         </div>
                     </div>
-                    <p>Professional Insurance Advisor helping families secure their financial future with tailored LIC and health insurance solutions.</p>
-                    <p class="agent-tagline" style="color: #A8B3AC; font-style: italic; margin-top: 15px;">"Helping families make financially secure decisions"</p>
+                    <p>Professional Insurance Advisor helping families secure their financial future with tailored LIC
+                        and health insurance solutions.</p>
+                    <p class="agent-tagline" style="color: #A8B3AC; font-style: italic; margin-top: 15px;">"Helping
+                        families make financially secure decisions"</p>
                 </div>
                 <div>
                     <h4>Insurance Plans</h4>
@@ -2100,16 +2639,16 @@
                 </div>
                 <div>
                     <h4>Contact Details</h4>
-                    <p><strong>Phone:</strong> +91 82480 13879</p>
-                    <p><strong>Alternate:</strong> +91 87787 47430</p>
-                    <p><strong>Email:</strong> advisor.kalpana@gmail.com</p>
+                    <p><strong>R Kalpana</strong> +91 82480 13879</p>
+                    <p><strong>P Selvaraj</strong> +91 87787 47430</p>
+                    <p><strong>Email:</strong> rkalpana78@gmail.com</p>
                     <p><strong>Location:</strong> Porur, Chennai</p>
-                    <p><strong>Agent ID:</strong> 0141271B</p>
                 </div>
             </div>
             <div class="footer-disclaimer">
                 <p>&copy; 2026 R KALPANA, M.A | Insurance Advisor. All Rights Reserved.</p>
-                <p>Disclaimer: Insurance is the subject matter of solicitation. For more details on risk factors, terms and conditions, please read the sales brochure carefully before concluding a sale.</p>
+                <p>Disclaimer: Insurance is the subject matter of solicitation. For more details on risk factors, terms
+                    and conditions, please read the sales brochure carefully before concluding a sale.</p>
             </div>
         </div>
     </footer>
@@ -2118,21 +2657,22 @@
     <div class="modal-overlay" id="serviceModalOverlay">
         <div class="modal-poster" id="serviceModal">
             <button class="modal-close" id="closeModal" aria-label="Close modal">&times;</button>
-            
+
             <div class="modal-left-pane">
                 <span class="modal-badge">Trusted Insurance</span>
                 <div class="modal-logo-pill">
                     <img src="" alt="Provider Logo" class="modal-logo" id="modalLogo">
                 </div>
                 <h2 class="modal-main-title" id="modalTitle">Life & Wealth Protection</h2>
-                <p class="modal-description" id="modalDescription">Secure your family's future with trusted LIC plans.</p>
-                
+                <p class="modal-description" id="modalDescription">Secure your family's future with trusted LIC plans.
+                </p>
+
                 <div class="modal-info-grid">
                     <div class="modal-info-section">
                         <span class="modal-info-label">Plan Highlights</span>
                         <ul class="modal-vertical-list" id="modalHighlights"></ul>
                     </div>
-                    
+
                     <div class="modal-info-section">
                         <span class="modal-info-label">Who is this for?</span>
                         <ul class="modal-vertical-list" id="modalWhoFor"></ul>
@@ -2143,7 +2683,10 @@
                 <div class="modal-expand-container" id="modalExpandContainer">
                     <button class="modal-expand-btn" id="modalExpandBtn">
                         <span class="btn-text">More Details</span>
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
                     </button>
                     <div class="modal-expand-content" id="modalExpandContent">
                         <!-- Dynamic Detailed Content Here -->
@@ -2174,11 +2717,11 @@
         window.addEventListener("scroll", reveal);
         reveal();
 
-               const modalData = {
+        const modalData = {
             life: {
                 title: "Life & Wealth Protection",
                 provider: "Life Insurance Corporation of India (LIC)",
-                logo: "assets/logos/lic-color.svg",
+                logo: "assets/logo-1/lic-color.png",
                 banner: "assets/life-banner.png",
                 tagline: "Secure your family's future with trusted LIC plans.",
                 plans: ["Term Insurance", "Endowment Plans", "Money Back", "Child Plans", "Pension Solutions"],
@@ -2188,7 +2731,7 @@
             health: {
                 title: "Health Insurance",
                 provider: "Star Health and Allied Insurance",
-                logo: "assets/logos/star-health-color.svg",
+                logo: "assets/logo-1/star-health-color.png",
                 banner: "assets/health-banner.png",
                 tagline: "Comprehensive health coverage for you and your family.",
                 plans: ["Individual Health Plans", "Family Floater Plans", "Senior Citizen Red Carpet", "Critical Illness Cover", "Super Top-Up Covers"],
@@ -2208,7 +2751,7 @@
             loans: {
                 title: "Loans & Finance",
                 provider: "LIC Housing Finance Ltd",
-                logo: "assets/logos/lic-color.svg",
+                logo: "assets/logo-1/lic-color.png",
                 banner: "assets/loans-banner.png",
                 tagline: "Flexible financing solutions for your home and property.",
                 plans: ["Home Loans", "Loan Against Property", "Renovation Loans", "Balance Transfer", "Top-Up Loans"],
@@ -2218,7 +2761,7 @@
             tarun: {
                 title: "LIC Jeevan Tarun",
                 provider: "Future-Ready Child Plan",
-                logo: "assets/logos/lic-color.svg",
+                logo: "assets/logo-1/lic-color.png",
                 banner: "assets/tarun-banner.png",
                 tagline: "Secure your child’s future with guaranteed savings and protection",
                 intro: "Build a strong financial foundation for your child’s education and life goals",
@@ -2275,7 +2818,7 @@
             labh: {
                 title: "LIC Jeevan Labh",
                 provider: "Guaranteed Savings Plan",
-                logo: "assets/logos/lic-color.svg",
+                logo: "assets/logo-1/lic-color.png",
                 banner: "assets/life-banner.png",
                 tagline: "Pay for a limited time. Enjoy benefits for the long term",
                 intro: "Premiums stop early. Benefits continue till maturity",
@@ -2334,7 +2877,7 @@
             utsav: {
                 title: "LIC Jeevan Utsav",
                 provider: "Lifetime Income + Protection Plan",
-                logo: "assets/logos/lic-color.svg",
+                logo: "assets/logo-1/lic-color.png",
                 banner: "assets/life-banner.png",
                 tagline: "Get guaranteed income for life with complete financial security",
                 intro: "Turn your savings into a lifelong income stream for you and your family",
@@ -2391,7 +2934,7 @@
             moneyBack: {
                 title: "LIC Money Back Plan – 25 Years",
                 provider: "Guaranteed Returns + Periodic Payout Plan",
-                logo: "assets/logos/lic-color.svg",
+                logo: "assets/logo-1/lic-color.png",
                 banner: "assets/life-banner.png",
                 tagline: "Get regular payouts during the policy term while staying fully protected",
                 intro: "A perfect blend of savings, protection, and liquidity at every stage",
@@ -2449,7 +2992,7 @@
             shanti: {
                 title: "LIC Jeevan Shanti",
                 provider: "Lifetime Guaranteed Income Plan",
-                logo: "assets/logos/lic-color.svg",
+                logo: "assets/logo-1/lic-color.png",
                 banner: "assets/life-banner.png",
                 tagline: "Turn a one-time investment into guaranteed lifelong income",
                 intro: "Secure a fixed income stream that lasts as long as you live",
@@ -2507,7 +3050,7 @@
             akshay: {
                 title: "LIC Jeevan Akshay VII",
                 provider: "Instant Lifetime Income Plan",
-                logo: "assets/logos/lic-color.svg",
+                logo: "assets/logo-1/lic-color.png",
                 banner: "assets/life-banner.png",
                 tagline: "Start receiving guaranteed income immediately after a one-time investment",
                 intro: "Convert your savings into instant, lifelong income with zero delay",
@@ -2564,7 +3107,7 @@
             amar: {
                 title: "LIC Jeevan Amar",
                 provider: "Pure Protection Life Cover Plan",
-                logo: "assets/logos/lic-color.svg",
+                logo: "assets/logo-1/lic-color.png",
                 banner: "assets/life-banner.png",
                 tagline: "Maximum life cover at minimal cost to secure your family’s future",
                 intro: "Pay less. Protect more. Ensure your family is financially safe",
@@ -2620,7 +3163,7 @@
             saral: {
                 title: "LIC Saral Jeevan Bima",
                 provider: "Simple & Affordable Protection Plan",
-                logo: "assets/logos/lic-color.svg",
+                logo: "assets/logo-1/lic-color.png",
                 banner: "assets/life-banner.png",
                 tagline: "Get straightforward life insurance with no complexity and full protection",
                 intro: "A simple plan that ensures your family is financially secure at low cost",
@@ -2676,7 +3219,7 @@
             starSuper: {
                 title: "Star Health Super Star",
                 provider: "Unlimited Health Protection Plan",
-                logo: "assets/logos/star-health-color.svg",
+                logo: "assets/logo-1/star-health-color.png",
                 banner: "assets/health-banner.png",
                 tagline: "No limits. No surprises. Just complete health protection for life",
                 intro: "Your medical coverage grows with you — without hitting a ceiling",
@@ -2743,7 +3286,7 @@
             starComp: {
                 title: "Star Comprehensive Insurance Policy",
                 provider: "All-in-One Health Protection Plan",
-                logo: "assets/logos/star-health-color.svg",
+                logo: "assets/logo-1/star-health-color.png",
                 banner: "assets/health-banner.png",
                 tagline: "Complete health coverage that protects you across every stage of life",
                 intro: "A balanced plan combining hospital care, outpatient benefits, and family coverage",
@@ -2799,7 +3342,7 @@
             starSenior: {
                 title: "Star Senior Citizens Red Carpet",
                 provider: "Senior-Focused Health Protection Plan",
-                logo: "assets/logos/star-health-color.svg",
+                logo: "assets/logo-1/star-health-color.png",
                 banner: "assets/health-banner.png",
                 tagline: "Health insurance designed specifically for people above 60 — with lifetime renewal",
                 intro: "A dedicated plan that ensures medical support when it’s needed the most",
@@ -2856,7 +3399,7 @@
             starStudent: {
                 title: "Star Student Travel Protect",
                 provider: "Global Student Protection Plan",
-                logo: "assets/logos/star-health-color.svg",
+                logo: "assets/logo-1/star-health-color.png",
                 banner: "assets/health-banner.png",
                 tagline: "Study abroad with confidence — protected from risks across the world",
                 intro: "A complete travel insurance plan designed for students pursuing education overseas",
@@ -2911,7 +3454,7 @@
             homeLoan: {
                 title: "LIC Housing Finance Home Loan",
                 provider: "Smart Home Loan Solution",
-                logo: "assets/logos/lic-housing-color.svg",
+                logo: "assets/logo-1/lic-housing-color.png",
                 banner: "assets/loans-banner.png",
                 tagline: "Turn your dream home into reality with flexible loans and low interest rates",
                 intro: "Finance your home with confidence — low EMI, long tenure, and easy approval",
@@ -2965,7 +3508,7 @@
             plotLoan: {
                 title: "LIC Housing Finance Plot Loan",
                 provider: "Land Investment Loan Solution",
-                logo: "assets/logos/lic-housing-color.svg",
+                logo: "assets/logo-1/lic-housing-color.png",
                 banner: "assets/loans-banner.png",
                 tagline: "Own your land today — build your future tomorrow",
                 intro: "Finance your residential plot with flexible terms and affordable rates",
@@ -3019,7 +3562,7 @@
             pensionersLoan: {
                 title: "LIC Housing Finance Pensioners Loan",
                 provider: "Retirement-Friendly Home Loan",
-                logo: "assets/logos/lic-housing-color.svg",
+                logo: "assets/logo-1/lic-housing-color.png",
                 banner: "assets/loans-banner.png",
                 tagline: "Own your home even after retirement — without financial pressure",
                 intro: "Designed for pensioners to access home loans with extended tenure and flexibility",
@@ -3064,7 +3607,7 @@
             constructionLoan: {
                 title: "LIC Housing Finance Construction Loan",
                 provider: "Build-Your-Home Loan Solution",
-                logo: "assets/logos/lic-housing-color.svg",
+                logo: "assets/logo-1/lic-housing-color.png",
                 banner: "assets/loans-banner.png",
                 tagline: "Don’t just buy a house — build it your way with flexible financing",
                 intro: "Fund your home construction with low interest rates and structured payouts",
@@ -3117,7 +3660,7 @@
             renovationLoan: {
                 title: "LIC Housing Finance Renovation Loan",
                 provider: "Upgrade Your Home Loan Solution",
-                logo: "assets/logos/lic-housing-color.svg",
+                logo: "assets/logo-1/lic-housing-color.png",
                 banner: "assets/loans-banner.png",
                 tagline: "Transform your existing house into your dream home without financial stress",
                 intro: "Upgrade, repair, or renovate your home with flexible funding and low EMI",
@@ -3239,7 +3782,7 @@
             const expandContainer = document.getElementById('modalExpandContainer');
             const expandContent = document.getElementById('modalExpandContent');
             const expandBtn = document.getElementById('modalExpandBtn');
-            
+
             // Reset Expansion State
             expandContent.classList.remove('active');
             expandContent.style.maxHeight = null;
@@ -3249,24 +3792,24 @@
             if (data.extraSections && data.extraSections.length > 0) {
                 expandContainer.style.display = 'block';
                 expandContent.innerHTML = ''; // Clear previous and build fresh
-                
+
                 data.extraSections.forEach(section => {
                     const sectionDiv = document.createElement('div');
                     sectionDiv.className = 'modal-extra-section';
-                    
+
                     const title = document.createElement('div');
                     title.className = 'modal-extra-title';
                     title.textContent = section.title;
-                    
+
                     const list = document.createElement('ul');
                     list.className = 'modal-vertical-list';
-                    
+
                     section.items.forEach(item => {
                         const li = document.createElement('li');
                         li.innerHTML = item;
                         list.appendChild(li);
                     });
-                    
+
                     sectionDiv.appendChild(title);
                     sectionDiv.appendChild(list);
                     expandContent.appendChild(sectionDiv);
@@ -3281,7 +3824,7 @@
         }
 
         // Toggle Expansion Logic
-        document.getElementById('modalExpandBtn').addEventListener('click', function() {
+        document.getElementById('modalExpandBtn').addEventListener('click', function () {
             const content = document.getElementById('modalExpandContent');
             const btnText = this.querySelector('.btn-text');
             const icon = this.querySelector('svg');
@@ -3357,7 +3900,7 @@
             if (!view) return;
 
             const track = view.querySelector('.carousel-track');
-            
+
             // Navigation Buttons
             const scrollAmount = () => view.offsetWidth * 0.8;
 
@@ -3385,7 +3928,7 @@
                 startX = e.pageX - view.offsetLeft;
                 scrollLeft = view.scrollLeft;
                 isDragging = false;
-                
+
                 // Dynamic performance optimization - find active track
                 const activeTrack = view.querySelector('.carousel-track.active') || view.querySelector('.carousel-track');
                 if (activeTrack) activeTrack.style.willChange = 'transform';
@@ -3411,7 +3954,7 @@
                 const x = e.pageX - view.offsetLeft;
                 const walk = (x - startX) * 2; // Scroll multiplier
                 view.scrollLeft = scrollLeft - walk;
-                
+
                 if (Math.abs(walk) > 5) {
                     isDragging = true;
                 }
@@ -3456,6 +3999,24 @@
             const isSmallScreen = window.innerWidth <= 768;
             return isMobile || isSmallScreen;
         }
+
+        // Attach explicit event listeners to prevent ANY default link behavior
+        document.querySelectorAll('.cta-trigger-btn').forEach(btn => {
+            btn.addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                const type = this.getAttribute('data-cta-type');
+                openCtaModal(type);
+            });
+
+            // Handle touch explicitly for strict mobile compatibility
+            btn.addEventListener('touchend', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                const type = this.getAttribute('data-cta-type');
+                openCtaModal(type);
+            }, { passive: false });
+        });
 
         function openCtaModal(type) {
             currentCtaMode = type;
@@ -3561,7 +4122,8 @@
                         <div class="cta-advisor-name">R Kalpana</div>
                         <div class="cta-advisor-phone">+91 82480 13879</div>
                     </div>
-                    <button class="cta-action-btn" id="btn-advisor-1" onclick="handleCtaAction('918248013879')">Action</button>
+                    <button class="cta-action-btn" id="btn-advisor-1"
+                        onclick="handleCtaAction('918248013879')">Action</button>
                 </div>
 
                 <div class="cta-advisor-card">
@@ -3570,7 +4132,8 @@
                         <div class="cta-advisor-name">P Selvaraj</div>
                         <div class="cta-advisor-phone">+91 87787 47430</div>
                     </div>
-                    <button class="cta-action-btn" id="btn-advisor-2" onclick="handleCtaAction('918778747430')">Action</button>
+                    <button class="cta-action-btn" id="btn-advisor-2"
+                        onclick="handleCtaAction('918778747430')">Action</button>
                 </div>
             </div>
 
@@ -3579,7 +4142,8 @@
                 <div class="cta-selected-number" id="cta-fallback-number">918248013879</div>
                 <div class="cta-fallback-actions">
                     <button class="cta-action-btn cta-action-btn-outline" onclick="copyCtaNumber()">Copy Number</button>
-                    <button class="cta-action-btn cta-action-btn-green" onclick="handleCtaWhatsApp(currentCtaSelectedNumber)">WhatsApp</button>
+                    <button class="cta-action-btn cta-action-btn-green"
+                        onclick="handleCtaWhatsApp(currentCtaSelectedNumber)">WhatsApp</button>
                 </div>
             </div>
 
@@ -3587,4 +4151,5 @@
         </div>
     </div>
 </body>
+
 </html>
