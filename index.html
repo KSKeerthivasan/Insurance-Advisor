@@ -388,21 +388,6 @@
             filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
         }
 
-        /* Ambient Glow Effect for Logos (Solutions We Offer) */
-        #solutions .card-brand-marker::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 140px;
-            height: 140px;
-            transform: translate(-50%, -50%);
-            /* Pure radial gradient instead of blur() guarantees visibility and softness */
-            background: radial-gradient(circle, rgba(0, 255, 120, 0.25) 0%, rgba(0, 255, 120, 0.05) 50%, transparent 70%);
-            z-index: -1;
-            pointer-events: none;
-        }
-
         .card-trust-badge {
             background: rgba(255, 255, 255, 0.95);
             padding: 6px 14px;
@@ -815,23 +800,6 @@
             width: fit-content;
             max-width: 320px;
             transition: all 0.3s ease;
-            position: relative; 
-            z-index: 1; /* Establishes a local stacking context so z-index: -1 glow doesn't fall behind the modal background */
-        }
-
-        /* Ambient Glow Effect for Logos (Modal) */
-        .modal-logo-pill::before {
-            content: '';
-            position: absolute;
-            top: 40%; /* Offset slightly up to center behind the box rather than the text */
-            left: 50%;
-            width: 220px;
-            height: 140px;
-            transform: translate(-50%, -50%);
-            /* Elliptical pure radial gradient to match logo proportions and provide a soft, visible green glow */
-            background: radial-gradient(ellipse at center, rgba(130, 255, 100, 0.4) 0%, rgba(130, 255, 100, 0.1) 50%, transparent 70%);
-            z-index: -1;
-            pointer-events: none;
         }
 
         .modal-logo {
@@ -1994,7 +1962,7 @@
     <header>
         <div class="container nav-content">
             <div class="logo">
-                <img src="assets/logo-1/lic-color.png" alt="LIC Logo">
+                <img src="assets/logos/lic-color.svg" alt="LIC Logo">
             </div>
             <div class="cta-group">
                 <button type="button" class="btn btn-primary cta-trigger-btn" data-cta-type="call"
