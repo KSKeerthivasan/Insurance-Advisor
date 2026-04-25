@@ -794,21 +794,64 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 0;
+            padding: 10px 15px; /* Added padding for glow */
             margin-bottom: 24px;
             align-self: flex-start;
             width: fit-content;
-            max-width: 320px;
+            /* Removed max-width to allow wider logos */
+            overflow: visible; /* Prevent glow clipping */
             transition: all 0.3s ease;
         }
 
         .modal-logo {
-            height: 48px;
+            height: 90px;
             width: auto;
             object-fit: contain;
             display: block;
-            filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+            /* Safe Fallback: Minimal styling */
+            filter: brightness(1.05);
+            transition: all 0.3s ease;
         }
+
+        /* LIC: Mild brightness + soft white glow */
+        .modal-logo.lic {
+            filter: brightness(1.1)
+                    drop-shadow(0 0 5px rgba(255, 255, 255, 0.4));
+        }
+
+        /* Star Health: Moderate glow + slight brightness */
+        .modal-logo.star {
+            filter: brightness(1.1)
+                    drop-shadow(0 0 10px rgba(0, 150, 255, 0.4));
+        }
+
+        /* United India: High brightness + contrast boost + strong glow for dark background */
+        .modal-logo.united {
+            filter: brightness(1.8)
+                    contrast(1.2)
+                    drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+        }
+
+        /* LIC HFL: Reduced height, increased clarity, minimal glow */
+        .modal-logo.lichfl {
+            height: 70px;
+            filter: brightness(1.2)
+                    contrast(1.1)
+                    drop-shadow(0 0 4px rgba(255, 255, 255, 0.2));
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         .modal-main-title {
             font-size: 3rem;
@@ -1962,7 +2005,7 @@
     <header>
         <div class="container nav-content">
             <div class="logo">
-                <img src="assets/logos/lic-color.svg" alt="LIC Logo">
+                <img src="assets/logo-1/lic-color.png" alt="LIC Logo">
             </div>
             <div class="cta-group">
                 <button type="button" class="btn btn-primary cta-trigger-btn" data-cta-type="call"
@@ -2018,7 +2061,7 @@
                         <!-- Life & Wealth Protection -->
                         <div class="service-card reveal" style="--card-img: url('assets/life-banner.png')">
                             <div class="card-brand-marker">
-                                <img src="assets/logo-1/lic-color.png" alt="LIC">
+                                <img src="assets/logo-1/lic-glow.png" alt="LIC">
                             </div>
                             <div class="card-bottom-content">
                                 <h3>Life & Wealth</h3>
@@ -2042,7 +2085,7 @@
                         <!-- General Insurance -->
                         <div class="service-card reveal" style="--card-img: url('assets/general-banner-c.png')">
                             <div class="card-brand-marker">
-                                <img src="assets/logo-1/united-expnd.png" alt="United India">
+                                <img src="assets/logo-1/united-expnd-2.png" alt="United India">
                             </div>
                             <div class="card-bottom-content">
                                 <h3>General Insurance</h3>
@@ -2687,9 +2730,10 @@
 
         const modalData = {
             life: {
+                brand: "lic",
                 title: "Life & Wealth Protection",
                 provider: "Life Insurance Corporation of India (LIC)",
-                logo: "assets/logo-1/lic-color.png",
+                logo: "assets/logo-1/lic-glow.png",
                 banner: "assets/life-banner.png",
                 tagline: "Secure your family's future with trusted LIC plans.",
                 plans: ["Term Insurance", "Endowment Plans", "Money Back", "Child Plans", "Pension Solutions"],
@@ -2697,6 +2741,7 @@
                 benefits: ["Guaranteed financial security", "Combination of savings & returns", "Significant tax benefits under Sec 80C"]
             },
             health: {
+                brand: "star",
                 title: "Health Insurance",
                 provider: "Star Health and Allied Insurance",
                 logo: "assets/logo-1/star-health-color.png",
@@ -2707,6 +2752,7 @@
                 benefits: ["Extensive hospital expense coverage", "Cashless treatment in network hospitals", "Emergency medical protection"]
             },
             general: {
+                brand: "united",
                 title: "General Insurance",
                 provider: "United India Insurance Company",
                 logo: "assets/logo-1/united-expnd.png",
@@ -2717,9 +2763,10 @@
                 benefits: ["Comprehensive asset protection", "Wide range of risk coverage", "Immediate financial safety net"]
             },
             loans: {
+                brand: "lichfl",
                 title: "Loans & Finance",
                 provider: "LIC Housing Finance Ltd",
-                logo: "assets/logo-1/lic-color.png",
+                logo: "assets/logo-1/lic-hfl-color-final.png",
                 banner: "assets/loans-banner.png",
                 tagline: "Flexible financing solutions for your home and property.",
                 plans: ["Home Loans", "Loan Against Property", "Renovation Loans", "Balance Transfer", "Top-Up Loans"],
@@ -2727,9 +2774,10 @@
                 benefits: ["Affordable interest rates", "Flexible repayment tenures", "Quick and hassle-free processing"]
             },
             tarun: {
+                brand: "lic",
                 title: "LIC Jeevan Tarun",
                 provider: "Future-Ready Child Plan",
-                logo: "assets/logo-1/lic-color.png",
+                logo: "assets/logo-1/lic-glow.png",
                 banner: "assets/tarun-banner.png",
                 tagline: "Secure your child’s future with guaranteed savings and protection",
                 intro: "Build a strong financial foundation for your child’s education and life goals",
@@ -2784,9 +2832,10 @@
                 ]
             },
             labh: {
+                brand: "lic",
                 title: "LIC Jeevan Labh",
                 provider: "Guaranteed Savings Plan",
-                logo: "assets/logo-1/lic-color.png",
+                logo: "assets/logo-1/lic-glow.png",
                 banner: "assets/life-banner.png",
                 tagline: "Pay for a limited time. Enjoy benefits for the long term",
                 intro: "Premiums stop early. Benefits continue till maturity",
@@ -2843,9 +2892,10 @@
                 ]
             },
             utsav: {
+                brand: "lic",
                 title: "LIC Jeevan Utsav",
                 provider: "Lifetime Income + Protection Plan",
-                logo: "assets/logo-1/lic-color.png",
+                logo: "assets/logo-1/lic-glow.png",
                 banner: "assets/life-banner.png",
                 tagline: "Get guaranteed income for life with complete financial security",
                 intro: "Turn your savings into a lifelong income stream for you and your family",
@@ -2900,9 +2950,10 @@
                 ]
             },
             moneyBack: {
+                brand: "lic",
                 title: "LIC Money Back Plan – 25 Years",
                 provider: "Guaranteed Returns + Periodic Payout Plan",
-                logo: "assets/logo-1/lic-color.png",
+                logo: "assets/logo-1/lic-glow.png",
                 banner: "assets/life-banner.png",
                 tagline: "Get regular payouts during the policy term while staying fully protected",
                 intro: "A perfect blend of savings, protection, and liquidity at every stage",
@@ -2958,9 +3009,10 @@
                 ]
             },
             shanti: {
+                brand: "lic",
                 title: "LIC Jeevan Shanti",
                 provider: "Lifetime Guaranteed Income Plan",
-                logo: "assets/logo-1/lic-color.png",
+                logo: "assets/logo-1/lic-glow.png",
                 banner: "assets/life-banner.png",
                 tagline: "Turn a one-time investment into guaranteed lifelong income",
                 intro: "Secure a fixed income stream that lasts as long as you live",
@@ -3016,9 +3068,10 @@
                 ]
             },
             akshay: {
+                brand: "lic",
                 title: "LIC Jeevan Akshay VII",
                 provider: "Instant Lifetime Income Plan",
-                logo: "assets/logo-1/lic-color.png",
+                logo: "assets/logo-1/lic-glow.png",
                 banner: "assets/life-banner.png",
                 tagline: "Start receiving guaranteed income immediately after a one-time investment",
                 intro: "Convert your savings into instant, lifelong income with zero delay",
@@ -3073,9 +3126,10 @@
                 ]
             },
             amar: {
+                brand: "lic",
                 title: "LIC Jeevan Amar",
                 provider: "Pure Protection Life Cover Plan",
-                logo: "assets/logo-1/lic-color.png",
+                logo: "assets/logo-1/lic-glow.png",
                 banner: "assets/life-banner.png",
                 tagline: "Maximum life cover at minimal cost to secure your family’s future",
                 intro: "Pay less. Protect more. Ensure your family is financially safe",
@@ -3129,9 +3183,10 @@
                 ]
             },
             saral: {
+                brand: "lic",
                 title: "LIC Saral Jeevan Bima",
                 provider: "Simple & Affordable Protection Plan",
-                logo: "assets/logo-1/lic-color.png",
+                logo: "assets/logo-1/lic-glow.png",
                 banner: "assets/life-banner.png",
                 tagline: "Get straightforward life insurance with no complexity and full protection",
                 intro: "A simple plan that ensures your family is financially secure at low cost",
@@ -3185,6 +3240,7 @@
                 ]
             },
             starSuper: {
+                brand: "star",
                 title: "Star Health Super Star",
                 provider: "Unlimited Health Protection Plan",
                 logo: "assets/logo-1/star-health-color.png",
@@ -3252,6 +3308,7 @@
                 ]
             },
             starComp: {
+                brand: "star",
                 title: "Star Comprehensive Insurance Policy",
                 provider: "All-in-One Health Protection Plan",
                 logo: "assets/logo-1/star-health-color.png",
@@ -3308,6 +3365,7 @@
                 ]
             },
             starSenior: {
+                brand: "star",
                 title: "Star Senior Citizens Red Carpet",
                 provider: "Senior-Focused Health Protection Plan",
                 logo: "assets/logo-1/star-health-color.png",
@@ -3365,6 +3423,7 @@
                 ]
             },
             starStudent: {
+                brand: "star",
                 title: "Star Student Travel Protect",
                 provider: "Global Student Protection Plan",
                 logo: "assets/logo-1/star-health-color.png",
@@ -3420,9 +3479,10 @@
                 ]
             },
             homeLoan: {
+                brand: "lichfl",
                 title: "LIC Housing Finance Home Loan",
                 provider: "Smart Home Loan Solution",
-                logo: "assets/logo-1/lic-housing-color.png",
+                logo: "assets/logo-1/lic-hfl-color-final.png",
                 banner: "assets/loans-banner.png",
                 tagline: "Turn your dream home into reality with flexible loans and low interest rates",
                 intro: "Finance your home with confidence — low EMI, long tenure, and easy approval",
@@ -3474,9 +3534,10 @@
                 ]
             },
             plotLoan: {
+                brand: "lichfl",
                 title: "LIC Housing Finance Plot Loan",
                 provider: "Land Investment Loan Solution",
-                logo: "assets/logo-1/lic-housing-color.png",
+                logo: "assets/logo-1/lic-hfl-color-final.png",
                 banner: "assets/loans-banner.png",
                 tagline: "Own your land today — build your future tomorrow",
                 intro: "Finance your residential plot with flexible terms and affordable rates",
@@ -3528,9 +3589,10 @@
                 ]
             },
             pensionersLoan: {
+                brand: "lichfl",
                 title: "LIC Housing Finance Pensioners Loan",
                 provider: "Retirement-Friendly Home Loan",
-                logo: "assets/logo-1/lic-housing-color.png",
+                logo: "assets/logo-1/lic-hfl-color-final.png",
                 banner: "assets/loans-banner.png",
                 tagline: "Own your home even after retirement — without financial pressure",
                 intro: "Designed for pensioners to access home loans with extended tenure and flexibility",
@@ -3573,9 +3635,10 @@
                 ]
             },
             constructionLoan: {
+                brand: "lichfl",
                 title: "LIC Housing Finance Construction Loan",
                 provider: "Build-Your-Home Loan Solution",
-                logo: "assets/logo-1/lic-housing-color.png",
+                logo: "assets/logo-1/lic-hfl-color-final.png",
                 banner: "assets/loans-banner.png",
                 tagline: "Don’t just buy a house — build it your way with flexible financing",
                 intro: "Fund your home construction with low interest rates and structured payouts",
@@ -3626,9 +3689,10 @@
                 ]
             },
             renovationLoan: {
+                brand: "lichfl",
                 title: "LIC Housing Finance Renovation Loan",
                 provider: "Upgrade Your Home Loan Solution",
-                logo: "assets/logo-1/lic-housing-color.png",
+                logo: "assets/logo-1/lic-hfl-color-final.png",
                 banner: "assets/loans-banner.png",
                 tagline: "Transform your existing house into your dream home without financial stress",
                 intro: "Upgrade, repair, or renovate your home with flexible funding and low EMI",
@@ -3678,6 +3742,7 @@
                 ]
             },
             uiMotor: {
+                brand: "united",
                 title: "United India Motor Insurance",
                 provider: "United India Insurance Company",
                 logo: "assets/logo-1/united-expnd.png",
@@ -3688,6 +3753,7 @@
                 benefits: ["Third-party liability cover", "Own damage protection", "Cashless repair in network garages"]
             },
             uiFamily: {
+                brand: "united",
                 title: "United India Family Medicare",
                 provider: "United India Insurance Company",
                 logo: "assets/logo-1/united-expnd.png",
@@ -3698,6 +3764,7 @@
                 benefits: ["Cashless hospitalization", "Pre & Post hospitalization expenses", "Coverage for AYUSH treatments"]
             },
             uiAccident: {
+                brand: "united",
                 title: "Personal Accident Insurance",
                 provider: "United India Insurance Company",
                 logo: "assets/logo-1/united-expnd.png",
@@ -3721,6 +3788,17 @@
             document.getElementById('modalDescription').textContent = data.tagline;
             document.getElementById('modalLogo').src = data.logo;
             document.getElementById('modalBanner').src = data.banner;
+
+            // Brand & Logo Calibration
+            const modalLogo = document.getElementById('modalLogo');
+            const brandClasses = ['lic', 'star', 'united', 'lichfl'];
+            // Reset only brand-specific classes to prevent style accumulation
+            modalLogo.classList.remove(...brandClasses);
+            
+            const brand = data.brand || 'default';
+            if (brand !== 'default') {
+                modalLogo.classList.add(brand);
+            }
 
             // Update Labels if present
             const whoForLabel = document.querySelector('#modalWhoFor').previousElementSibling;
