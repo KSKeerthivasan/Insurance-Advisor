@@ -133,8 +133,17 @@
 
         /* Hero Section */
         .hero-section {
-            background-color: var(--color-hero-bg);
+            background: url("assets/logo-1/bg.png") no-repeat center/cover;
             color: var(--color-hero-text);
+            position: relative;
+        }
+
+        .hero-section::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
         }
 
         .hero {
@@ -144,10 +153,13 @@
             gap: 60px;
             padding: 40px 0;
             min-height: 85vh;
+            position: relative;
+            z-index: 2;
         }
 
         .hero-content {
             max-width: 520px;
+            min-height: 240px; /* Prevent layout jump */
         }
 
         .hero-content h1 {
@@ -262,25 +274,82 @@
             border-color: var(--color-hero-text);
         }
 
-        .hero-image img {
-            width: 100%;
-            max-height: 420px;
-            object-fit: contain;
-            background-color: #F9F9F7;
-            border-radius: 24px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            animation: float 6s ease-in-out infinite;
+        .hero-visual {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 500px;
         }
 
-        @keyframes float {
+        .hero-visual::before {
+            content: "";
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(0, 255, 157, 0.2), transparent);
+            z-index: 0;
+            border-radius: 50%;
+        }
 
-            0%,
-            100% {
-                transform: translateY(0);
+        .advisor-front,
+        .advisor-back {
+            width: 100%;
+            max-width: 420px;
+            max-height: 500px;
+            object-fit: contain;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.2));
+        }
+
+        .advisor-front {
+            position: relative;
+            z-index: 2;
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .advisor-back {
+            position: absolute;
+            right: -30px;
+            z-index: 1;
+            transform: scale(0.85);
+            opacity: 0.6;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .advisor-toggle-btn {
+            display: none;
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-accent);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            z-index: 10;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .hero-visual {
+                height: 400px;
+                margin-top: 20px;
             }
-
-            50% {
-                transform: translateY(-15px);
+            .advisor-back {
+                display: none;
+            }
+            .advisor-toggle-btn {
+                display: block;
+            }
+            .advisor-front {
+                max-width: 320px;
             }
         }
 
@@ -2019,10 +2088,10 @@
     <section class="hero-section">
         <div class="container hero">
             <div class="hero-content reveal">
-                <div class="hero-trust">Insurance Advisor | Agent ID: 0141271B</div>
-                <h1>R KALPANA, M.A</h1>
-                <p class="hero-role">Insurance Advisor</p>
-                <p class="hero-tagline">Helping families make financially secure decisions through trusted guidance.</p>
+                <div class="hero-trust" id="heroAgentId">Insurance Advisor | Agent ID: 0141271B</div>
+                <h1 id="heroName">R KALPANA, M.A</h1>
+                <p class="hero-role" id="heroRole">Insurance Advisor</p>
+                <p class="hero-tagline" id="heroTagline">Helping families make financially secure decisions through trusted guidance.</p>
 
                 <div class="cta-group">
                     <button type="button" class="btn btn-primary cta-trigger-btn" data-cta-type="call"
@@ -2031,7 +2100,7 @@
                             <path
                                 d="M6.62 10.79c1.44 2.83 3.76 5.15 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
                         </svg>
-                        Call Now
+                        Call Advisor
                     </button>
                     <button type="button" class="btn btn-whatsapp cta-trigger-btn" data-cta-type="whatsapp"
                         style="cursor: pointer; font-family: inherit;">
@@ -2044,10 +2113,14 @@
                     <a href="#plans" class="btn btn-outline">View Plans</a>
                 </div>
             </div>
-            <div class="hero-image reveal">
+            <div class="hero-visual reveal">
                 <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800"
-                    alt="R Kalpana, M.A - Insurance Advisor">
+                    alt="R KALPANA, M.A" class="advisor-front" id="advisorFront">
+                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=800"
+                    alt="P SELVARAJ" class="advisor-back" id="advisorBack">
+                <button type="button" class="advisor-toggle-btn" id="advisorToggle">Swap Advisor</button>
             </div>
+        </div>
     </section>
 
     <!-- Solutions Section -->
@@ -2531,7 +2604,7 @@
                             </button>
                             <button type="button" class="btn btn-outline cta-trigger-btn" data-cta-type="call"
                                 style="width: 100%; justify-content: center;">
-                                Call Now
+                                Call Advisor
                             </button>
                         </div>
                     </div>
@@ -2579,7 +2652,7 @@
                             </div>
                         </div>
 
-                        <p class="agent-tagline">"Helping families make financially secure decisions"</p>
+                        <p class="agent-tagline">"Guiding you towards smarter financial protection"</p>
 
                         <!-- CTA BUTTONS -->
                         <div class="cta-group"
@@ -2590,7 +2663,7 @@
                             </button>
                             <button type="button" class="btn btn-outline cta-trigger-btn" data-cta-type="call"
                                 style="width: 100%; justify-content: center;">
-                                Call Now
+                                Call Advisor
                             </button>
                         </div>
                     </div>
@@ -4079,7 +4152,7 @@
                 updateCtaButtons("Chat on WhatsApp", "cta-action-btn-green");
             } else {
                 title.textContent = "Call an Advisor";
-                updateCtaButtons("Call Now", "cta-action-btn-outline");
+                updateCtaButtons("Call Advisor", "cta-action-btn-outline");
             }
 
             overlay.classList.add('active');
@@ -4151,6 +4224,61 @@
         window.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') closeCtaModal();
         });
+
+        // Hero Advisor Swap Logic
+        let activeAdvisor = 0; // 0 = Kalpana, 1 = Selvaraj
+        const advisorData = [
+            {
+                name: "R KALPANA, M.A",
+                role: "Insurance Advisor",
+                agentId: "Insurance Advisor | Agent ID: 0141271B",
+                tagline: "Helping families make financially secure decisions through trusted guidance.",
+                image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800"
+            },
+            {
+                name: "P SELVARAJ",
+                role: "Insurance Advisor",
+                agentId: "Insurance Advisor | Agent ID: 78871B",
+                tagline: "Expert guidance for life, health and general insurance solutions.",
+                image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=800"
+            }
+        ];
+
+        function swapAdvisor() {
+            activeAdvisor = activeAdvisor === 0 ? 1 : 0;
+            const current = advisorData[activeAdvisor];
+            const back = advisorData[activeAdvisor === 0 ? 1 : 0];
+
+            // Smooth transition for text
+            const heroContent = document.querySelector('.hero-content');
+            heroContent.style.opacity = '0';
+            heroContent.style.transform = 'translateY(10px)';
+            heroContent.style.transition = 'all 0.3s ease';
+
+            setTimeout(() => {
+                // Update Text Content
+                document.getElementById('heroName').textContent = current.name;
+                document.getElementById('heroRole').textContent = current.role;
+                document.getElementById('heroAgentId').textContent = current.agentId;
+                document.getElementById('heroTagline').textContent = current.tagline;
+
+                // Update Images
+                const frontImg = document.getElementById('advisorFront');
+                const backImg = document.getElementById('advisorBack');
+
+                frontImg.src = current.image;
+                frontImg.alt = current.name;
+                
+                backImg.src = back.image;
+                backImg.alt = back.name;
+
+                heroContent.style.opacity = '1';
+                heroContent.style.transform = 'translateY(0)';
+            }, 300);
+        }
+
+        document.getElementById('advisorBack').addEventListener('click', swapAdvisor);
+        document.getElementById('advisorToggle').addEventListener('click', swapAdvisor);
     </script>
 
     <!-- CTA Modal Overlay HTML -->
